@@ -1,0 +1,1 @@
+// Falta config.js
