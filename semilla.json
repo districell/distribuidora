@@ -1,0 +1,8154 @@
+[
+  {
+    "id": "P1",
+    "nombre": "Alcatel 1L/1se/TCL L10 lite/L10 plus",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P2",
+    "nombre": "Alcatel 1s",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P3",
+    "nombre": "Alcatel 1v 2020/1v plus/TCL L9s",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P4",
+    "nombre": "Alcatel 3h plus/5h plus",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P5",
+    "nombre": "Alcatel 3h/5h/1s 2021/TCL 20e/20y",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P6",
+    "nombre": "Alcatel 3x/5x/TCL 10se",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P7",
+    "nombre": "Alcatel A1 5033/TCL 5133",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P8",
+    "nombre": "Alcatel idol 3 mini",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P9",
+    "nombre": "Display J2 prime G530/G532",
+    "precio_final": 10350.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P10",
+    "nombre": "Display K4 k120/k130",
+    "precio_final": 10350.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P11",
+    "nombre": "Huawei G8",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P12",
+    "nombre": "Huawei Mate 10",
+    "precio_final": 36800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P13",
+    "nombre": "Huawei Mate 10 lite",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P14",
+    "nombre": "Huawei Mate 20 lite",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P15",
+    "nombre": "Huawei Mate 9 lite",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P16",
+    "nombre": "Huawei P smart 2018",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P17",
+    "nombre": "Huawei P smart 2019/2020",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P18",
+    "nombre": "Huawei P10",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P19",
+    "nombre": "Huawei P10 lite",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P20",
+    "nombre": "Huawei P20",
+    "precio_final": 36800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P21",
+    "nombre": "Huawei P20 lite",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P22",
+    "nombre": "Huawei P30 lite",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P23",
+    "nombre": "Huawei P40 lite",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P24",
+    "nombre": "Huawei P8",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P25",
+    "nombre": "Huawei P8 lite",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P26",
+    "nombre": "Huawei P9",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P27",
+    "nombre": "Huawei P9 lite",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P28",
+    "nombre": "Huawei Y3-2",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P29",
+    "nombre": "Huawei Y5 lite",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P30",
+    "nombre": "Huawei Y5-2",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P31",
+    "nombre": "Huawei Y6",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P32",
+    "nombre": "Huawei Y6 2019/Y6 prime",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P33",
+    "nombre": "Huawei Y6-2/GW",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P34",
+    "nombre": "Huawei Y7 2017/GW metal",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P35",
+    "nombre": "Huawei Y7 2018",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P36",
+    "nombre": "Huawei Y9 2019",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P37",
+    "nombre": "Infinix Hot 40 pro",
+    "precio_final": 28750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P38",
+    "nombre": "Infinix Hot 40i/Spark 20/20c/Go 2024/Smart 8/8 pro",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P39",
+    "nombre": "Infinix Hot 50 4g",
+    "precio_final": 28750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P40",
+    "nombre": "Infinix Hot 50 5g/50i/Smart 9/Spark GO 1",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P41",
+    "nombre": "Infinix Note 40 pro/Zero 40",
+    "precio_final": 40250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P42",
+    "nombre": "Infinix Smart 7",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P43",
+    "nombre": "Iphone 11 incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P44",
+    "nombre": "Iphone 11 Original",
+    "precio_final": 40250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P45",
+    "nombre": "Iphone 11 pro incell",
+    "precio_final": 28750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P46",
+    "nombre": "Iphone 11 pro max incell",
+    "precio_final": 28750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P47",
+    "nombre": "Iphone 11 pro max Original",
+    "precio_final": 63250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P48",
+    "nombre": "Iphone 11 pro Original",
+    "precio_final": 57500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P49",
+    "nombre": "Iphone 12 mini Original",
+    "precio_final": 103500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P50",
+    "nombre": "Iphone 12 pro max incell",
+    "precio_final": 40250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P51",
+    "nombre": "Iphone 12 pro max Original",
+    "precio_final": 97750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P52",
+    "nombre": "Iphone 12/12 pro incell",
+    "precio_final": 40250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P53",
+    "nombre": "Iphone 12/12 pro Original",
+    "precio_final": 74750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P54",
+    "nombre": "Iphone 13 incell",
+    "precio_final": 46000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P55",
+    "nombre": "Iphone 13 Original",
+    "precio_final": 86250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P56",
+    "nombre": "Iphone 13 pro incell",
+    "precio_final": 69000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P57",
+    "nombre": "Iphone 13 pro max incell",
+    "precio_final": 80500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P58",
+    "nombre": "Iphone 13 pro max Original",
+    "precio_final": 138000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P59",
+    "nombre": "Iphone 13 pro Original",
+    "precio_final": 138000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P60",
+    "nombre": "Iphone 14 Original",
+    "precio_final": 92000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P61",
+    "nombre": "Iphone 14 pro max Original",
+    "precio_final": 299000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P62",
+    "nombre": "Iphone 14 pro Original",
+    "precio_final": 230000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P63",
+    "nombre": "Iphone 15 Original",
+    "precio_final": 184000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P64",
+    "nombre": "Iphone 15 pro max Original",
+    "precio_final": 299000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P65",
+    "nombre": "Iphone 15 pro Original",
+    "precio_final": 276000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P66",
+    "nombre": "Iphone 16 pro Original",
+    "precio_final": 276000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P67",
+    "nombre": "Iphone 5",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P68",
+    "nombre": "Iphone 5c",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P69",
+    "nombre": "Iphone 5s/5se",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P70",
+    "nombre": "Iphone 6",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P71",
+    "nombre": "Iphone 6 plus",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P72",
+    "nombre": "Iphone 6s",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P73",
+    "nombre": "Iphone 6s plus",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P74",
+    "nombre": "Iphone 7",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P75",
+    "nombre": "Iphone 7 plus",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P76",
+    "nombre": "Iphone 8",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P77",
+    "nombre": "Iphone 8 plus",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P78",
+    "nombre": "Iphone X incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P79",
+    "nombre": "Iphone X Original",
+    "precio_final": 46000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P80",
+    "nombre": "Iphone XR incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P81",
+    "nombre": "Iphone XR Original",
+    "precio_final": 40250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P82",
+    "nombre": "Iphone XS incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P83",
+    "nombre": "Iphone XS max incell",
+    "precio_final": 34500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P84",
+    "nombre": "Iphone XS max Original",
+    "precio_final": 63250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P85",
+    "nombre": "Iphone XS Original",
+    "precio_final": 46000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P86",
+    "nombre": "Itel A50/A70/A90/P55/Smart 7/Spark GO 2023/10/10c",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P87",
+    "nombre": "LG K10 (v02)",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P88",
+    "nombre": "LG K10 (v03)",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P89",
+    "nombre": "LG K10 2017",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P90",
+    "nombre": "LG K11/K11 plus",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P91",
+    "nombre": "LG K22/K22 plus",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P92",
+    "nombre": "LG K22/K22 plus con marco",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P93",
+    "nombre": "LG K4 2017",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P94",
+    "nombre": "LG K40/K12/K12 plus",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P95",
+    "nombre": "LG K40/K12/K12 plus con marco",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P96",
+    "nombre": "LG K40S",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P97",
+    "nombre": "LG K40S con marco",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P98",
+    "nombre": "LG K41s",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P99",
+    "nombre": "LG K41s con marco",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P100",
+    "nombre": "LG K42 con marco",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P101",
+    "nombre": "LG K42/K52/K62",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P102",
+    "nombre": "LG K50/Q60",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P103",
+    "nombre": "LG K50/Q60 con marco",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P104",
+    "nombre": "LG K50s/K51",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P105",
+    "nombre": "LG K50s/K51 con marco",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P106",
+    "nombre": "LG K51s",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P107",
+    "nombre": "LG K51s con marco",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P108",
+    "nombre": "LG K52/K62 con marco",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P109",
+    "nombre": "LG K61",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P110",
+    "nombre": "LG K61 con marco",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P111",
+    "nombre": "LG K7",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P112",
+    "nombre": "LG K7 2017",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P113",
+    "nombre": "LG K71",
+    "precio_final": 36800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P114",
+    "nombre": "LG K8",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P115",
+    "nombre": "LG K8 2017",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P116",
+    "nombre": "LG K8 2018",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P117",
+    "nombre": "LG K8 plus/K20/K20 plus",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P118",
+    "nombre": "LG K8 plus/K20/K20 plus con marco",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P119",
+    "nombre": "LG K9",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P120",
+    "nombre": "LG K9 con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P121",
+    "nombre": "LG León",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P122",
+    "nombre": "LG Q6",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P123",
+    "nombre": "LG Spirit",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P124",
+    "nombre": "LG stylus 3",
+    "precio_final": 31050.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P125",
+    "nombre": "LG X Max",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P126",
+    "nombre": "LG X Power",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P127",
+    "nombre": "Moto C",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P128",
+    "nombre": "Moto C plus",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P129",
+    "nombre": "Moto E1",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P130",
+    "nombre": "Moto E13",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P131",
+    "nombre": "Moto E13 con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P132",
+    "nombre": "Moto E2",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P133",
+    "nombre": "Moto E20",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P134",
+    "nombre": "Moto E20 con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P135",
+    "nombre": "Moto E22/E22i",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P136",
+    "nombre": "Moto E22/E22i con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P137",
+    "nombre": "Moto E30/E40",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P138",
+    "nombre": "Moto E32 con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P139",
+    "nombre": "Moto E32/G22",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P140",
+    "nombre": "Moto E4",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P141",
+    "nombre": "Moto E4 plus",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P142",
+    "nombre": "Moto E40 con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P143",
+    "nombre": "Moto E5 play",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P144",
+    "nombre": "Moto E5 plus",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P145",
+    "nombre": "Moto E5/G6 play",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P146",
+    "nombre": "Moto E6 play",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P147",
+    "nombre": "Moto E6 play con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P148",
+    "nombre": "Moto E6 plus",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P149",
+    "nombre": "Moto E6 plus con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P150",
+    "nombre": "Moto E6i con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P151",
+    "nombre": "Moto E6s con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P152",
+    "nombre": "Moto E6s/E6i",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P153",
+    "nombre": "Moto E7 con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P154",
+    "nombre": "Moto E7 plus/G9 play",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P155",
+    "nombre": "Moto E7 plus/G9 play con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P156",
+    "nombre": "Moto E7/E7i/E7 power/E7i power",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P157",
+    "nombre": "Moto E7i/E7 power/E7i power con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P158",
+    "nombre": "Moto EDGE (curvo)",
+    "precio_final": 138000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P159",
+    "nombre": "Moto EDGE 20 lite incell",
+    "precio_final": 28750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P160",
+    "nombre": "Moto EDGE 20 lite Oled",
+    "precio_final": 69000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P161",
+    "nombre": "Moto EDGE 20 lite Oled con marco",
+    "precio_final": 74750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P162",
+    "nombre": "Moto Edge 20/20 pro Oled",
+    "precio_final": 80500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P163",
+    "nombre": "Moto EDGE 30 fusion incell",
+    "precio_final": 46000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P164",
+    "nombre": "Moto EDGE 30 fusion Oled",
+    "precio_final": 109250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P165",
+    "nombre": "Moto EDGE 30 Neo Oled",
+    "precio_final": 109250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P166",
+    "nombre": "Moto EDGE 30 Pro Oled",
+    "precio_final": 80500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P167",
+    "nombre": "Moto EDGE 30 Ultra Oled",
+    "precio_final": 63250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P168",
+    "nombre": "Moto EDGE 40 Neo Oled",
+    "precio_final": 86250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P169",
+    "nombre": "Moto EDGE 40 Oled",
+    "precio_final": 86250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P170",
+    "nombre": "Moto EDGE 40 Pro Oled",
+    "precio_final": 109250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P171",
+    "nombre": "Moto EDGE 50",
+    "precio_final": 86250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P172",
+    "nombre": "Moto G04/G04s/E14 con marco",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P173",
+    "nombre": "Moto G04/G04s/G24/E14",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P174",
+    "nombre": "Moto G05/E15",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P175",
+    "nombre": "Moto G1",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P176",
+    "nombre": "Moto G100",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P177",
+    "nombre": "Moto G13/G23/G34/G53",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P178",
+    "nombre": "Moto G13/G23/G34/G53 con marco",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P179",
+    "nombre": "Moto G14 con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P180",
+    "nombre": "Moto G14/G54/G73",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P181",
+    "nombre": "Moto G15/G15 power",
+    "precio_final": 28750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P182",
+    "nombre": "Moto G2",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P183",
+    "nombre": "Moto G20 con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P184",
+    "nombre": "Moto G20/G30",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P185",
+    "nombre": "Moto G200",
+    "precio_final": 28750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P186",
+    "nombre": "Moto G22 con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P187",
+    "nombre": "Moto G24 con marco",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P188",
+    "nombre": "Moto G3",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P189",
+    "nombre": "Moto G30 con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P190",
+    "nombre": "Moto G31 Oled con marco",
+    "precio_final": 51750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P191",
+    "nombre": "Moto G31/G41/G71 incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P192",
+    "nombre": "Moto G31/G41/G71 Oled",
+    "precio_final": 46000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P193",
+    "nombre": "Moto G32",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P194",
+    "nombre": "Moto G32 con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P195",
+    "nombre": "Moto G35",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P196",
+    "nombre": "Moto G4 play con marco",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P197",
+    "nombre": "Moto G4/G4 plus con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P198",
+    "nombre": "Moto G40/G51/G60/G60s",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P199",
+    "nombre": "Moto G41 Oled con marco",
+    "precio_final": 51750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P200",
+    "nombre": "Moto G42 incell con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P201",
+    "nombre": "Moto G42 Oled",
+    "precio_final": 46000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P202",
+    "nombre": "Moto G42 Oled con marco",
+    "precio_final": 51750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P203",
+    "nombre": "Moto G5",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P204",
+    "nombre": "Moto G5 plus",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P205",
+    "nombre": "Moto G50 4g",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P206",
+    "nombre": "Moto G51 con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P207",
+    "nombre": "Moto G52/G72/G82/EDGE 30 incell",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P208",
+    "nombre": "Moto G52/G82 Oled con marco",
+    "precio_final": 63250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P209",
+    "nombre": "Moto G52/G82/EDGE 30 Oled",
+    "precio_final": 57500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P210",
+    "nombre": "Moto G54 con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P211",
+    "nombre": "Moto G5s",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P212",
+    "nombre": "Moto G5s Plus",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P213",
+    "nombre": "Moto G6",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P214",
+    "nombre": "Moto G6 plus",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P215",
+    "nombre": "Moto G60s con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P216",
+    "nombre": "Moto G7 play",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P217",
+    "nombre": "Moto G7 play con marco",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P218",
+    "nombre": "Moto G7 power",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P219",
+    "nombre": "Moto G7 power con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P220",
+    "nombre": "Moto G7/G7 plus",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P221",
+    "nombre": "Moto G72 incell",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P222",
+    "nombre": "Moto G72 Oled",
+    "precio_final": 57500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P223",
+    "nombre": "Moto G72 Oled con marco",
+    "precio_final": 63250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P224",
+    "nombre": "Moto G73 con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P225",
+    "nombre": "Moto G8",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P226",
+    "nombre": "Moto G8 con marco",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P227",
+    "nombre": "Moto G8 play/One macro",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P228",
+    "nombre": "Moto G8 play/One macro con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P229",
+    "nombre": "Moto G8 plus",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P230",
+    "nombre": "Moto G8 plus con marco",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P231",
+    "nombre": "Moto G8 power",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P232",
+    "nombre": "Moto G8 power con marco",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P233",
+    "nombre": "Moto G8 power lite",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P234",
+    "nombre": "Moto G8 power lite con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P235",
+    "nombre": "Moto G84 Oled",
+    "precio_final": 78200.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P236",
+    "nombre": "Moto G85/EDGE 50 fusion Oled",
+    "precio_final": 78200.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P237",
+    "nombre": "Moto G9 plus",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P238",
+    "nombre": "Moto G9 plus con marco",
+    "precio_final": 27600.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P239",
+    "nombre": "Moto G9 power",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P240",
+    "nombre": "Moto G9 power con marco",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P241",
+    "nombre": "Moto M",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P242",
+    "nombre": "Moto One",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P243",
+    "nombre": "Moto One fusion",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P244",
+    "nombre": "Moto One fusion con marco",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P245",
+    "nombre": "Moto One hiper",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P246",
+    "nombre": "Moto One vision con marco",
+    "precio_final": 51750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P247",
+    "nombre": "Moto One vision/action",
+    "precio_final": 46000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P248",
+    "nombre": "Moto X play",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P249",
+    "nombre": "Moto X2",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P250",
+    "nombre": "Moto Z Oled",
+    "precio_final": 51750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P251",
+    "nombre": "Moto Z play incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P252",
+    "nombre": "Moto Z play Oled",
+    "precio_final": 36800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P253",
+    "nombre": "Moto Z2 play Oled",
+    "precio_final": 36800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P254",
+    "nombre": "Moto Z3 play Oled",
+    "precio_final": 36800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P255",
+    "nombre": "Nokia 1",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P256",
+    "nombre": "Nokia 1 plus",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P257",
+    "nombre": "Nokia 1.3",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P258",
+    "nombre": "Nokia 2.1",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P259",
+    "nombre": "Nokia 2.2",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P260",
+    "nombre": "Nokia 2.3",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P261",
+    "nombre": "Nokia 2.4",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P262",
+    "nombre": "Nokia 3.1 plus",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P263",
+    "nombre": "Nokia 5.1 plus",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P264",
+    "nombre": "Nokia 7.1",
+    "precio_final": 34500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P265",
+    "nombre": "Note 11/11t/M4 pro 5G",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P266",
+    "nombre": "Note 12/Poco x5 incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P267",
+    "nombre": "Realme C11/C20/C21 2021",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P268",
+    "nombre": "Realme C21y/C25y",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P269",
+    "nombre": "Realme C51/C53/C60/Note 50",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P270",
+    "nombre": "Realme C61/C63/Note 60",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P271",
+    "nombre": "Samsung A01 Core",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P272",
+    "nombre": "Samsung A01 Core con marco",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P273",
+    "nombre": "Samsung A01F (conector fino)",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P274",
+    "nombre": "Samsung A01M (conector ancho)",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P275",
+    "nombre": "Samsung A01M con marco",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P276",
+    "nombre": "Samsung A02 con marco",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P277",
+    "nombre": "Samsung A02/A12",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P278",
+    "nombre": "Samsung A02s con marco",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P279",
+    "nombre": "Samsung A02s/A03/A03s",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P280",
+    "nombre": "Samsung A03 con marco",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P281",
+    "nombre": "Samsung A03 Core",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P282",
+    "nombre": "Samsung A03 Core con marco",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P283",
+    "nombre": "Samsung A03s con marco",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P284",
+    "nombre": "Samsung A04",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P285",
+    "nombre": "Samsung A04 con marco",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P286",
+    "nombre": "Samsung A04e",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P287",
+    "nombre": "Samsung A04e con marco",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P288",
+    "nombre": "Samsung A04s",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P289",
+    "nombre": "Samsung A04s con marco",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P290",
+    "nombre": "Samsung A05",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P291",
+    "nombre": "Samsung A05 con marco",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P292",
+    "nombre": "Samsung A05s",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P293",
+    "nombre": "Samsung A05s con marco",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P294",
+    "nombre": "Samsung A06",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P295",
+    "nombre": "Samsung A06 con marco",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P296",
+    "nombre": "Samsung A10/M10",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P297",
+    "nombre": "Samsung A10/M10 con marco",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P298",
+    "nombre": "Samsung A10s",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P299",
+    "nombre": "Samsung A10s con marco",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P300",
+    "nombre": "Samsung A11",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P301",
+    "nombre": "Samsung A11 con marco",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P302",
+    "nombre": "Samsung A12 con marco",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P303",
+    "nombre": "Samsung A13/M13",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P304",
+    "nombre": "Samsung A13/M13 con marco",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P305",
+    "nombre": "Samsung A14",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P306",
+    "nombre": "Samsung A14 con marco",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P307",
+    "nombre": "Samsung A15 incell con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P308",
+    "nombre": "Samsung A15 Oled con marco",
+    "precio_final": 48300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P309",
+    "nombre": "Samsung A16 Oled",
+    "precio_final": 78200.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P310",
+    "nombre": "Samsung A2 core",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P311",
+    "nombre": "Samsung A20 incell",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P312",
+    "nombre": "Samsung A20 incell con marco",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P313",
+    "nombre": "Samsung A20 Oled",
+    "precio_final": 34500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P314",
+    "nombre": "Samsung A20 Oled con marco",
+    "precio_final": 36800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P315",
+    "nombre": "Samsung A20s",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P316",
+    "nombre": "Samsung A20s con marco",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P317",
+    "nombre": "Samsung A21",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P318",
+    "nombre": "Samsung A21s",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P319",
+    "nombre": "Samsung A21s con marco",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P320",
+    "nombre": "Samsung A22 4g incell con marco",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P321",
+    "nombre": "Samsung A22 4g Oled con marco",
+    "precio_final": 40250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P322",
+    "nombre": "Samsung A22 5g",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P323",
+    "nombre": "Samsung A22 5g con marco",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P324",
+    "nombre": "Samsung A23 4g",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P325",
+    "nombre": "Samsung A23 4g con marco",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P326",
+    "nombre": "Samsung A23 5G",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P327",
+    "nombre": "Samsung A23 5G con marco",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P328",
+    "nombre": "Samsung A24 incell con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P329",
+    "nombre": "Samsung A24 Oled con marco",
+    "precio_final": 48300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P330",
+    "nombre": "Samsung A25 incell con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P331",
+    "nombre": "Samsung A25 Oled con marco",
+    "precio_final": 48300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P332",
+    "nombre": "Samsung A3 2016 AAA",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P333",
+    "nombre": "Samsung A30/A50 incell",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P334",
+    "nombre": "Samsung A30/A50 incell con marco",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P335",
+    "nombre": "Samsung A30/A50 Oled",
+    "precio_final": 34500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P336",
+    "nombre": "Samsung A30/A50 Oled con marco",
+    "precio_final": 36800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P337",
+    "nombre": "Samsung A30s incell",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P338",
+    "nombre": "Samsung A30s incell con marco",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P339",
+    "nombre": "Samsung A30s Oled",
+    "precio_final": 34500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P340",
+    "nombre": "Samsung A30s Oled con marco",
+    "precio_final": 36800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P341",
+    "nombre": "Samsung A31 incell con marco",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P342",
+    "nombre": "Samsung A31 Oled con marco",
+    "precio_final": 40250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P343",
+    "nombre": "Samsung A32 incell con marco",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P344",
+    "nombre": "Samsung A32 Oled con marco",
+    "precio_final": 46000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P345",
+    "nombre": "Samsung A33 incell con marco",
+    "precio_final": 28750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P346",
+    "nombre": "Samsung A33 Oled con marco",
+    "precio_final": 51750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P347",
+    "nombre": "Samsung A33 Orig. americano con marco",
+    "precio_final": 132250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P348",
+    "nombre": "Samsung A34 incell con marco",
+    "precio_final": 28750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P349",
+    "nombre": "Samsung A34 Oled BIG con marco",
+    "precio_final": 66700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P350",
+    "nombre": "Samsung A34 Oled con marco",
+    "precio_final": 55200.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P351",
+    "nombre": "Samsung A35 Oled con marco",
+    "precio_final": 66700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P352",
+    "nombre": "Samsung A5 2015 AAA",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P353",
+    "nombre": "Samsung A5 2015 Oled",
+    "precio_final": 39100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P354",
+    "nombre": "Samsung A5 2016 incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P355",
+    "nombre": "Samsung A5 2016 Oled",
+    "precio_final": 39100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P356",
+    "nombre": "Samsung A5 2017 incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P357",
+    "nombre": "Samsung A5 2017 Oled",
+    "precio_final": 39100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P358",
+    "nombre": "Samsung A51 incell con marco",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P359",
+    "nombre": "Samsung A51 Oled BIG con marco",
+    "precio_final": 51750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P360",
+    "nombre": "Samsung A51 Oled con marco",
+    "precio_final": 40250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P361",
+    "nombre": "Samsung A52 incell con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P362",
+    "nombre": "Samsung A52 Oled BIG con marco",
+    "precio_final": 57500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P363",
+    "nombre": "Samsung A52 Oled con marco",
+    "precio_final": 46000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P364",
+    "nombre": "Samsung A53 Oled BIG con marco",
+    "precio_final": 57500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P365",
+    "nombre": "Samsung A53 Oled con marco",
+    "precio_final": 46000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P366",
+    "nombre": "Samsung A54 incell con marco",
+    "precio_final": 28750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P367",
+    "nombre": "Samsung A54 Oled BIG con marco",
+    "precio_final": 66700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P368",
+    "nombre": "Samsung A54 Oled con marco",
+    "precio_final": 55200.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P369",
+    "nombre": "Samsung A55 Oled BIG con marco",
+    "precio_final": 66700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P370",
+    "nombre": "Samsung A6 plus incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P371",
+    "nombre": "Samsung A6 plus Oled",
+    "precio_final": 55200.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P372",
+    "nombre": "Samsung A7 2017 incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P373",
+    "nombre": "Samsung A7 2017 Oled",
+    "precio_final": 39100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P374",
+    "nombre": "Samsung A7 2018 incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P375",
+    "nombre": "Samsung A7 2018 Oled",
+    "precio_final": 55200.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P376",
+    "nombre": "Samsung A70 incell con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P377",
+    "nombre": "Samsung A70 Oled BIG con marco",
+    "precio_final": 63250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P378",
+    "nombre": "Samsung A71 incell con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P379",
+    "nombre": "Samsung A71 Oled BIG con marco",
+    "precio_final": 63250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P380",
+    "nombre": "Samsung A72 incell con marco",
+    "precio_final": 28750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P381",
+    "nombre": "Samsung A72 Oled BIG con marco",
+    "precio_final": 69000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P382",
+    "nombre": "Samsung A8 2018 incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P383",
+    "nombre": "Samsung A8 2018 Oled",
+    "precio_final": 57500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P384",
+    "nombre": "Samsung A8 plus incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P385",
+    "nombre": "Samsung A9 2018 Oled",
+    "precio_final": 57500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P386",
+    "nombre": "Samsung J1 2016 AAA",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P387",
+    "nombre": "Samsung J1 Ace incell",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P388",
+    "nombre": "Samsung J2 AAA",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P389",
+    "nombre": "Samsung J2 Core",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P390",
+    "nombre": "Samsung J2 Pro AAA",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P391",
+    "nombre": "Samsung J2 Pro incell",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P392",
+    "nombre": "Samsung J3 AAA",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P393",
+    "nombre": "Samsung J3 incell",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P394",
+    "nombre": "Samsung J3 Oled",
+    "precio_final": 33350.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P395",
+    "nombre": "Samsung J4 AAA",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P396",
+    "nombre": "Samsung J4 incell",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P397",
+    "nombre": "Samsung J4 Oled",
+    "precio_final": 33350.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P398",
+    "nombre": "Samsung J4 Plus/J4 core/J6 Plus",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P399",
+    "nombre": "Samsung J5 2015 AAA",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P400",
+    "nombre": "Samsung J5 2015 incell",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P401",
+    "nombre": "Samsung J5 2015 Oled",
+    "precio_final": 33350.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P402",
+    "nombre": "Samsung J5 2016 AAA",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P403",
+    "nombre": "Samsung J5 2016 AAA",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P404",
+    "nombre": "Samsung J5 2016 incell",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P405",
+    "nombre": "Samsung J5 2016 Oled",
+    "precio_final": 33350.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P406",
+    "nombre": "Samsung J5 Prime",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P407",
+    "nombre": "Samsung J5 Pro AAA",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P408",
+    "nombre": "Samsung J5 Pro incell",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P409",
+    "nombre": "Samsung J5 Pro Oled",
+    "precio_final": 33350.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P410",
+    "nombre": "Samsung J6 AAA",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P411",
+    "nombre": "Samsung J6 incell",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P412",
+    "nombre": "Samsung J6 Oled",
+    "precio_final": 44850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P413",
+    "nombre": "Samsung J7 2015 incell",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P414",
+    "nombre": "Samsung J7 2015 Oled",
+    "precio_final": 33350.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P415",
+    "nombre": "Samsung J7 2015/Neo AAA",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P416",
+    "nombre": "Samsung J7 2016 AAA",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P417",
+    "nombre": "Samsung J7 2016 incell",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P418",
+    "nombre": "Samsung J7 2016 Oled",
+    "precio_final": 33350.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P419",
+    "nombre": "Samsung J7 Neo incell",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P420",
+    "nombre": "Samsung J7 Neo Oled",
+    "precio_final": 33350.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P421",
+    "nombre": "Samsung J7 prime",
+    "precio_final": 14950.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P422",
+    "nombre": "Samsung J7 Pro AAA",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P423",
+    "nombre": "Samsung J7 Pro incell",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P424",
+    "nombre": "Samsung J7 Pro Oled",
+    "precio_final": 33350.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P425",
+    "nombre": "Samsung J8/J8 plus AAA",
+    "precio_final": 13800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P426",
+    "nombre": "Samsung J8/J8 plus incell",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P427",
+    "nombre": "Samsung J8/J8 plus Oled",
+    "precio_final": 44850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P428",
+    "nombre": "Samsung M12",
+    "precio_final": 16100.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P429",
+    "nombre": "Samsung M12 con marco",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P430",
+    "nombre": "Samsung M20",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P431",
+    "nombre": "Samsung M21/M21s/M30/M30s/M31 Oled",
+    "precio_final": 34500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P432",
+    "nombre": "Samsung M23/M33 con marco",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P433",
+    "nombre": "Samsung M23/M33/A23 Service pack",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P434",
+    "nombre": "Samsung S10 incell con marco",
+    "precio_final": 74750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P435",
+    "nombre": "Samsung S10 plus incell con marco",
+    "precio_final": 74750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P436",
+    "nombre": "Samsung S10e Oled con marco",
+    "precio_final": 161000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P437",
+    "nombre": "Samsung S20 Oled con marco",
+    "precio_final": 161000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P438",
+    "nombre": "Samsung S20 ultra Oled con marco",
+    "precio_final": 184000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P439",
+    "nombre": "Samsung S20fe Oled con marco",
+    "precio_final": 63250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P440",
+    "nombre": "Samsung S21 Oled con marco",
+    "precio_final": 161000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P441",
+    "nombre": "Samsung S21 plus Oled con marco",
+    "precio_final": 143750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P442",
+    "nombre": "Samsung S21fe Oled con marco",
+    "precio_final": 143750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P443",
+    "nombre": "Samsung S22 plus Oled con marco",
+    "precio_final": 161000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P444",
+    "nombre": "Samsung S22 ultra Oled con marco",
+    "precio_final": 161000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P445",
+    "nombre": "Samsung S23 ultra Oled con marco",
+    "precio_final": 195500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P446",
+    "nombre": "Samsung S23fe Oled con marco",
+    "precio_final": 143750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P447",
+    "nombre": "Samsung S8 incell con marco",
+    "precio_final": 74750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P448",
+    "nombre": "Samsung S8 plus incell con marco",
+    "precio_final": 74750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P449",
+    "nombre": "Samsung S8 plus Oled con marco",
+    "precio_final": 143750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P450",
+    "nombre": "Samsung S9 incell con marco",
+    "precio_final": 74750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P451",
+    "nombre": "Samsung S9 oled con marco",
+    "precio_final": 143750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P452",
+    "nombre": "Samsung S9 plus incell con marco",
+    "precio_final": 74750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P453",
+    "nombre": "Samsung S9 plus Oled con marco",
+    "precio_final": 143750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P454",
+    "nombre": "Táctil",
+    "precio_final": 3450.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P455",
+    "nombre": "TCL 20b",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P456",
+    "nombre": "TCL 20se",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P457",
+    "nombre": "TCL 30 plus",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P458",
+    "nombre": "TCL 305/30e/30se",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P459",
+    "nombre": "TCL 40 NXTPAPER",
+    "precio_final": 28750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P460",
+    "nombre": "TCL 403",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P461",
+    "nombre": "TCL 405/406/407/408",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P462",
+    "nombre": "TCL 40se",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P463",
+    "nombre": "TCL 501",
+    "precio_final": 28750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P464",
+    "nombre": "TCL 505",
+    "precio_final": 28750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P465",
+    "nombre": "TCL L7 plus",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P466",
+    "nombre": "Xiaomi Mi 8 lite",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P467",
+    "nombre": "Xiaomi Mi 9",
+    "precio_final": 27600.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P468",
+    "nombre": "Xiaomi Mi 9 lite",
+    "precio_final": 27600.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P469",
+    "nombre": "Xiaomi Mi 9se",
+    "precio_final": 27600.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P470",
+    "nombre": "Xiaomi Mi 9t/9t pro incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P471",
+    "nombre": "Xiaomi Mi 9t/9t pro Oled",
+    "precio_final": 55200.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P472",
+    "nombre": "Xiaomi Mi a1",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P473",
+    "nombre": "Xiaomi Mi a2",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P474",
+    "nombre": "Xiaomi Mi a2 lite",
+    "precio_final": 19550.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P475",
+    "nombre": "Xiaomi Mi a3 incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P476",
+    "nombre": "Xiaomi Mi a3 Oled",
+    "precio_final": 55200.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P477",
+    "nombre": "Xiaomi Mi play",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P478",
+    "nombre": "Xiaomi Note 10 5g/Poco m3 pro",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P479",
+    "nombre": "Xiaomi Note 10 pro Oled con marco",
+    "precio_final": 63250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P480",
+    "nombre": "Xiaomi Note 10 pro/11 pro/12 pro/X4 pro incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P481",
+    "nombre": "Xiaomi Note 10 pro/11 pro/12 pro/X4 pro Oled",
+    "precio_final": 57500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P482",
+    "nombre": "Xiaomi Note 10/10s/M5s 4g incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P483",
+    "nombre": "Xiaomi Note 10/10s/M5s 4g Oled",
+    "precio_final": 43700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P484",
+    "nombre": "Xiaomi Note 11 4g Oled con marco",
+    "precio_final": 57500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P485",
+    "nombre": "Xiaomi Note 11 pro Oled con marco",
+    "precio_final": 63250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P486",
+    "nombre": "Xiaomi Note 11/11s/12s/M4 pro 4g incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P487",
+    "nombre": "Xiaomi Note 11/11s/12s/M4 pro 4g Oled",
+    "precio_final": 51750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P488",
+    "nombre": "Xiaomi Note 11/11t/M4 pro 5G",
+    "precio_final": 28750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P489",
+    "nombre": "Xiaomi Note 12/Poco x5 4g incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P490",
+    "nombre": "Xiaomi Note 12/Poco x5 4g Oled",
+    "precio_final": 57500.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P491",
+    "nombre": "Xiaomi Note 13 4g incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P492",
+    "nombre": "Xiaomi Note 13 4g Oled",
+    "precio_final": 74750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P493",
+    "nombre": "Xiaomi Note 13 pro incell",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P494",
+    "nombre": "Xiaomi Note 13 pro Oled",
+    "precio_final": 74750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P495",
+    "nombre": "Xiaomi Note 13 pro+/14 pro/14 pro+ 5G",
+    "precio_final": 40250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P496",
+    "nombre": "Xiaomi Note 14 Oled",
+    "precio_final": 97750.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P497",
+    "nombre": "Xiaomi Note 4/4 pro",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P498",
+    "nombre": "Xiaomi Note 4x",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P499",
+    "nombre": "Xiaomi Note 5/5 pro",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P500",
+    "nombre": "Xiaomi Note 5a",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P501",
+    "nombre": "Xiaomi Note 6/6 pro",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P502",
+    "nombre": "Xiaomi Note 7/7 pro",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P503",
+    "nombre": "Xiaomi Note 7/7 pro con marco",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P504",
+    "nombre": "Xiaomi Note 8",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P505",
+    "nombre": "Xiaomi Note 8 con marco",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P506",
+    "nombre": "Xiaomi Note 8 pro",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P507",
+    "nombre": "Xiaomi Note 8 pro con marco",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P508",
+    "nombre": "Xiaomi Note 8t",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P509",
+    "nombre": "Xiaomi Note 9",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P510",
+    "nombre": "Xiaomi Note 9 con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P511",
+    "nombre": "Xiaomi Note 9s/9 pro",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P512",
+    "nombre": "Xiaomi Note 9s/9 pro con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P513",
+    "nombre": "Xiaomi Poco f1",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P514",
+    "nombre": "Xiaomi Poco f2",
+    "precio_final": 36800.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P515",
+    "nombre": "Xiaomi Poco f3/f3 pro/f4",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P516",
+    "nombre": "Xiaomi Poco m4/m5",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P517",
+    "nombre": "Xiaomi Poco x3/x3 pro/Mi 10t lite",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P518",
+    "nombre": "Xiaomi Poco X6 pro/F6",
+    "precio_final": 69000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P519",
+    "nombre": "Xiaomi Redmi 10",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P520",
+    "nombre": "Xiaomi Redmi 10c/12c/Poco c40",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P521",
+    "nombre": "Xiaomi Redmi 10c/Poco c40 con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P522",
+    "nombre": "Xiaomi Redmi 12/13/M6 pro",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P523",
+    "nombre": "Xiaomi Redmi 12c con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P524",
+    "nombre": "Xiaomi Redmi 13c/Poco c65",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P525",
+    "nombre": "Xiaomi Redmi 13c/Poco c65 con marco",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P526",
+    "nombre": "Xiaomi Redmi 14c/Poco c75",
+    "precio_final": 20700.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P527",
+    "nombre": "Xiaomi Redmi 14c/Poco c75 con marco",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P528",
+    "nombre": "Xiaomi Redmi 4x/4a",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P529",
+    "nombre": "Xiaomi Redmi 5",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P530",
+    "nombre": "Xiaomi Redmi 5 plus",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P531",
+    "nombre": "Xiaomi Redmi 6/6a",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P532",
+    "nombre": "Xiaomi Redmi 7",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P533",
+    "nombre": "Xiaomi Redmi 7a",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P534",
+    "nombre": "Xiaomi Redmi 8/8a",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P535",
+    "nombre": "Xiaomi Redmi 9",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P536",
+    "nombre": "Xiaomi Redmi 9a/9c/9i/10a",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P537",
+    "nombre": "Xiaomi Redmi 9a/9c/9i/10a con marco",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P538",
+    "nombre": "Xiaomi Redmi 9t/Poco m3",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P539",
+    "nombre": "Xiaomi Redmi A1/A1 plus/A2",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P540",
+    "nombre": "Xiaomi Redmi A1/A1 plus/A2 con marco",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P541",
+    "nombre": "Xiaomi Redmi A3/A3x/Poco c61",
+    "precio_final": 18400.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P542",
+    "nombre": "Xiaomi Redmi A3/A3x/Poco c61 con marco",
+    "precio_final": 23000.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P543",
+    "nombre": "Xiaomi Redmi A5/Poco c71",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P544",
+    "nombre": "Xiaomi Redmi go/5a",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P545",
+    "nombre": "Xiaomi Redmi s2",
+    "precio_final": 17250.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P546",
+    "nombre": "ZTE A31 lite",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P547",
+    "nombre": "ZTE A31 plus",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P548",
+    "nombre": "ZTE A33",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P549",
+    "nombre": "ZTE A34/A54",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P550",
+    "nombre": "ZTE A5 2020/A51 lite",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P551",
+    "nombre": "ZTE A51/A71",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P552",
+    "nombre": "ZTE A52",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P553",
+    "nombre": "ZTE A53/A53 plus",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P554",
+    "nombre": "ZTE A73",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P555",
+    "nombre": "ZTE V30",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P556",
+    "nombre": "ZTE V30 vita",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P557",
+    "nombre": "ZTE V40",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P558",
+    "nombre": "ZTE V40 desing",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P559",
+    "nombre": "ZTE V40 vita/A72/A72s",
+    "precio_final": 21850.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P560",
+    "nombre": "ZTE V50",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P561",
+    "nombre": "ZTE V50 desing",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P562",
+    "nombre": "ZTE V50 vita",
+    "precio_final": 25300.0,
+    "categoria": "",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P563",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone 11",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P564",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone 11 pro",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P565",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone 11 pro max",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P566",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone 12 pro max",
+    "precio_final": 11500.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P567",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone 12/12 pro",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P568",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone 13 pro",
+    "precio_final": 11500.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P569",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone 6",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P570",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone 6 plus",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P571",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone 6s",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P572",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone 6s plus",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P573",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone 7",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P574",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone 7 plus",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P575",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone 8",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P576",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone 8 plus",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P577",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone X",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P578",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone XR",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P579",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone XS",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P580",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Iphone XS max",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P581",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 LG K22/K22 plus",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P582",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 LG K41s",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P583",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 LG K42/K52/K62",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P584",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 LG K50s",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P585",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 LG K51s",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P586",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 LG K61",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P587",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto E13",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P588",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto E20",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P589",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto E22",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P590",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto E30/E40",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P591",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto E32",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P592",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto E4 plus",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P593",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto E5 play",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P594",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto E5 plus",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P595",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto E5/G6 play",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P596",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto E6 play",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P597",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto E6 plus",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P598",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto E6s/E6i",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P599",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto E7",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P600",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto E7 plus",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P601",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto E7i/E7 power",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P602",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto Edge",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P603",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto Edge 20 lite",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P604",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto Edge 30",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P605",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto Edge 30 neo",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P606",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G04/G04s/E14",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P607",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G100",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P608",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G13/G23",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P609",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G14",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P610",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G20",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P611",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G200",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P612",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G22",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P613",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G24",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P614",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G3",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P615",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G30",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P616",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G31",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P617",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G32",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P618",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G34",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P619",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G4 play",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P620",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G41",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P621",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G42",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P622",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G5",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P623",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G51",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P624",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G52/G82",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P625",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G60",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P626",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G60s",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P627",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G7 play",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P628",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G7 power",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P629",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G71",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P630",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G8",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P631",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G8 play/One macro",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P632",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G8 plus",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P633",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G8 power",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P634",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G8 power lite",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P635",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G9 play",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P636",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G9 plus",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P637",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto G9 power",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P638",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto One",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P639",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto One fusion",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P640",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto One hyper",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P641",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Moto One vision/action",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P642",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Nokia 1.3",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P643",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Nokia 2.3",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P644",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Nokia 2.4",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P645",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Nokia 3.1 plus",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P646",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Nokia 5.1 plus",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P647",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A01",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P648",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A02",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P649",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A02s/A03s",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P650",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A03",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P651",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A03 core",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P652",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A04",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P653",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A04e",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P654",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A04s",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P655",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A05",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P656",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A05s",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P657",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A06",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P658",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A10",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P659",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A10s",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P660",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A11",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P661",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A12/M12",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P662",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A13",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P663",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A14",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P664",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A15",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P665",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A20",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P666",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A20s",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P667",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A21s",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P668",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A22 4g",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P669",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A22 5g",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P670",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A23 4g",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P671",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A23 5g",
+    "precio_final": 11500.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P672",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A24",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P673",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A25",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P674",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A30",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P675",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A30s",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P676",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A31",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P677",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A32",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P678",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A33",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P679",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A34",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P680",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A50",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P681",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A51",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P682",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A52",
+    "precio_final": 13800.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P683",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A52s (5g)",
+    "precio_final": 13800.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P684",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A53",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P685",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A54",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P686",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A55",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P687",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A7 2018",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P688",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A70",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P689",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A71",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P690",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung A72",
+    "precio_final": 13800.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P691",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung S20fe",
+    "precio_final": 11500.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P692",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung S8",
+    "precio_final": 11500.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P693",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung S8 plus",
+    "precio_final": 11500.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P694",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung S9",
+    "precio_final": 11500.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P695",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Samsung S9 plus",
+    "precio_final": 11500.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P696",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 TCL 20e/20y/Alcatel 3h/5h",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P697",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 TCL 20se",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P698",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 TCL 305",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P699",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 TCL 30se",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P700",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 TCL 405",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P701",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 TCL 40se",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P702",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 TCL L10/L10 lite",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P703",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Mi a2 lite",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P704",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Note 10 5g",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P705",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Note 10/10s 4g",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P706",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Note 11 4g",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P707",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Note 13 4g",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P708",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Note 6/6 pro",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P709",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Note 7/7 pro",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P710",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Note 8",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P711",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Note 8 pro",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P712",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Note 9",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P713",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Note 9s/9 pro",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P714",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Redmi 10c",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P715",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Redmi 12c",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P716",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Redmi 13c",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P717",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Redmi 14c",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P718",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Redmi 6/6a",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P719",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Redmi 7a",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P720",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Redmi 8/8a",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P721",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Redmi 9",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P722",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Redmi 9a/9c/10a",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P723",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Redmi a1/a1 plus/a2",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P724",
+    "nombre": "𝗣𝗹𝗮𝗰𝗮 𝗱𝗲 𝗰𝗮𝗿𝗴𝗮 Xiaomi Redmi A3/A3x",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P725",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 11",
+    "precio_final": 16100.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P726",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 11 pro",
+    "precio_final": 16100.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P727",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 11 pro max",
+    "precio_final": 16100.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P728",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 12 pro max",
+    "precio_final": 23000.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P729",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 12/12 pro",
+    "precio_final": 16100.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P730",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 13",
+    "precio_final": 23000.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P731",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 13 pro",
+    "precio_final": 23000.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P732",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 13 pro max",
+    "precio_final": 23000.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P733",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 14",
+    "precio_final": 23000.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P734",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 14 pro",
+    "precio_final": 23000.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P735",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 14 pro max",
+    "precio_final": 23000.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P736",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 5",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P737",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 5s",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P738",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 6",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P739",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 6 plus/6s plus",
+    "precio_final": 11500.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P740",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 6s",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P741",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 7",
+    "precio_final": 11500.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P742",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 7 plus",
+    "precio_final": 11500.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P743",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 8",
+    "precio_final": 11500.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P744",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone 8 plus",
+    "precio_final": 11500.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P745",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone SE 2020",
+    "precio_final": 11500.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P746",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone X",
+    "precio_final": 16100.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P747",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone XR",
+    "precio_final": 16100.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P748",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone XS",
+    "precio_final": 16100.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P749",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Iphone XS max",
+    "precio_final": 16100.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P750",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 LG K10 2017 BL-46G1F",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P751",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 LG K10 BL-45A1H",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P752",
+    "nombre": "BL T36",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P753",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 LG K22/K22 plus BL-M03",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P754",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 LG K4 2017/K8 2017/K9 BL-45F1F",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P755",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 LG K4 BL-49JH",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P756",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 LG K40/Q6+/Q7 BL-T39",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P757",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 LG K40s/K50/Q60 BL-T44",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P758",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 LG K41s/K51s/K61 BL-T49",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P759",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 LG K42/K52/K62 BL-T51",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P760",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 LG K50s BL-T45",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P761",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 LG K8 plus/K20 BL-01",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P762",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 LG Q6 BL-T33",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P763",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto C plus HC60",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P764",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto C/G4 play/G5 GK40/HC40",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P765",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto E13/E32/G22 NH50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P766",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto E14/G04/G04s/G24/G34 QF50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P767",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto E20 NT40",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P768",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto E22 NH40",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P769",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto E4 plus/E5 plus HE50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P770",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto E5 play JE30",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P771",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto E5/G6 play BL270",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P772",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto E6 play/E6s/E6i KS40",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P773",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto E6 plus KC40",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P774",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto Edge 20 lite NT50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P775",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto Edge 30 ND40",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P776",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G100 LZ50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P777",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G14/G54 PC50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P778",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G200 MB50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P779",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G23 PH50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P780",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G3 FC40",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P781",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G32/G41 NC50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P782",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G4/G4 plus GA40",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P783",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G42 ND50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P784",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G5 plus HG40",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P785",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G52/G72/G82 NE50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P786",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G5s/G5s plus/G6 HG30",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P787",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G6 plus JT40",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P788",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G60s LK50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P789",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G7 JG30",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P790",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G7 play/One JE40",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P791",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G7 plus JG40",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P792",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G7 power/E7 plus/E7i/E7 power/G9 play/G20/G30/G31/G51/One fusion JK50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P793",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G71 NG50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P794",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G8 plus KD40",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P795",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G8 power KZ50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P796",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G8/G8 play/E7/One macro KG40",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P797",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G9 plus MG50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P798",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto G9 power/G40 fusion/G60 MC50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P799",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto One hyper KG50",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P800",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto One vision/action KR40",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P801",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto X play FL40",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P802",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto X Style FX30",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P803",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto X2 EY30",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P804",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto Z GV30",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P805",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto Z play GL40",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P806",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto Z2 play",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P807",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Moto Z3 play JS40",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P808",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Nokia 2.3 WT240",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P809",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Nokia BL4C",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P810",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Nokia BL5C",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P811",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A01 core BA013ABY",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P812",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A01 QL1695",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P813",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A02/A04s/A12/A21s BA217ABY",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P814",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A02s/A03/A03s/A04/A04e/A22 5g HQ-50S",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P815",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A05",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P816",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A05s",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P817",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A06",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P818",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A10/M10/A7 2018 BA750",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P819",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A10s/A11/A20s WT-N6",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P820",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A13 4g A135",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P821",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A14 5G A146",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P822",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A15",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P823",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A20/A30/A30s/A50 BA505",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P824",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A22 4g/A31/A32 4g A315",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P825",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A23/A73/M23/M33/M52/M53 M526",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P826",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A24 A245",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P827",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A33/A53 A336",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P828",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A34/A54 A546",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P829",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A5 2015 A500",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P830",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A5 2016 A510",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P831",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A51 A515",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P832",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A52/S20fe G781",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P833",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A70 A705",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P834",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A71 A715",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P835",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung A72 A426",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P836",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung Core 2 EB585157LU",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P837",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung J1 ace BJ110",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P838",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung J1 BJ100",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P839",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung J1 mini EB425161",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P840",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung J2 prime/J2 core/grand prime/J3/J5 BG530",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P841",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung J200/G360 BG360",
+    "precio_final": 4600.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P842",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung J4 plus/J4 core/J6 plus/J7 prime G610",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P843",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung J4/J7/J7 neo BJ700",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P844",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung J5 2016 J510",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P845",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung J5 prime G570",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P846",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung J5 pro/A5 2017 J530/A520",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P847",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung J6/J8 J600/J800",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P848",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung J7 2016 J710",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P849",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung J7 Pro/A7 2017 J730/A720",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P850",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung J8 plus/A6 plus J805",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P851",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung M20/M30 BG580",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P852",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S10 G973",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P853",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S10 plus G975",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P854",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S10e G970",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P855",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S20 G980",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P856",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S20 plus G985",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P857",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S21 plus G996",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P858",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S21fe G990",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P859",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S22 plus G906",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P860",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S23 G912",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P861",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S5 G900",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P862",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S6 edge G925",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P863",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S6 G920",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P864",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S7 edge G935",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P865",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S7 G930",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P866",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S8 G950",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P867",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S8 plus G955",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P868",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S9 G960",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P869",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Samsung S9 plus G965",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P870",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Mi 8 lite BM3J",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P871",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Mi a1/s2 BN31",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P872",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Mi a2 BN36",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P873",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Mi A2 lite BN47",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P874",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Mi a3/Mi 9 lite BM4F",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P875",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Note 10 5g/M3 pro BN5A",
+    "precio_final": 11500.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P876",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Note 8/8t/Redmi 7 BN46",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P877",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi 10a/10c BN5G",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P878",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi 12c BN5K",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P879",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi 13c BN5Q",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P880",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi 6/6a BN37",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P881",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi 7a BN49",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P882",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi 8/8a BN51",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P883",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi 9a/9c/A1 BN56",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P884",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi a2 BN5F",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P885",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi go BN3A",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P886",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi mi play BN39",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P887",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi note 10/10s 4g BN59",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P888",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi note 11/11s 4g BN5D",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P889",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi note 5/5 pro BN45",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P890",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi note 6/6 pro BN48",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P891",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi note 7/7 pro BN4A",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P892",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi note 8 pro BM4J",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P893",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi note 9 pro/10 pro BN53",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P894",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi note 9/Redmi 9 BN54",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P895",
+    "nombre": "🔋 𝗕𝗮𝘁𝗲𝗿𝗶𝗮 Xiaomi Redmi note 9s BN55",
+    "precio_final": 9200.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P896",
+    "nombre": "𝗖𝗵𝗮𝘀𝗶𝘀 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗼 Iphone 11",
+    "precio_final": 36800.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P897",
+    "nombre": "𝗖𝗵𝗮𝘀𝗶𝘀 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗼 Iphone 11 pro",
+    "precio_final": 69000.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P898",
+    "nombre": "𝗖𝗵𝗮𝘀𝗶𝘀 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗼 Iphone 12",
+    "precio_final": 48300.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P899",
+    "nombre": "𝗖𝗵𝗮𝘀𝗶𝘀 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗼 Iphone 13",
+    "precio_final": 48300.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P900",
+    "nombre": "𝗖𝗵𝗮𝘀𝗶𝘀 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗼 Iphone 13 pro",
+    "precio_final": 69000.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P901",
+    "nombre": "𝗖𝗵𝗮𝘀𝗶𝘀 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗼 Iphone 7 plus",
+    "precio_final": 29900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P902",
+    "nombre": "𝗖𝗵𝗮𝘀𝗶𝘀 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗼 Iphone 8 plus",
+    "precio_final": 29900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P903",
+    "nombre": "𝗖𝗵𝗮𝘀𝗶𝘀 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗼 Iphone X",
+    "precio_final": 43700.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P904",
+    "nombre": "𝗖𝗵𝗮𝘀𝗶𝘀 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗼 Iphone XR",
+    "precio_final": 36800.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P905",
+    "nombre": "𝗖𝗵𝗮𝘀𝗶𝘀 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗼 Iphone XS",
+    "precio_final": 43700.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P906",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone 11",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P907",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone 11 pro",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P908",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone 12",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P909",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone 12 pro",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P910",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone 12 pro max",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P911",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone 13",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P912",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone 13 pro",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P913",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone 13 pro max",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P914",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone 14",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P915",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone 14 pro",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P916",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone 14 pro max",
+    "precio_final": 6900.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P917",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone 8",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P918",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone 8 plus",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P919",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone X",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P920",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone XR",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P921",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone XS",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P922",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Iphone XS max",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P923",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto E14/G04/G04s",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P924",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto E20",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P925",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto E22",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P926",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto E30/E40",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P927",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto E32",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P928",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto E5 play",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P929",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto E5 plus",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P930",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto E6 play",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P931",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto E6 plus",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P932",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto E6s",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P933",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto E7",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P934",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto E7 plus/G9 play",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P935",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto E7 power",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P936",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto EDGE 20 lite",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P937",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G100",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P938",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G13/G23",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P939",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G20/G30",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P940",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G200",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P941",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G22",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P942",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G24",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P943",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G31",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P944",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G41",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P945",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G42",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P946",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G51",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P947",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G52",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P948",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G6",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P949",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G6 plus",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P950",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G60s",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P951",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G7 play",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P952",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G7 power",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P953",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G7/G7 plus",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P954",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G8",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P955",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G8 play/One macro",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P956",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G8 plus",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P957",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G8 power",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P958",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G8 power lite",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P959",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G9 plus",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P960",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto G9 power",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P961",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto One",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P962",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto One Action",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P963",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto One fusion",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P964",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Moto One vision",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P965",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A01",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P966",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A01 core",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P967",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A02",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P968",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A02s",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P969",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A03",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P970",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A03 core",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P971",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A03s",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P972",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A04",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P973",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A04e",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P974",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A04s",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P975",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A05",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P976",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A10",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P977",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A10s",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P978",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A11",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P979",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A12",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P980",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A13",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P981",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A14",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P982",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A15",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P983",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A20",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P984",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A20s",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P985",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A21s",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P986",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A22 4g",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P987",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A22 5g",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P988",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A23",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P989",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A30",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P990",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A30s",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P991",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A31",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P992",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A32",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P993",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A50",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P994",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A51",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P995",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A52",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P996",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A53",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P997",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A54",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P998",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A7 2017",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P999",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A70",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1000",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A71",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1001",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A72",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1002",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung A8 2018",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1003",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung M12",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1004",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung S20fe",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1005",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung S8",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1006",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung S8 plus",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1007",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Samsung S9 plus",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1008",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Xiaomi Note 11/11s 4g",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1009",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Xiaomi Note 7/7 pro",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1010",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Xiaomi Note 8",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1011",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Xiaomi Note 8 pro",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1012",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Xiaomi Note 9",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1013",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Xiaomi Note 9s/9 pro",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1014",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Xiaomi Redmi 10c",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1015",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Xiaomi Redmi 12c",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1016",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Xiaomi Redmi 13c",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1017",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Xiaomi Redmi 9a",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1018",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Xiaomi Redmi 9c",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  },
+  {
+    "id": "P1019",
+    "nombre": "𝗧𝗮𝗽𝗮 𝘁𝗿𝗮𝘀𝗲𝗿𝗮 Xiaomi Redmi a3",
+    "precio_final": 5750.0,
+    "categoria": "Placas de Carga",
+    "caracteristicas": "",
+    "imagen": ""
+  }
+]
