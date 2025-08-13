@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "nombre": "Producto 1",
+    "categoria": "Módulos",
+    "precio_final": 11500,
+    "caracteristicas": "Caracteristicas 1",
+    "imagen": ""
+  },
+  {
+    "id": "2",
+    "nombre": "Producto 2",
+    "categoria": "Baterías",
+    "precio_final": 2300,
+    "caracteristicas": "Caracteristicas 2",
+    "imagen": ""
+  }
+]
