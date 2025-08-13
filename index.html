@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Cell Distribuciones</title>
+<style>
+:root{--max:1100px;--green:#28a745}
+*{box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f7f7f7;color:#111}
+.header{background:#fff;padding:32px 16px;box-shadow:0 2px 6px rgba(0,0,0,.06);text-align:center}
+.header h1{margin:0;font-size:48px}
+.header p{margin:6px 0 0;color:#666}
+.header a{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:10px;background:#25D366;color:#fff;text-decoration:none}
+.main{max-width:var(--max);margin:20px auto;padding:0 16px}
+#search{width:100%;padding:12px;border-radius:10px;border:1px solid #ddd}
+#categories{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.chip{padding:8px 12px;border-radius:999px;background:#fff;border:1px solid #ddd;cursor:pointer}
+.chip.active{background:#111;color:#fff;border-color:#111}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:12px}
+.card{background:#fff;padding:12px;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);display:flex;flex-direction:column}
+.thumb{height:150px;border-radius:8px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:pointer}
+.thumb img{max-width:100%;max-height:100%;object-fit:contain}
+.title{font-size:14px;margin:10px 0 4px;font-weight:600}
+.cat{font-size:12px;color:#666}
+.price{font-weight:700;margin-top:8px;font-size:16px}
+.btn{margin-top:10px;padding:8px 10px;border:none;border-radius:8px;background:var(--green);color:#fff;cursor:pointer}
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.6);z-index:50}
+.modal.open{display:flex}
+.modal-card{background:#fff;width:90%;max-width:900px;border-radius:10px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.modal-media{padding:16px;background:#fafafa;display:flex;align-items:center;justify-content:center}
+.modal-media img{max-width:100%;max-height:70vh;object-fit:contain}
+.modal-body{padding:16px}
+.close{position:absolute;right:12px;top:8px;background:transparent;border:none;font-size:28px;cursor:pointer}
+@media(max-width:760px){.modal-card{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="header">
+  <h1>Cell Distribuciones</h1>
+  <p>Ayacucho 2186, N3300 Posadas, Misiones</p>
+  <a href="https://wa.me/54903764855861" target="_blank">WhatsApp</a>
+</header>
+<main class="main">
+  <input id="search" placeholder="Buscar producto..." />
+  <div id="categories"></div>
+  <div id="products" class="grid"></div>
+</main>
+
+<div id="modal" class="modal" aria-hidden="true">
+  <div class="modal-card">
+    <button class="close" id="closeBtn">×</button>
+    <div class="modal-media" id="modalMedia"></div>
+    <div class="modal-body">
+      <h2 id="mTitle"></h2>
+      <div id="mCat" style="color:#666;margin-top:6px"></div>
+      <div id="mPrice" style="font-weight:700;margin-top:10px"></div>
+      <h3 style="margin-top:12px">Características</h3>
+      <div id="mSpecs" style="white-space:pre-wrap"></div>
+      <div style="margin-top:14px"><button class="btn" id="addCart">Agregar al carrito</button></div>
+    </div>
+  </div>
+</div>
+
+<script>
+let PRODUCTS = [];
+let CATS = ['Todas'];
+let activeCat = 'Todas';
+let query = '';
+
+function load(){
+  fetch('semilla.json?v='+Date.now()).then(r=>r.json()).then(data=>{
+    PRODUCTS = data;
+    CATS = ['Todas', ...Array.from(new Set(PRODUCTS.map(p=>p.categoria).filter(Boolean))).sort()];
+    buildCategories();
+    render();
+  }).catch(e=>{ console.error(e); document.getElementById('products').innerHTML='<div style="padding:20px">No se pudo cargar semilla.json. Asegurate de que esté en la misma carpeta que index.html</div>'});
+}
+
+function buildCategories(){
+  const cont = document.getElementById('categories');
+  cont.innerHTML='';
+  CATS.forEach(c=>{
+    const b = document.createElement('button');
+    b.className='chip '+(c===activeCat?'active':'');
+    b.textContent = c;
+    b.onclick = ()=>{ activeCat=c; buildCategories(); render(); };
+    cont.appendChild(b);
+  });
+}
+
+document.getElementById('search').addEventListener('input', e=>{ query = e.target.value.toLowerCase(); render(); });
+
+function getFiltered(){
+  return PRODUCTS.filter(p=> (activeCat==='Todas'?true: p.categoria===activeCat) )
+                 .filter(p=> !query ? true : ((p.nombre||'')+' '+(p.categoria||'')+' '+(p.caracteristicas||'')).toLowerCase().includes(query));
+}
+
+function render(){
+  const cont = document.getElementById('products');
+  cont.innerHTML='';
+  const list = getFiltered();
+  if(!list.length){ cont.innerHTML = '<div style="padding:20px">No hay productos que coincidan.</div>'; return; }
+  list.forEach(p=>{
+    const card = document.createElement('div'); card.className='card';
+    const th = document.createElement('div'); th.className='thumb';
+    if(p.imagen){ const img = document.createElement('img'); img.src = p.imagen; img.alt = p.nombre; img.onclick = ()=> openModal(p); th.appendChild(img); }
+    else { const s = document.createElement('span'); s.className='noimg'; s.textContent='Sin imagen'; th.onclick = ()=> openModal(p); th.appendChild(s); }
+    const t = document.createElement('div'); t.className='title'; t.textContent = p.nombre;
+    const c = document.createElement('div'); c.className='cat'; c.textContent = p.categoria;
+    const pr = document.createElement('div'); pr.className='price'; pr.textContent = '$' + Number(p.precio_final||p.precio||0).toLocaleString('es-AR',{minimumFractionDigits:2});
+    const actions = document.createElement('div'); actions.className='actions';
+    const btn = document.createElement('button'); btn.className='btn'; btn.textContent='Agregar al carrito'; btn.onclick = ()=> { alert('Agregado al carrito: '+p.nombre); };
+    actions.appendChild(btn);
+    card.appendChild(th); card.appendChild(t); card.appendChild(c); card.appendChild(pr); card.appendChild(actions);
+    cont.appendChild(card);
+  });
+}
+
+function openModal(p){
+  document.getElementById('modalMedia').innerHTML = p.imagen ? '<img src="'+p.imagen+'">' : '<div style="padding:20px;color:#666">Sin imagen</div>';
+  document.getElementById('mTitle').textContent = p.nombre||'';
+  document.getElementById('mCat').textContent = p.categoria ? 'Categoría: '+p.categoria : '';
+  document.getElementById('mPrice').textContent = 'Precio: $' + Number(p.precio_final||p.precio||0).toLocaleString('es-AR',{minimumFractionDigits:2});
+  document.getElementById('mSpecs').textContent = p.caracteristicas || 'Aún sin características.';
+  document.getElementById('modal').classList.add('open');
+  document.getElementById('modal').setAttribute('aria-hidden','false');
+}
+
+document.getElementById('closeBtn').onclick = ()=>{ document.getElementById('modal').classList.remove('open'); document.getElementById('modal').setAttribute('aria-hidden','true'); }
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') document.getElementById('modal').classList.remove('open'); });
+
+load();
+</script>
+</body>
+</html>
