@@ -13,10 +13,3 @@ const ADMIN = {
   mail: "admin@celldistribuciones.com",
   pass: "QWERTY123456"
 };
-
-
-// Admin por defecto
-const ADMIN = {
-  mail: "admin@celldistribuciones.com",
-  pass: "QWERTY123456"
-};
