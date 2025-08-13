@@ -1,0 +1,66 @@
+[
+  {
+    "id": "m1",
+    "nombre": "Módulo Samsung A10",
+    "categoria": "Módulos",
+    "precio_final": 11500,
+    "caracteristicas": "Pantalla completa para A10.",
+    "imagen": ""
+  },
+  {
+    "id": "m2",
+    "nombre": "Módulo Motorola G6",
+    "categoria": "Módulos",
+    "precio_final": 17250,
+    "caracteristicas": "Incluye táctil.",
+    "imagen": ""
+  },
+  {
+    "id": "p1",
+    "nombre": "Placa de carga Redmi 9",
+    "categoria": "Placas de Carga",
+    "precio_final": 5750,
+    "caracteristicas": "Conector USB-C.",
+    "imagen": ""
+  },
+  {
+    "id": "p2",
+    "nombre": "Placa de carga Samsung A20",
+    "categoria": "Placas de Carga",
+    "precio_final": 6325,
+    "caracteristicas": "Repuesto original.",
+    "imagen": ""
+  },
+  {
+    "id": "b1",
+    "nombre": "Batería iPhone 7",
+    "categoria": "Baterías",
+    "precio_final": 9200,
+    "caracteristicas": "Alta duración.",
+    "imagen": ""
+  },
+  {
+    "id": "b2",
+    "nombre": "Batería Samsung J7",
+    "categoria": "Baterías",
+    "precio_final": 8050,
+    "caracteristicas": "Garantía 6 meses.",
+    "imagen": ""
+  },
+  {
+    "id": "t1",
+    "nombre": "Tapa trasera Huawei P30",
+    "categoria": "Tapas Traseras",
+    "precio_final": 6900,
+    "caracteristicas": "Color negro.",
+    "imagen": ""
+  },
+  {
+    "id": "t2",
+    "nombre": "Tapa trasera Moto G9",
+    "categoria": "Tapas Traseras",
+    "precio_final": 5750,
+    "caracteristicas": "Incluye adhesivo.",
+    "imagen": ""
+  }
+]

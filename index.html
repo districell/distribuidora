@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Cell Distribuciones</title>
+<style>
+:root{--max:1100px;--green:#2ecc71;--border:#e5e5e5;--muted:#666}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#fafafa;color:#111}
+header{background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.06);padding:18px 12px}
+.head{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center}
+.brand{text-align:center}
+.brand h1{margin:0;font-size:40px}
+.meta{font-size:12px;color:var(--muted)}
+.whatsapp{display:inline-block;margin-top:6px;padding:8px 12px;border-radius:10px;background:#25D366;color:#fff;text-decoration:none}
+.cart{justify-self:end;background:#fff;border:1px solid var(--border);padding:8px 12px;border-radius:10px;cursor:pointer;position:relative}
+.badge{position:absolute;top:-6px;right:-6px;background:#e74c3c;color:#fff;border-radius:999px;font-size:12px;padding:2px 6px}
+main{max-width:var(--max);margin:16px auto;padding:0 12px}
+#search{width:100%;padding:12px;border:1px solid var(--border);border-radius:10px}
+#categories{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.chip{padding:8px 12px;border:1px solid var(--border);border-radius:999px;background:#fff;cursor:pointer}
+.chip.active{background:#111;color:#fff;border-color:#111}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:10px}
+.card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px;display:flex;flex-direction:column}
+.thumb{height:150px;background:#f1f1f1;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#999}
+.thumb img{max-width:100%;max-height:100%;object-fit:contain}
+.ttl{margin:8px 0 2px;font-weight:700}
+.cat{font-size:12px;color:var(--muted)}
+.price{margin-top:6px;font-weight:800}
+.qty{display:flex;align-items:center;gap:6px;margin-top:8px}
+.qty input{width:80px;padding:6px;border:1px solid var(--border);border-radius:8px}
+.btn{margin-top:8px;padding:10px;border:none;border-radius:8px;background:var(--green);color:#fff;cursor:pointer}
+/* modal producto */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:40}
+.modal.open{display:flex}
+.modal-card{background:#fff;width:92%;max-width:900px;border-radius:12px;overflow:hidden;position:relative;display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:760px){.modal-card{grid-template-columns:1fr}}
+.close{position:absolute;right:10px;top:6px;border:none;background:transparent;font-size:26px;cursor:pointer}
+.modal-media{padding:16px;background:#f7f7f7;display:flex;align-items:center;justify-content:center}
+.modal-media img{max-width:100%;max-height:70vh}
+.modal-body{padding:16px}
+/* carrito */
+.cart-modal .modal-card{max-width:980px}
+.cart-head{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--border)}
+.note{font-size:12px;color:var(--muted)}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:8px;border-bottom:1px solid var(--border);text-align:left}
+.table img{width:48px;height:48px;border-radius:6px;object-fit:cover;background:#f0f0f0}
+.totals{display:flex;gap:16px;justify-content:flex-end;font-weight:800;margin-top:10px}
+.actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+.action{padding:10px 12px;border:none;border-radius:8px;cursor:pointer}
+.action.primary{background:var(--green);color:#fff}
+.action.ghost{background:#fff;border:1px solid var(--border)}
+.action.danger{background:#c0392b;color:#fff}
+.action[disabled]{opacity:.5;cursor:not-allowed}
+</style>
+</head>
+<body>
+<header>
+  <div class="head">
+    <div></div>
+    <div class="brand">
+      <h1>Cell Distribuciones</h1>
+      <div class="meta">Ayacucho 2186, N3300 Posadas, Misiones</div>
+      <a class="whatsapp" href="https://wa.me/54903764855861" target="_blank">WhatsApp</a>
+    </div>
+    <button id="openCart" class="cart">🛒 Carrito <span id="cartCount" class="badge">0</span></button>
+  </div>
+</header>
+<main>
+  <input id="search" placeholder="Buscar producto..." />
+  <div id="categories"></div>
+  <div id="grid" class="grid"></div>
+</main>
+
+<!-- Modal producto -->
+<div id="modal" class="modal" aria-hidden="true">
+  <div class="modal-card">
+    <button class="close" id="closeModal">×</button>
+    <div class="modal-media" id="mMedia"></div>
+    <div class="modal-body">
+      <h2 id="mTitle"></h2>
+      <div id="mCat" style="color:#666;margin-top:6px"></div>
+      <div id="mPrice" style="font-weight:800;margin-top:10px"></div>
+      <h3 style="margin:12px 0 6px">Características</h3>
+      <div id="mSpecs" style="white-space:pre-wrap"></div>
+      <div class="qty"><label style="min-width:80px">Cantidad</label><input id="mQty" type="number" min="1" value="1"></div>
+      <button id="addCart" class="btn">Agregar al carrito</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal carrito -->
+<div id="cartModal" class="modal cart-modal" aria-hidden="true">
+  <div class="modal-card" style="grid-template-columns:1fr">
+    <button class="close" id="closeCart">×</button>
+    <div class="cart-head">
+      <h2>Tu carrito</h2>
+      <div class="note">🛒 <b>Compra mínima: 10 artículos</b></div>
+    </div>
+    <div style="padding:12px;max-height:70vh;overflow:auto">
+      <table class="table">
+        <thead><tr><th>Producto</th><th>Precio</th><th>Cant.</th><th>Subtotal</th><th></th></tr></thead>
+        <tbody id="cartBody"></tbody>
+      </table>
+      <div class="totals">
+        <div>Total artículos: <span id="cartItems">0</span></div>
+        <div>Total: $<span id="cartTotal">0</span></div>
+      </div>
+      <div class="actions">
+        <button id="clearCart" class="action danger">Vaciar</button>
+        <button id="checkout" class="action primary" disabled>Comprar por WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// --- Data & estado ---
+let PRODUCTS = [];
+let CATS = ['Todas'];
+let activeCat = 'Todas';
+let q = '';
+
+// Carrito en localStorage
+const CART_KEY = 'cell_cart_v1';
+let CART = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+
+const $ = (id)=>document.getElementById(id);
+
+// --- Utilidades carrito ---
+function saveCart(){ localStorage.setItem(CART_KEY, JSON.stringify(CART)); }
+function cartCount(){ return CART.reduce((a,b)=>a+(b.qty||0),0); }
+function cartTotal(){ return CART.reduce((a,b)=>a+Number(b.price||0)*(b.qty||0),0); }
+function syncBadge(){ $('cartCount').textContent = cartCount(); }
+
+function addToCart(p, qty){
+  qty = Math.max(1, Number(qty||1));
+  const idx = CART.findIndex(i=>i.id===p.id);
+  const price = Number(p.precio_final || p.precio || 0);
+  if(idx>=0){ CART[idx].qty += qty; }
+  else { CART.push({id:p.id,name:p.nombre,price,qty,img:p.imagen||'',cat:p.categoria||''}); }
+  saveCart(); syncBadge();
+}
+
+function removeItem(id){ CART = CART.filter(i=>i.id!==id); saveCart(); renderCart(); syncBadge(); }
+function updateQty(id, qty){ const it = CART.find(i=>i.id===id); if(!it) return; it.qty = Math.max(1, Number(qty||1)); saveCart(); renderCart(); syncBadge(); }
+function clearCart(){ CART=[]; saveCart(); renderCart(); syncBadge(); }
+
+function renderCart(){
+  const body = $('cartBody'); body.innerHTML='';
+  CART.forEach(it=>{
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td><div style="display:flex;align-items:center;gap:8px"><img src="${it.img||''}" onerror="this.style.visibility='hidden'"><div><b>${it.name}</b><div style='font-size:12px;color:#666'>${it.cat||''}</div></div></div></td>
+    <td>$${Number(it.price).toLocaleString('es-AR',{minimumFractionDigits:2})}</td>
+    <td><input type="number" min="1" value="${it.qty}" style="width:80px"></td>
+    <td>$${Number(it.price*it.qty).toLocaleString('es-AR',{minimumFractionDigits:2})}</td>
+    <td><button class="action ghost">Quitar</button></td>`;
+    tr.querySelector('input').onchange = (e)=> updateQty(it.id, e.target.value);
+    tr.querySelector('button').onclick = ()=> removeItem(it.id);
+    body.appendChild(tr);
+  });
+  $('cartItems').textContent = cartCount();
+  $('cartTotal').textContent = cartTotal().toLocaleString('es-AR',{minimumFractionDigits:2});
+  $('checkout').disabled = !(cartCount() >= 10 && CART.length>0);
+}
+
+function openCart(){ renderCart(); $('cartModal').classList.add('open'); }
+function closeCart(){ $('cartModal').classList.remove('open'); }
+
+$('openCart').onclick = openCart;
+$('closeCart').onclick = closeCart;
+$('clearCart').onclick = ()=>{ if(confirm('¿Vaciar carrito?')) clearCart(); };
+$('checkout').onclick = ()=>{
+  const items = CART.map(i=> `- ${i.name} – Cantidad: ${i.qty} – $${(i.price*i.qty).toLocaleString('es-AR',{minimumFractionDigits:2})}`).join('%0A');
+  const msg = `Hola, quiero realizar este pedido:%0A${items}%0A%0ATotal: $${cartTotal().toLocaleString('es-AR',{minimumFractionDigits:2})}`;
+  const url = `https://wa.me/54903764855861?text=${msg}`;
+  window.open(url,'_blank');
+};
+
+// --- Carga de productos ---
+function load(){
+  fetch('semilla.json?v='+Date.now()).then(r=>r.json()).then(data=>{
+    PRODUCTS = data;
+    CATS = ['Todas', ...Array.from(new Set(PRODUCTS.map(p=>p.categoria).filter(Boolean))).sort()];
+    buildCats();
+    render();
+    syncBadge();
+  }).catch(e=>{
+    console.error(e);
+    $('grid').innerHTML = '<div style="padding:16px">No se pudo cargar <b>semilla.json</b>. Debe estar en la misma carpeta que <b>index.html</b>.</div>';
+  });
+}
+
+function buildCats(){
+  const box = $('categories'); box.innerHTML='';
+  CATS.forEach(c=>{
+    const b = document.createElement('button'); b.className = 'chip ' + (c===activeCat?'active':''); b.textContent = c;
+    b.onclick = ()=>{ activeCat=c; buildCats(); render(); };
+    box.appendChild(b);
+  });
+}
+
+$('search').addEventListener('input',e=>{ q = e.target.value.toLowerCase(); render(); });
+
+function filtered(){
+  return PRODUCTS
+    .filter(p=> activeCat==='Todas' ? true : p.categoria===activeCat)
+    .filter(p=> !q ? true : ((p.nombre||'')+' '+(p.categoria||'')+' '+(p.caracteristicas||'')).toLowerCase().includes(q));
+}
+
+function render(){
+  const cont = $('grid'); cont.innerHTML='';
+  const list = filtered();
+  if(!list.length){ cont.innerHTML = '<div style="padding:16px">No hay productos.</div>'; return; }
+  list.forEach(p=>{
+    const card = document.createElement('div'); card.className='card';
+    const th = document.createElement('div'); th.className='thumb';
+    if(p.imagen){ const img = document.createElement('img'); img.src = p.imagen; img.alt = p.nombre; th.appendChild(img); }
+    else { th.textContent = 'Sin imagen'; }
+    th.onclick = ()=> openModal(p);
+    const ttl = document.createElement('div'); ttl.className='ttl'; ttl.textContent = p.nombre;
+    const cat = document.createElement('div'); cat.className='cat'; cat.textContent = p.categoria||'';
+    const pr = document.createElement('div'); pr.className='price'; pr.textContent = '$' + Number(p.precio_final||p.precio||0).toLocaleString('es-AR',{minimumFractionDigits:2});
+    const qty = document.createElement('div'); qty.className='qty';
+    const qtyInput = document.createElement('input'); qtyInput.type='number'; qtyInput.min='1'; qtyInput.value='1'; qty.append('Cantidad', qtyInput);
+    const btn = document.createElement('button'); btn.className='btn'; btn.textContent='Agregar al carrito'; btn.onclick = ()=>{ addToCart(p, qtyInput.value); alert('Agregado: '+p.nombre+' x'+qtyInput.value); };
+    card.append(th, ttl, cat, pr, qty, btn);
+    cont.appendChild(card);
+  });
+}
+
+function openModal(p){
+  $('mMedia').innerHTML = p.imagen ? '<img src="'+p.imagen+'">' : '<div style="color:#666">Sin imagen</div>';
+  $('mTitle').textContent = p.nombre||'';
+  $('mCat').textContent = p.categoria ? ('Categoría: '+p.categoria) : '';
+  $('mPrice').textContent = 'Precio: $' + Number(p.precio_final||p.precio||0).toLocaleString('es-AR',{minimumFractionDigits:2});
+  $('mSpecs').textContent = p.caracteristicas || 'Aún sin características.';
+  $('mQty').value = 1;
+  $('modal').classList.add('open');
+  $('addCart').onclick = ()=>{ addToCart(p, $('mQty').value); $('modal').classList.remove('open'); };
+}
+$('closeModal').onclick = ()=> $('modal').classList.remove('open');
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ $('modal').classList.remove('open'); $('cartModal').classList.remove('open'); }});
+
+load(); syncBadge();
+</script>
+</body>
+</html>
