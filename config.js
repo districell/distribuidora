@@ -1,6 +1,3 @@
-// Pegá acá tus claves de Firebase
-// Cómo obtenerlas: Firebase Console → Project settings → Your apps → SDK setup and configuration → Config
-// Configuración de Firebase para la tienda
 const FB_CONFIG = {
   apiKey: "AIzaSyBFBD_aL8FiDUXZAF73pCYIB4fprUfm6u8",
   authDomain: "districell-cea1d.firebaseapp.com",
