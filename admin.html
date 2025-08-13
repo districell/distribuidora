@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin • Cell Distribuciones</title>
+  <style>
+    :root{--max:1100px;--green:#28a745}
+    body{font-family:Arial, sans-serif;margin:0;background:#f6f6f6;color:#111}
+    header{background:#111;color:#fff;padding:14px 16px}
+    header .wrap{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+    main{max-width:var(--max);margin:0 auto;padding:18px}
+    .panel{background:#fff;border-radius:12px;box-shadow:0 2px 4px rgba(0,0,0,.06);padding:16px;margin-bottom:18px}
+    h2{margin:0 0 12px;font-size:18px}
+    label{font-size:12px;color:#444;display:block;margin:8px 0 4px}
+    input,select,textarea{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;box-sizing:border-box}
+    textarea{min-height:80px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .actions{margin-top:12px}
+    .btn{padding:10px 12px;border:none;border-radius:8px;background:#111;color:#fff;cursor:pointer}
+    .btn.green{background:var(--green)}
+    .btn.red{background:#c0392b}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+    .card{border:1px solid #eee;border-radius:10px;padding:12px}
+    .muted{color:#666;font-size:12px}
+    .login{max-width:420px;margin:60px auto}
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><div>Admin • Cell Distribuciones</div><button id="logout" class="btn">Salir</button></div></header>
+  <main id="app" style="display:none">
+    <div class="panel">
+      <h2>Categorías</h2>
+      <div class="row">
+        <div>
+          <label>Nueva categoría</label>
+          <input id="catName" placeholder="Ej: Módulos">
+          <div class="actions"><button class="btn green" id="addCat">Agregar categoría</button></div>
+        </div>
+        <div>
+          <label>Existentes</label>
+          <div id="catsList" class="grid"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Producto</h2>
+      <div class="row">
+        <div>
+          <label>Nombre</label><input id="pNombre">
+          <label>Precio (final)</label><input id="pPrecio" type="number" step="0.01">
+          <label>Categoría</label><select id="pCat"></select>
+          <label>Características</label><textarea id="pSpecs" placeholder="Texto libre"></textarea>
+          <div class="actions">
+            <button class="btn green" id="saveProduct">Guardar / Actualizar</button>
+            <button class="btn red" id="deleteProduct">Eliminar</button>
+          </div>
+        </div>
+        <div>
+          <label>Imagen (subir)</label>
+          <input id="pImage" type="file" accept="image/*">
+          <div class="muted">Si subís una imagen, se guardará en Firebase Storage y se vinculará al producto.</div>
+          <label>ID (para editar)</label><input id="pId" placeholder="(opcional para editar existente)">
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Lista de productos</h2>
+      <input id="q" placeholder="Buscar..." style="margin-bottom:10px">
+      <div id="list" class="grid"></div>
+    </div>
+  </main>
+
+  <div id="login" class="login">
+    <div class="panel">
+      <h2>Ingresar</h2>
+      <label>Email</label><input id="lEmail" value="admin@celldistribuciones.com">
+      <label>Contraseña</label><input id="lPass" type="password" value="QWERTY123456">
+      <div class="actions"><button class="btn green" id="doLogin">Entrar</button></div>
+      <div class="muted">Solo el admin puede acceder. Si falla el login, revisá tus credenciales en Firebase Authentication.</div>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-storage-compat.js"></script>
+  <script src="./config.js"></script>
+  <script>
+    firebase.initializeApp(FB_CONFIG);
+    const AUTH = firebase.auth();
+    const DB = firebase.firestore();
+    const STORAGE = firebase.storage();
+
+    const ADMIN_EMAIL = ADMIN.mail;
+
+    // Auth guard
+    AUTH.onAuthStateChanged(user=>{
+      if(user && user.email===ADMIN_EMAIL){
+        document.getElementById('app').style.display='block';
+        document.getElementById('login').style.display='none';
+        init();
+      }else{
+        document.getElementById('app').style.display='none';
+        document.getElementById('login').style.display='block';
+      }
+    });
+
+    document.getElementById('doLogin').onclick = ()=>{
+      const e = document.getElementById('lEmail').value.trim();
+      const p = document.getElementById('lPass').value;
+      AUTH.signInWithEmailAndPassword(e,p).catch(alert);
+    };
+    document.getElementById('logout').onclick = ()=> AUTH.signOut();
+
+    // Admin UI
+    async function init(){
+      await loadCats();
+      await loadList();
+    }
+
+    async function loadCats(){
+      const snap = await DB.collection('categorias').orderBy('nombre').get();
+      const cats = snap.docs.map(d=>({id:d.id, ...d.data()}));
+      // select
+      const sel = document.getElementById('pCat');
+      sel.innerHTML = '';
+      cats.forEach(c=>{
+        const opt = document.createElement('option');
+        opt.value = c.nombre;
+        opt.textContent = c.nombre;
+        sel.appendChild(opt);
+      });
+      // list
+      const cont = document.getElementById('catsList');
+      cont.innerHTML = '';
+      cats.forEach(c=>{
+        const div = document.createElement('div');
+        div.className='card';
+        div.innerHTML = `<b>${c.nombre}</b><br><button data-id="${c.id}" class="btn red" style="margin-top:8px">Eliminar</button>`;
+        cont.appendChild(div);
+      });
+      cont.querySelectorAll('button').forEach(b=> b.onclick = async (e)=>{
+        const id = e.target.getAttribute('data-id');
+        await DB.collection('categorias').doc(id).delete();
+        await loadCats();
+      });
+
+      // add
+      document.getElementById('addCat').onclick = async ()=>{
+        const name = document.getElementById('catName').value.trim();
+        if(!name) return;
+        await DB.collection('categorias').add({nombre:name});
+        document.getElementById('catName').value='';
+        await loadCats();
+      };
+    }
+
+    // Productos
+    document.getElementById('saveProduct').onclick = async ()=>{
+      const id = document.getElementById('pId').value.trim();
+      const nombre = document.getElementById('pNombre').value.trim();
+      const precio = Number(document.getElementById('pPrecio').value || 0);
+      const categoria = document.getElementById('pCat').value;
+      const caracteristicas = document.getElementById('pSpecs').value.trim();
+      let imagenUrl = '';
+
+      const file = document.getElementById('pImage').files[0];
+      if(file){
+        const ref = STORAGE.ref().child('productos/' + Date.now() + '-' + file.name);
+        await ref.put(file);
+        imagenUrl = await ref.getDownloadURL();
+      }
+
+      const payload = { nombre, precio_final: precio, categoria, caracteristicas };
+      if(imagenUrl) payload.imagen = imagenUrl;
+
+      if(id){
+        await DB.collection('productos').doc(id).set(payload, {merge:true});
+      }else{
+        await DB.collection('productos').add(payload);
+      }
+      await loadList();
+      alert('Guardado');
+    };
+
+    document.getElementById('deleteProduct').onclick = async ()=>{
+      const id = document.getElementById('pId').value.trim();
+      if(!id) return alert('Ingresá el ID del producto a eliminar');
+      await DB.collection('productos').doc(id).delete();
+      await loadList();
+      alert('Eliminado');
+    };
+
+    document.getElementById('q').addEventListener('input', ()=> loadList());
+
+    async function loadList(){
+      const q = document.getElementById('q').value.toLowerCase();
+      const snap = await DB.collection('productos').orderBy('nombre').limit(300).get();
+      const cont = document.getElementById('list');
+      cont.innerHTML = '';
+      snap.docs.map(d=>({id:d.id, ...d.data()}))
+        .filter(p => !q || (p.nombre||'').toLowerCase().includes(q))
+        .forEach(p=>{
+          const div = document.createElement('div');
+          div.className = 'card';
+          const n = Number(p.precio_final || p.precio || 0);
+          div.innerHTML = `<b>${p.nombre||''}</b><div class="muted">${p.categoria||''}</div>
+                           <div>$${n.toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2})}</div>
+                           <div class="muted" style="margin:6px 0">${(p.caracteristicas||'').slice(0,90)}</div>
+                           <div class="actions">
+                             <button class="btn" data-id="${p.id}">Editar</button>
+                           </div>`;
+          cont.appendChild(div);
+        });
+      cont.querySelectorAll('button[data-id]').forEach(b=> b.onclick = (e)=> fillForm(e.target.getAttribute('data-id')));
+    }
+
+    async function fillForm(id){
+      document.getElementById('pId').value = id;
+      const doc = await DB.collection('productos').doc(id).get();
+      const p = doc.data();
+      document.getElementById('pNombre').value = p.nombre || '';
+      document.getElementById('pPrecio').value = Number(p.precio_final || p.precio || 0);
+      document.getElementById('pSpecs').value = p.caracteristicas || '';
+      // set category in select if exists
+      const sel = document.getElementById('pCat');
+      [...sel.options].forEach(o => { if(o.value === (p.categoria||'')) sel.value = o.value; });
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+  </script>
+</body>
+</html>

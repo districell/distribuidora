@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cell Distribuciones</title>
+  <style>
+    :root{--max:1100px;--green:#28a745}
+    body{font-family:Arial, sans-serif;margin:0;background:#f7f7f7;color:#111}
+    header{background:#fff;padding:24px 16px;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+    .wrap{max-width:var(--max);margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
+    h1{font-size:32px;margin:0 0 6px}
+    .sub{color:#666;font-size:14px;margin:0 0 10px}
+    .cta{margin-top:6px}
+    .cta a{display:inline-block;padding:8px 12px;border-radius:10px;background:#25D366;color:#fff;text-decoration:none}
+    main{max-width:var(--max);margin:0 auto;padding:18px}
+    #search{width:100%;padding:12px 14px;font-size:16px;border:1px solid #ddd;border-radius:10px;margin:18px 0 12px;outline:none;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+    #categories{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 18px}
+    .chip{padding:8px 12px;border:1px solid #ddd;border-radius:999px;background:#fff;cursor:pointer;font-size:14px}
+    .chip.active{background:#111;color:#fff;border-color:#111}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .card{background:#fff;padding:12px;border-radius:12px;box-shadow:0 2px 4px rgba(0,0,0,.06);display:flex;flex-direction:column}
+    .thumb{height:160px;border-radius:10px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:pointer}
+    .thumb img{max-height:100%;max-width:100%;object-fit:contain}
+    .noimg{font-size:12px;color:#777}
+    h3{font-size:14px;margin:10px 0 4px;line-height:1.25}
+    .cat{font-size:12px;color:#666;margin:0}
+    .price{margin-top:8px;font-weight:700;font-size:16px}
+    .actions{margin-top:10px}
+    .btn{padding:9px 12px;border:none;border-radius:8px;background:var(--green);color:#fff;cursor:pointer}
+    /* modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}
+    .modal.open{display:flex}
+    .modal-card{background:#fff;max-width:min(900px,95vw);width:100%;border-radius:12px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;position:relative}
+    .modal-media{background:#fafafa;display:flex;align-items:center;justify-content:center;padding:20px}
+    .modal-media img{max-width:100%;max-height:70vh;object-fit:contain}
+    .modal-body{padding:18px}
+    .modal-body h2{margin:0 0 6px;font-size:18px}
+    .modal-body .meta{color:#666;font-size:13px;margin-bottom:10px}
+    .modal-body .mprice{font-weight:700;margin:10px 0 14px}
+    .modal-body h3{margin:14px 0 8px;font-size:14px}
+    .modal-close{position:absolute;top:8px;right:12px;background:transparent;border:none;font-size:28px;cursor:pointer}
+    @media(max-width:760px){.modal-card{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Cell Distribuciones</h1>
+      <p class="sub">Ayacucho 2186, N3300 Posadas, Misiones</p>
+      <div class="cta"><a href="https://wa.me/54903764855861" target="_blank" rel="noopener">WhatsApp</a></div>
+    </div>
+  </header>
+
+  <main>
+    <input type="text" id="search" placeholder="Buscar producto..." />
+    <div id="categories"></div>
+    <div id="products" class="grid"></div>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">×</button>
+      <div class="modal-media" id="modalMedia"></div>
+      <div class="modal-body">
+        <h2 id="mTitle"></h2>
+        <div class="meta" id="mCat"></div>
+        <div class="mprice" id="mPrice"></div>
+        <h3>Características</h3>
+        <div id="mSpecs" style="font-size:14px;white-space:pre-wrap"></div>
+        <div style="margin-top:16px">
+          <button class="btn" id="mAdd">Agregar al carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-storage-compat.js"></script>
+  <script src="./config.js"></script>
+  <script>
+    // Estado
+    let DB=null, STORAGE=null, PRODUCTS=[], query='', activeCat='Todas', CATS=[];
+
+    // Init Firebase
+    firebase.initializeApp(FB_CONFIG);
+    DB = firebase.firestore();
+    STORAGE = firebase.storage();
+
+    // Cargar categorías
+    function loadCategories(){
+      return DB.collection('categorias').orderBy('nombre').get().then(snap=>{
+        CATS = ['Todas', ...snap.docs.map(d=>d.data().nombre)];
+        buildCategories();
+      });
+    }
+
+    // Cargar productos
+    function loadProducts(){
+      return DB.collection('productos').orderBy('nombre').get().then(snap=>{
+        PRODUCTS = snap.docs.map(doc=>({id:doc.id, ...doc.data()}));
+        render();
+      });
+    }
+
+    // Construir barra de categorías
+    function buildCategories(){
+      const cont = document.getElementById('categories');
+      cont.innerHTML = '';
+      CATS.forEach(c=>{
+        const chip = document.createElement('button');
+        chip.textContent = c;
+        chip.className = 'chip ' + (activeCat===c ? 'active':'');
+        chip.onclick = () => { activeCat=c; buildCategories(); render(); };
+        cont.appendChild(chip);
+      });
+    }
+
+    // Buscar
+    document.getElementById('search').addEventListener('input', e => {
+      query = e.target.value.toLowerCase();
+      render();
+    });
+
+    // Filtrar y renderizar
+    function getFiltered(){
+      return PRODUCTS
+        .filter(p => activeCat === 'Todas' ? true : String(p.categoria||'') === activeCat)
+        .filter(p => !query ? true : String(p.nombre||'').toLowerCase().includes(query));
+    }
+
+    function render(){
+      const list = getFiltered();
+      const cont = document.getElementById('products');
+      cont.innerHTML = '';
+      list.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        const th = document.createElement('div');
+        th.className = 'thumb';
+        if(p.imagen){
+          const img = document.createElement('img');
+          img.src = p.imagen;
+          img.alt = p.nombre || 'Producto';
+          img.onclick = () => openModal(p);
+          th.appendChild(img);
+        } else {
+          const span = document.createElement('span');
+          span.className = 'noimg';
+          span.textContent = 'Sin imagen';
+          th.onclick = () => openModal(p);
+          th.appendChild(span);
+        }
+
+        const title = document.createElement('h3');
+        title.textContent = p.nombre || '';
+
+        const cat = document.createElement('p');
+        cat.className = 'cat';
+        cat.textContent = p.categoria || '';
+
+        const price = document.createElement('div');
+        price.className = 'price';
+        const n = Number(p.precio_final || p.precio || 0);
+        price.textContent = '$' + n.toLocaleString('es-AR', {minimumFractionDigits:2, maximumFractionDigits:2});
+
+        const actions = document.createElement('div');
+        actions.className = 'actions';
+        const addBtn = document.createElement('button');
+        addBtn.className = 'btn';
+        addBtn.textContent = 'Agregar al carrito';
+        addBtn.onclick = () => console.log('Agregar al carrito', p.id);
+        actions.appendChild(addBtn);
+
+        card.appendChild(th);
+        card.appendChild(title);
+        card.appendChild(cat);
+        card.appendChild(price);
+        card.appendChild(actions);
+        cont.appendChild(card);
+      });
+    }
+
+    // Modal
+    const modal = document.getElementById('modal');
+    const modalMedia = document.getElementById('modalMedia');
+    const mTitle = document.getElementById('mTitle');
+    const mCat = document.getElementById('mCat');
+    const mPrice = document.getElementById('mPrice');
+    const mSpecs = document.getElementById('mSpecs');
+    const mAdd = document.getElementById('mAdd');
+
+    function openModal(p){
+      modalMedia.innerHTML = '';
+      if(p.imagen){
+        const img = document.createElement('img');
+        img.src = p.imagen;
+        img.alt = p.nombre || 'Producto';
+        modalMedia.appendChild(img);
+      } else {
+        modalMedia.innerHTML = '<div class="noimg">Sin imagen</div>';
+      }
+      mTitle.textContent = p.nombre || '';
+      mCat.textContent = p.categoria ? 'Categoría: '+p.categoria : '';
+      const n = Number(p.precio_final || p.precio || 0);
+      mPrice.textContent = 'Precio: $' + n.toLocaleString('es-AR', {minimumFractionDigits:2, maximumFractionDigits:2});
+      const spec = (p.caracteristicas ?? '').toString().trim();
+      mSpecs.textContent = spec ? spec : 'Aún sin características.';
+      mAdd.onclick = () => console.log('Agregar al carrito', p.id);
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+    }
+    function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
+    document.getElementById('modalClose').onclick = closeModal;
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+
+    // Cargar todo
+    Promise.all([loadCategories(), loadProducts()]);
+  </script>
+</body>
+</html>
