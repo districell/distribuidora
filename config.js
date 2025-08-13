@@ -1,13 +1,22 @@
 // Pegá acá tus claves de Firebase
 // Cómo obtenerlas: Firebase Console → Project settings → Your apps → SDK setup and configuration → Config
+// Configuración de Firebase para la tienda
 const FB_CONFIG = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_PROJECT_ID.firebaseapp.com",
-  projectId: "TU_PROJECT_ID",
-  storageBucket: "TU_PROJECT_ID.appspot.com",
-  messagingSenderId: "TU_SENDER_ID",
-  appId: "TU_APP_ID"
+  apiKey: "AIzaSyBFBD_aL8FiDUXZAF73pCYIB4fprUfm6u8",
+  authDomain: "districell-cea1d.firebaseapp.com",
+  projectId: "districell-cea1d",
+  storageBucket: "districell-cea1d.firebasestorage.app",
+  messagingSenderId: "43060721015",
+  appId: "1:43060721015:web:cc119a7c35fb86703e5d72",
+  measurementId: "G-CSHTJDJ5RX"
 };
+
+// Admin por defecto
+const ADMIN = {
+  mail: "admin@celldistribuciones.com",
+  pass: "QWERTY123456"
+};
+
 
 // Admin por defecto
 const ADMIN = {
