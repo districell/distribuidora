@@ -27,12 +27,20 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 <body>
 <header><div class="wrap"><div>Admin • Cell Distribuciones</div><button id="logout" class="btn">Salir</button></div></header>
 <main class="main">
+
   <div id="loginBox" class="login">
     <h3>Ingresar</h3>
-    <input id="email" placeholder="Email" autocomplete="off"> 
-    <input id="pass" placeholder="Contraseña" type="password" autocomplete="off">
+    <input id="email" placeholder="Email" autocomplete="off"><br><br>
+    <input id="pass" placeholder="Contraseña" type="password" autocomplete="off"><br><br>
     <button id="doLogin" class="btn green">Entrar</button>
-    <p class="small">Editá y luego <b>descargá</b> el semilla.json para subirlo al repo y que la tienda lo use.</p>
+    <p class="small">Editá y luego se guardará automáticamente en GitHub.</p>
+  </div>
+
+  <div id="tokenBox" class="login" style="display:none">
+    <h3>Token de GitHub</h3>
+    <p class="small">Ingresá tu token con permiso <b>public_repo</b>. Se guardará localmente en este navegador.</p>
+    <input id="ghToken" placeholder="ghp_xxx..." autocomplete="off"><br><br>
+    <button id="saveToken" class="btn green">Guardar Token</button>
   </div>
 
   <div id="app" style="display:none">
@@ -67,22 +75,54 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
       <input id="q" placeholder="Buscar...">
       <div id="list" class="grid" style="margin-top:10px"></div>
     </div>
-
-    <div class="panel">
-      <h3>Exportar / Importar</h3>
-      <button id="download" class="btn">Descargar semilla.json</button>
-      <input id="upload" type="file" accept=".json">
-    </div>
   </div>
+
 </main>
 
 <script>
 let DATA = [];
+const USER = "districell";
+const REPO = "distribuidora";
+const FILE_PATH = "semilla.json";
 
+// ======= FUNCIONES PRINCIPALES =======
 function loadSeed(){
-  fetch('semilla.json?v='+Date.now()).then(r=>r.json()).then(d=>{ DATA=d; draw(); drawCats(); }).catch(()=>{ DATA=[]; draw(); drawCats(); });
+  fetch(FILE_PATH + '?v='+Date.now())
+    .then(r=>r.json())
+    .then(d=>{ DATA=d; draw(); drawCats(); })
+    .catch(()=>{ DATA=[]; draw(); drawCats(); });
 }
 
+function saveToGitHub(content){
+  const token = localStorage.getItem("gh_token");
+  if(!token) return alert("Token de GitHub no configurado");
+  fetch(`https://api.github.com/repos/${USER}/${REPO}/contents/${FILE_PATH}`, {
+    method: "GET",
+    headers: { "Authorization": "token " + token }
+  })
+  .then(r=>r.json())
+  .then(fileData=>{
+    const sha = fileData.sha;
+    const encoded = btoa(unescape(encodeURIComponent(content)));
+    return fetch(`https://api.github.com/repos/${USER}/${REPO}/contents/${FILE_PATH}`, {
+      method: "PUT",
+      headers: {
+        "Authorization": "token " + token,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: "Actualizar semilla.json desde admin",
+        content: encoded,
+        sha: sha
+      })
+    });
+  })
+  .then(r=>r.json())
+  .then(()=> alert("✅ Guardado en GitHub. Cambios visibles en 1-2 min."))
+  .catch(err=> alert("Error al guardar: " + err));
+}
+
+// ======= UI =======
 function drawCats(){
   const cats = Array.from(new Set(DATA.map(p=>p.categoria).filter(Boolean))).sort();
   const cont = document.getElementById('cats'); cont.innerHTML='';
@@ -94,7 +134,6 @@ function drawCats(){
   });
   document.getElementById('addCat').onclick = ()=>{
     const v = document.getElementById('newCat').value.trim(); if(!v) return;
-    // add empty category: create a placeholder product that can be edited later
     DATA.push({id: Date.now().toString(), nombre: 'Nuevo producto', categoria: v, precio_final: 0, caracteristicas:'', imagen:''});
     draw(); drawCats();
   };
@@ -106,7 +145,7 @@ function draw(q=''){
       .forEach(p=>{
         const card = document.createElement('div'); card.className='card';
         card.innerHTML = '<div class="preview">'+(p.imagen?('<img src="'+p.imagen+'">'):'Sin imagen')+'</div>'+
-          '<b>'+ (p.nombre||'') +'</b><div class="small">'+(p.categoria||'')+'</div><div>$'+Number(p.precio_final||p.precio||0).toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
+          '<b>'+ (p.nombre||'') +'</b><div class="small">'+(p.categoria||'')+'</div><div>$'+Number(p.precio_final||0).toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
         const btn = document.createElement('button'); btn.className='btn'; btn.style.marginTop='6px'; btn.textContent='Editar';
         btn.onclick = ()=> fillForm(p.id);
         card.appendChild(btn); list.appendChild(card);
@@ -116,7 +155,7 @@ function draw(q=''){
 function fillForm(id){
   const p = DATA.find(x=>x.id==id); if(!p) return;
   pId.value = p.id; pNombre.value = p.nombre||''; pCat.value = p.categoria||'';
-  pPrecio.value = p.precio_final || p.precio || 0; pSpecs.value = p.caracteristicas||'';
+  pPrecio.value = p.precio_final || 0; pSpecs.value = p.caracteristicas||'';
   if(p.imagen){ pPreview.innerHTML = '<img src="'+p.imagen+'">'; } else { pPreview.textContent='Sin imagen'; }
 }
 
@@ -139,36 +178,40 @@ document.getElementById('save').onclick = async ()=>{
     id = Date.now().toString();
     DATA.push({id,nombre,categoria,precio_final:precio,caracteristicas,imagen});
   }
-  draw(); drawCats(); alert('Guardado en memoria. Descargá semilla.json y subilo al repo.');
+  draw(); drawCats();
+  saveToGitHub(JSON.stringify(DATA,null,2));
 };
 
 document.getElementById('del').onclick = ()=>{
   const id = pId.value.trim(); if(!id) return alert('Ingresá ID');
-  DATA = DATA.filter(x=>x.id!=id); draw(); drawCats(); alert('Eliminado en memoria.');
+  DATA = DATA.filter(x=>x.id!=id); draw(); drawCats();
+  saveToGitHub(JSON.stringify(DATA,null,2));
 };
 
 document.getElementById('q').addEventListener('input', e=> draw(e.target.value));
 
-document.getElementById('download').onclick = ()=>{
-  const blob = new Blob([JSON.stringify(DATA,null,2)], {type:'application/json'});
-  const url = URL.createObjectURL(blob); const a = document.createElement('a');
-  a.href = url; a.download = 'semilla.json'; document.body.appendChild(a); a.click(); a.remove();
-};
-
-document.getElementById('upload').addEventListener('change', e=>{
-  const f = e.target.files[0]; if(!f) return;
-  const r = new FileReader();
-  r.onload = ()=>{ try{ const d = JSON.parse(r.result); if(Array.isArray(d)){ DATA=d; draw(); drawCats(); alert('Semilla cargada.'); } else alert('JSON inválido'); } catch(err){ alert('Error: '+err.message);} };
-  r.readAsText(f);
-});
-
 function fileToDataURL(f){ return new Promise((res,rej)=>{ const R=new FileReader(); R.onload=()=>res(R.result); R.onerror=rej; R.readAsDataURL(f); }); }
 
+// ======= LOGIN =======
 document.getElementById('doLogin').onclick = ()=>{
-  if(email.value==='admin@celldistribuciones.com' && pass.value==='QWERTY123456'){ loginBox.style.display='none'; app.style.display='block'; loadSeed(); }
+  if(email.value==='admin@celldistribuciones.com' && pass.value==='QWERTY123456'){
+    loginBox.style.display='none';
+    if(!localStorage.getItem("gh_token")) tokenBox.style.display='block';
+    else { app.style.display='block'; loadSeed(); }
+  }
   else alert('Credenciales incorrectas');
 };
-document.getElementById('logout').onclick = ()=> location.reload();
+
+document.getElementById('saveToken').onclick = ()=>{
+  const t = ghToken.value.trim();
+  if(!t.startsWith("ghp_")) return alert("Token inválido");
+  localStorage.setItem("gh_token", t);
+  tokenBox.style.display='none';
+  app.style.display='block';
+  loadSeed();
+};
+
+document.getElementById('logout').onclick = ()=>{ localStorage.removeItem("gh_token"); location.reload(); };
 </script>
 </body>
 </html>
