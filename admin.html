@@ -47,12 +47,12 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 <header>
   <div class="wrap">
     <div>
-      <img id="logoImg" alt="Cell Distribuciones" style="height:28px;vertical-align:middle;margin-right:8px;">
-      Admin • Cell Distribuciones
+      <img id="logoImg" src="logo.png" alt="Cell Distribuciones" style="height:28px;vertical-align:middle;">
     </div>
     <button id="logout" class="btn">Salir</button>
   </div>
 </header>
+
 <main class="main">
 
   <!-- LOGIN -->
@@ -110,13 +110,14 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 </div>
 
 <script>
-document.getElementById("logoImg").src = "logo.png?v=" + Date.now();
-
 const USER = "districell";
 const REPO = "distribuidora";
 const BRANCH = "main";
 const FILE_PATH = "semilla.json";
 let DATA = [];
+
+// Forzar que el logo no se cachee
+document.getElementById("logoImg").src = "logo.png?v=" + Date.now();
 
 function base64EncodeUtf8(str){return btoa(unescape(encodeURIComponent(str)));}
 function fileToDataURL(f){return new Promise((res,rej)=>{const R=new FileReader();R.onload=()=>res(R.result);R.onerror=rej;R.readAsDataURL(f);});}
