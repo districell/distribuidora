@@ -11,7 +11,6 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;backgrou
 header{background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.06);padding:18px 12px}
 .head{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center}
 .brand{text-align:center}
-.brand h1{margin:0;font-size:40px}
 .meta{font-size:12px;color:var(--muted)}
 .whatsapp{display:inline-block;margin-top:6px;padding:8px 12px;border-radius:10px;background:#25D366;color:#fff;text-decoration:none}
 .cart{justify-self:end;background:#fff;border:1px solid var(--border);padding:8px 12px;border-radius:10px;cursor:pointer;position:relative}
@@ -59,7 +58,7 @@ main{max-width:var(--max);margin:16px auto;padding:0 12px}
   <div class="head">
     <div></div>
     <div class="brand">
-      <h1>Cell Distribuciones</h1>
+      <img src="logo.png" alt="Cell Distribuciones" style="max-height:80px; width:auto;">
       <div class="meta">Ayacucho 2186, N3300 Posadas, Misiones</div>
       <a class="whatsapp" href="https://wa.me/5493764855861" target="_blank">WhatsApp</a>
     </div>
@@ -72,6 +71,7 @@ main{max-width:var(--max);margin:16px auto;padding:0 12px}
   <div id="grid" class="grid"></div>
 </main>
 
+<!-- Modal producto -->
 <div id="modal" class="modal" aria-hidden="true">
   <div class="modal-card">
     <button class="close" id="closeModal">×</button>
@@ -88,6 +88,7 @@ main{max-width:var(--max);margin:16px auto;padding:0 12px}
   </div>
 </div>
 
+<!-- Modal carrito -->
 <div id="cartModal" class="modal cart-modal" aria-hidden="true">
   <div class="modal-card" style="grid-template-columns:1fr">
     <button class="close" id="closeCart">×</button>
@@ -173,11 +174,11 @@ $('checkout').onclick = ()=>{
 function load(){
   fetch('semilla.json?v='+Date.now()).then(r=>r.json()).then(data=>{
     PRODUCTS = data;
-    CATS = ['Todas', ...Array.from(new Set(PRODUCTS.map(p=>p.categoria).filter(Boolean))).sort()];
+    CATS = ['Todas', ...Array.from(new Set(PRODUCTS.map(p=>p.categoria).filter(Boolean))).sort()]; 
     buildCats(); render(); syncBadge();
   }).catch(e=>{
     console.error(e);
-    $('grid').innerHTML = '<div style="padding:16px">No se pudo cargar <b>semilla.json</b>. Debe estar en la misma carpeta que <b>index.html</b>.</div>';
+    $('grid').innerHTML = '<div style="padding:16px">No se pudo cargar <b>semilla.json</b>.</div>';
   });
 }
 
@@ -220,17 +221,17 @@ function render(){
 }
 
 function openModal(p){
-  document.getElementById('mMedia').innerHTML = p.imagen ? '<img src="'+p.imagen+'">' : '<div style="color:#666">Sin imagen</div>';
-  document.getElementById('mTitle').textContent = p.nombre||'';
-  document.getElementById('mCat').textContent = p.categoria ? ('Categoría: '+p.categoria) : '';
-  document.getElementById('mPrice').textContent = 'Precio: $' + Number(p.precio_final||p.precio||0).toLocaleString('es-AR',{minimumFractionDigits:2});
-  document.getElementById('mSpecs').textContent = p.caracteristicas || 'Aún sin características.';
-  document.getElementById('mQty').value = 1;
-  document.getElementById('modal').classList.add('open');
-  document.getElementById('addCart').onclick = ()=>{ addToCart(p, document.getElementById('mQty').value); document.getElementById('modal').classList.remove('open'); };
+  $('mMedia').innerHTML = p.imagen ? '<img src="'+p.imagen+'">' : '<div style="color:#666">Sin imagen</div>';
+  $('mTitle').textContent = p.nombre||'';
+  $('mCat').textContent = p.categoria ? ('Categoría: '+p.categoria) : '';
+  $('mPrice').textContent = 'Precio: $' + Number(p.precio_final||p.precio||0).toLocaleString('es-AR',{minimumFractionDigits:2});
+  $('mSpecs').textContent = p.caracteristicas || 'Aún sin características.';
+  $('mQty').value = 1;
+  $('modal').classList.add('open');
+  $('addCart').onclick = ()=>{ addToCart(p, $('mQty').value); $('modal').classList.remove('open'); };
 }
-document.getElementById('closeModal').onclick = ()=> document.getElementById('modal').classList.remove('open');
-document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ document.getElementById('modal').classList.remove('open'); document.getElementById('cartModal').classList.remove('open'); }});
+$('closeModal').onclick = ()=> $('modal').classList.remove('open');
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ $('modal').classList.remove('open'); $('cartModal').classList.remove('open'); }});
 
 load(); syncBadge();
 </script>
