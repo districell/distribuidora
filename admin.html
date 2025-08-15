@@ -46,7 +46,10 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 <body>
 <header>
   <div class="wrap">
-    <img src="logo.png" alt="Cell Distribuciones" style="height:28px;">
+    <div>
+      <img id="logoImg" alt="Cell Distribuciones" style="height:28px;vertical-align:middle;margin-right:8px;">
+      Admin • Cell Distribuciones
+    </div>
     <button id="logout" class="btn">Salir</button>
   </div>
 </header>
@@ -107,6 +110,8 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 </div>
 
 <script>
+document.getElementById("logoImg").src = "logo.png?v=" + Date.now();
+
 const USER = "districell";
 const REPO = "distribuidora";
 const BRANCH = "main";
