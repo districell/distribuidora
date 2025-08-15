@@ -130,8 +130,7 @@ async function saveToGitHub(content){
   if(sha) body.sha = sha;
   const putRes = await fetch(api,{method:"PUT",headers:{Authorization:`Bearer ${token}`},body:JSON.stringify(body)});
   if(!putRes.ok){alert("Error al guardar en GitHub");return;}
-  
-}
+  }
 
 function drawCats(){
   const cats = Array.from(new Set(DATA.map(p=>p.categoria).filter(Boolean))).sort();
