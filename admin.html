@@ -44,8 +44,12 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 </style>
 </head>
 <body>
-<img src="logo.png" alt="Cell Distribuciones" style="height:28px;display:block">
-Admin • Cell Distribuciones</div><button id="logout" class="btn">Salir</button></div></header>
+<header>
+  <div class="wrap">
+    <img src="logo.png" alt="Cell Distribuciones" style="height:28px;">
+    <button id="logout" class="btn">Salir</button>
+  </div>
+</header>
 <main class="main">
 
   <!-- LOGIN -->
@@ -131,7 +135,7 @@ async function saveToGitHub(content){
   if(sha) body.sha = sha;
   const putRes = await fetch(api,{method:"PUT",headers:{Authorization:`Bearer ${token}`},body:JSON.stringify(body)});
   if(!putRes.ok){alert("Error al guardar en GitHub");return;}
-  }
+}
 
 function drawCats(){
   const cats = Array.from(new Set(DATA.map(p=>p.categoria).filter(Boolean))).sort();
