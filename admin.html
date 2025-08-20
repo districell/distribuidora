@@ -50,6 +50,7 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 </header>
 
 <main class="main">
+
   <div id="loginBox" class="login">
     <h3>Ingresar</h3>
     <input id="email" placeholder="Email">
@@ -66,12 +67,7 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 
   <div id="app" style="display:none">
     <div class="panel">
-      <h3>Categorías</h3>
-      <div class="row">
-        <input id="newCat" placeholder="Nueva categoría">
-        <input id="newMarkup" placeholder="% markup" type="number" step="1" style="width:100px">
-        <button id="addCat" class="btn">Agregar</button>
-      </div>
+      <h3>Categoría</h3>
       <div id="cats" class="row small" style="margin-top:8px"></div>
     </div>
 
@@ -81,6 +77,7 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
       <div id="list" class="grid" style="margin-top:10px"></div>
     </div>
   </div>
+
 </main>
 
 <div id="modalBg" class="modal-bg">
@@ -106,41 +103,67 @@ const REPO = "distribuidora";
 const BRANCH = "main";
 const FILE_PATH = "semilla.json";
 let DATA = [];
-let CATS = {};
+let CATS = {"Cargadores":50};
 
-function base64EncodeUtf8(str){return btoa(unescape(encodeURIComponent(str)));}
-
-function fileToDataURL(f){return new Promise((res,rej)=>{
-  const R=new FileReader();
-  R.onload=()=>res(R.result);
-  R.onerror=rej;
-  R.readAsDataURL(f);
-});}
-
-// Lista de cargadores con 50% agregada
+// Lista completa de cargadores
 const NEW_CARGADORES = [
   {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO",categoria:"Cargadores",precio_final:2894.47,markup:50},
   {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO",categoria:"Cargadores",precio_final:2894.47,markup:50},
   {nombre:"Combo 1 CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING",categoria:"Cargadores",precio_final:23986.02,markup:50},
   {nombre:"ADAPTADOR-CARGADOR 12V MOD 38 XAEA - SPEED - PD + QC 3.0",categoria:"Cargadores",precio_final:5842.39,markup:50},
   {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores",precio_final:1289.82,markup:50},
-  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio_final:1297.62,markup:50}
-  // Agregá los demás de la lista completa siguiendo este patrón
+  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio_final:1297.62,markup:50},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores",precio_final:2007.93,markup:50},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - KIT X 200",categoria:"Cargadores",precio_final:339693.88,markup:50},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio_final:2007.93,markup:50},
+  {nombre:"CARGADOR 12V GEAR MODS-504 - 1 USB 1 TC + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio_final:2009.89,markup:50},
+  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C",categoria:"Cargadores",precio_final:2258.85,markup:50},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED - TIPO C - NEGRO",categoria:"Cargadores",precio_final:2747.01,markup:50},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C - BLANCO",categoria:"Cargadores",precio_final:2747.01,markup:50},
+  {nombre:"COMBO 2 - CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C",categoria:"Cargadores",precio_final:21842.04,markup:50},
+  {nombre:"COMBO 4 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C",categoria:"Cargadores",precio_final:21172.08,markup:50},
+  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8",categoria:"Cargadores",precio_final:2133.44,markup:50},
+  {nombre:"CARGADOR 12V MOD 40 - ONLY - BOOST- V8 - BLANCO",categoria:"Cargadores",precio_final:1297.70,markup:50},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - NEGRO",categoria:"Cargadores",precio_final:2590.17,markup:50},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - BLANCO",categoria:"Cargadores",precio_final:2590.17,markup:50},
+  {nombre:"COMBO 3 - CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8",categoria:"Cargadores",precio_final:21975.97,markup:50},
+  {nombre:"COMBO 5 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8",categoria:"Cargadores",precio_final:21306.01,markup:50},
+  {nombre:"CARGADOR 220V MODO-006 - 2 USB + CABLE LIGHTNING - ONLY - BLANCO",categoria:"Cargadores",precio_final:3559.77,markup:50},
+  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE LIGHTNING - XAEA - BLANCO",categoria:"Cargadores",precio_final:3473.33,markup:50},
+  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE LIGHTNING - XAEA - BLANCO",categoria:"Cargadores",precio_final:3429.76,markup:50},
+  {nombre:"CARGADOR 220V ONLY MOD 02 - 2 USB + CABLE LIGHTINING - BLANCO",categoria:"Cargadores",precio_final:6362.78,markup:50},
+  {nombre:"CARGADOR 220V ONLY MOD 06 - 2 USB + CABLE LIGHTNING - BLANCO",categoria:"Cargadores",precio_final:3501.43,markup:50},
+  {nombre:"CARGADOR 220V LETS MOD08 - 4,4 A - 3 USB + CABLE TIPO C - BLANCO",categoria:"Cargadores",precio_final:2679.29,markup:50},
+  {nombre:"CARGADOR 220V LETS MOD08 - 4,4A - 2 USB + CABLE TIPO C - BLANCO",categoria:"Cargadores",precio_final:2881.07,markup:50},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio_final:2808.01,markup:50},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY PREMIUM - BLANCO",categoria:"Cargadores",precio_final:2722.91,markup:50},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C BLANCO - ONLY - KIT X 200",categoria:"Cargadores",precio_final:573065.18,markup:50},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C NEGRO - ONLY - KIT X 200",categoria:"Cargadores",precio_final:573065.18,markup:50},
+  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC BLANCO - ONLY - KIT X 200",categoria:"Cargadores",precio_final:595305.04,markup:50},
+  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC NEGRO - ONLY - KIT X 200",categoria:"Cargadores",precio_final:578148.50,markup:50},
+  {nombre:"CARGADOR 220V MODO-008 - 4,4A - 3USB + CABLE TIPO TC - ONLY",categoria:"Cargadores",precio_final:3302.31,markup:50},
+  {nombre:"CARGADOR 220V MODO-008 BOOST - 4,4A - 3USB + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores",precio_final:3053.25,markup:50},
+  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores",precio_final:1941.50,markup:50},
+  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio_final:1710.37,markup:50},
+  {nombre:"CARGADOR 220V MODO-040 IMPULSE - 2.1A + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores",precio_final:1813.06,markup:50},
+  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO",categoria:"Cargadores",precio_final:3098.88,markup:50},
+  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO - KIT X 200",categoria:"Cargadores",precio_final:566501.69,markup:50},
+  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA",categoria:"Cargadores",precio_final:3039.05,markup:50},
+  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA - KIT X 200",categoria:"Cargadores",precio_final:571578.12,markup:50},
+  {nombre:"CARGADOR 220V ONLY MOD 03 - 2,1 A - 1 USB + CABLE TIPO C - BLANCO",categoria:"Cargadores",precio_final:2356.15,markup:50},
+  {nombre:"CARGADOR 220V ONLY MOD02 - 1 USB C/ CABLE TIPO C - BLANCO",categoria:"Cargadores",precio_final:3107.03,markup:50},
+  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - BLANCO",categoria:"Cargadores",precio_final:2841.71,markup:50},
+  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - NEGRO",categoria:"Cargadores",precio_final:2852.15,markup:50},
+  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO",categoria:"Cargadores",precio_final:4701.41,markup:50},
+  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO - KIT X 100",categoria:"Cargadores",precio_final:405974.26,markup:50}
 ];
 
+function base64EncodeUtf8(str){return btoa(unescape(encodeURIComponent(str)));}
+function fileToDataURL(f){return new Promise((res,rej)=>{const R=new FileReader();R.onload=()=>res(R.result);R.onerror=rej;R.readAsDataURL(f);});}
+
 async function loadSeed(){
-  try{
-    const r = await fetch(FILE_PATH+'?v='+Date.now());
-    DATA = await r.json();
-  }catch(e){DATA=[];}
-
-  NEW_CARGADORES.forEach(c=>{
-    if(!DATA.some(p=>p.nombre===c.nombre)){
-      DATA.push({...c,id:Date.now().toString() + Math.random()});
-    }
-  });
-
-  buildCatsFromData();
+  try{ const r = await fetch(FILE_PATH+'?v='+Date.now()); DATA = await r.json(); }catch(e){DATA=[];}
+  NEW_CARGADORES.forEach(c=>{if(!DATA.some(p=>p.nombre===c.nombre)){DATA.push({...c,id:Date.now().toString() + Math.random()});}});
   drawCats();
   draw();
 }
@@ -158,117 +181,24 @@ async function saveToGitHub(content){
   if(!putRes.ok){alert("Error al guardar en GitHub");return;}
 }
 
-function buildCatsFromData(){
-  DATA.forEach(p=>{
-    if(p.categoria){
-      if(!CATS[p.categoria]) CATS[p.categoria] = p.markup || 0;
-    }
-  });
-}
-
 function drawCats(){
   const cont = document.getElementById('cats'); cont.innerHTML='';
-  Object.keys(CATS).sort().forEach(c=>{
+  Object.keys(CATS).forEach(c=>{
     const box=document.createElement('div');
     box.innerHTML = `<b>${c}</b> (Markup: ${CATS[c]}%) `;
     const btn=document.createElement('button');btn.className='btn';btn.textContent='Eliminar';
-    btn.onclick=async()=>{
-      DATA=DATA.filter(p=>p.categoria!==c);
-      delete CATS[c];
-      draw();drawCats();
-      await saveToGitHub(JSON.stringify(DATA,null,2));
-    };
-    box.onclick=()=> drawCategory(c);
-    box.style.cursor = "pointer";
-    box.appendChild(btn);
-    cont.appendChild(box);
-  });
-}
-
-function drawCategory(cat){
-  const list=document.getElementById('list');list.innerHTML='';
-  DATA.filter(p=>p.categoria===cat)
-      .forEach(p=>{
-        const card=document.createElement('div');card.className='card';
-        const markup = CATS[p.categoria]||0;
-        const finalPrice = Number(p.precio_final||0) * (1+markup/100);
-        card.innerHTML='<div class="preview">'+(p.imagen?('<img src="'+p.imagen+'">'):'Sin imagen')+'</div>'+
-        '<b>'+(p.nombre||'')+'</b><div class="small">'+(p.categoria||'')+'</div><div>$'+finalPrice.toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
-        const btn=document.createElement('button');btn.className='btn';btn.style.marginTop='6px';btn.textContent='Editar';
-        btn.onclick=()=> openModal(p.id);
-        card.appendChild(btn);list.appendChild(card);
-      });
-}
-
-function draw(q=''){
-  const list=document.getElementById('list');list.innerHTML='';
-  DATA.filter(p=>!q||(p.nombre||'').toLowerCase().includes(q.toLowerCase()))
-      .forEach(p=>{
-        const card=document.createElement('div');card.className='card';
-        const markup = CATS[p.categoria]||0;
-        const finalPrice = Number(p.precio_final||0) * (1+markup/100);
-        card.innerHTML='<div class="preview">'+(p.imagen?('<img src="'+p.imagen+'">'):'Sin imagen')+'</div>'+
-        '<b>'+(p.nombre||'')+'</b><div class="small">'+(p.categoria||'')+'</div><div>$'+finalPrice.toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
-        const btn=document.createElement('button');btn.className='btn';btn.style.marginTop='6px';btn.textContent='Editar';
-        btn.onclick=()=> openModal(p.id);
-        card.appendChild(btn);list.appendChild(card);
-      });
-}
-
-function openModal(id){
-  const p=DATA.find(x=>x.id==id);
-  if(!p) return;
-  pId.value=p.id; pNombre.value=p.nombre||''; pCat.value=p.categoria||''; pPrecio.value=p.precio_final||0; pSpecs.value=p.caracteristicas||'';
-  if(p.imagen){pPreview.innerHTML='<img src="'+p.imagen+'">';} else {pPreview.textContent='Sin imagen';}
-  document.getElementById('modalBg').style.display='flex';
-}
-
-document.getElementById('closeModal').onclick=()=>{document.getElementById('modalBg').style.display='none';}
-
-document.getElementById('pImagen').addEventListener('change', async (e)=>{
-  const f=e.target.files[0];if(!f)return;
-  const r=await fileToDataURL(f);
-  pPreview.innerHTML='<img src="'+r+'">';
+    btn.onclick=async()=>{DATA=DATA.filter(p=>p.categoria!==c);delete CATS[c];draw();drawCats();await saveToGitHub(JSON.stringify(DATA,null,2));};
+    box
+    .appendChild(btn); cont.appendChild(box);
 });
+}
 
-document.getElementById('save').onclick=async ()=>{
-  let id=pId.value.trim();const nombre=pNombre.value.trim();const categoria=pCat.value.trim();
-  const precio=Number(pPrecio.value||0);const caracteristicas=pSpecs.value.trim();
-  let imagen='';const f=pImagen.files[0];
-  if(f){imagen=await fileToDataURL(f);}else if(pPreview.querySelector('img')){imagen=pPreview.querySelector('img').src;}
-  if(id){
-    const i=DATA.findIndex(x=>x.id==id);
-    if(i>=0){DATA[i]={...DATA[i],nombre,categoria,precio_final:precio,caracteristicas,imagen:imagen||DATA[i].imagen||''};}
-    else{DATA.push({id,nombre,categoria,precio_final:precio,caracteristicas,imagen});}
-  }
-  if(categoria && !CATS[categoria]) CATS[categoria]=0;
-  draw();drawCats();
-  await saveToGitHub(JSON.stringify(DATA,null,2));
-  document.getElementById('modalBg').style.display='none';
-};
-
-document.getElementById('q').addEventListener('input',e=>draw(e.target.value));
-
-document.getElementById('doLogin').onclick=()=>{
-  if(email.value==='admin@celldistribuciones.com'&&pass.value==='QWERTY123456'){
-    loginBox.style.display='none';
-    if(!localStorage.getItem("gh_token")) tokenBox.style.display='block';
-    else {app.style.display='block';loadSeed();}
-  }else alert('Credenciales incorrectas');
-};
-
-document.getElementById('saveToken').onclick=()=>{
-  const t=ghToken.value.trim();
-  if(!t.startsWith("ghp_")) return alert("Token inválido");
-  localStorage.setItem("gh_token",t);
-  tokenBox.style.display='none';
-  app.style.display='block';
-  loadSeed();
-};
-
-document.getElementById('logout').onclick=()=>{localStorage.removeItem("gh_token");location.reload();};
-
-</script>
-</body>
-</html>
-
+function draw(){
+const list = document.getElementById('list'); list.innerHTML='';
+const q = document.getElementById('q').value.toLowerCase();
+DATA.filter(p=>p.categoria==="Cargadores" && p.nombre.toLowerCase().includes(q))
+.forEach(p=>{
+const card = document.createElement('div'); card.className='card';
+card.innerHTML=<b>${p.nombre}</b><br>Precio final: $${p.precio_final.toFixed(2)}<br>Markup: ${p.markup}%;
+list.appendChild(card);
+});
