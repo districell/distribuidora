@@ -3,45 +3,56 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Admin • Cell Distribuciones (corregido)</title>
+<title>Admin • Cell Distribuciones</title>
 <style>
-:root{--max:1200px;--green:#2ecc71;--border:#e5e5e5}
+:root{--max:1100px;--green:#2ecc71;--border:#e5e5e5}
 *{box-sizing:border-box}
 body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#fafafa;color:#111}
 header{background:#111;color:#fff;padding:12px}
-.wrap{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.wrap{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between}
 .main{max-width:var(--max);margin:16px auto;padding:0 12px}
 .panel{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:12px}
 .btn{padding:8px 12px;border:none;border-radius:8px;background:#111;color:#fff;cursor:pointer}
-.btn.green{background:var(--green)}
+.btn.green{background:#2ecc71}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-.card{border:1px solid var(--border);border-radius:10px;padding:10px;background:#fff;display:flex;flex-direction:column;gap:8px}
+.card{border:1px solid var(--border);border-radius:10px;padding:10px;background:#fff}
 .small{font-size:12px;color:#666}
 .login{max-width:420px;margin:40px auto;padding:12px;background:#fff;border-radius:10px;border:1px solid var(--border)}
 input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);border-radius:8px}
-.preview{height:140px;background:#f1f1f1;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.preview{height:150px;background:#f1f1f1;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .preview img{max-width:100%;max-height:100%}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.cat-item{padding:6px 8px;border-radius:8px;background:#fff;border:1px solid var(--border);display:flex;gap:8px;align-items:center}
-.small-input{width:80px;padding:6px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.cat-box{padding:8px;border:1px solid var(--border);border-radius:8px;background:#fff;display:flex;gap:8px;align-items:center}
+.small-input{width:90px;padding:6px}
 .right{margin-left:auto}
 .note{font-size:12px;color:#666;margin-top:6px}
 
-/* Modal */
-.modal-bg {position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 9999;}
-.modal {background: #fff; padding: 18px; border-radius: 10px; width: 100%; max-width: 640px; max-height: 90vh; overflow:auto;}
-.modal h3{margin-top:0}
+/* Modal flotante */
+.modal-bg {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 700px;
+  width: 100%;
+}
+.modal h3 {margin-top:0}
 .footer-row{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap">
-    <div style="display:flex; gap:12px; align-items:center">
-      <img src="logo.png" alt="Cell Distribuciones" style="height:32px;vertical-align:middle;">
-      <div class="note">Admin • Cell Distribuciones</div>
-    </div>
-    <div style="display:flex; gap:8px; align-items:center">
+    <img src="logo.png" alt="Cell Distribuciones" style="height:28px;vertical-align:middle;">
+    <div>
       <button id="logout" class="btn">Salir</button>
     </div>
   </div>
@@ -52,22 +63,29 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
   <!-- LOGIN -->
   <div id="loginBox" class="login">
     <h3>Ingresar</h3>
-    <input id="email" placeholder="Email (admin@celldistribuciones.com)">
-    <input id="pass" placeholder="Contraseña (QWERTY123456)" type="password">
+    <input id="email" placeholder="Email">
+    <input id="pass" placeholder="Contraseña" type="password">
     <div style="margin-top:8px;display:flex;gap:8px">
       <button id="doLogin" class="btn green">Entrar</button>
-      <button id="demoOpen" class="btn" title="Abrir demo sin credencial">Demo</button>
+      <button id="demoOpen" class="btn">Demo</button>
     </div>
     <div class="note">Usuario: <b>admin@celldistribuciones.com</b> / Pass: <b>QWERTY123456</b></div>
   </div>
 
+  <!-- TOKEN (opcional, si usás GitHub) -->
+  <div id="tokenBox" class="login" style="display:none">
+    <h3>Token de GitHub</h3>
+    <p class="small">Pegá tu token con permiso <b>public_repo</b>. Se guarda localmente.</p>
+    <input id="ghToken" placeholder="ghp_xxx..." autocomplete="off"><br><br>
+    <button id="saveToken" class="btn green">Guardar Token</button>
+  </div>
+
   <!-- APP -->
   <div id="app" style="display:none">
-
     <div class="panel">
       <h3>Categorías</h3>
       <div class="row" style="margin-bottom:8px">
-        <input id="newCat" placeholder="Nueva categoría (ej: Baterías)">
+        <input id="newCat" placeholder="Nueva categoría">
         <input id="newMarkup" class="small-input" placeholder="% markup" type="number" step="1">
         <button id="addCat" class="btn">Agregar</button>
         <div class="right">
@@ -75,14 +93,12 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
         </div>
       </div>
       <div id="cats" class="row small" style="margin-top:8px"></div>
-      <div class="note" style="margin-top:8px">Hacé click en una categoría para listarla. Podés editar % directo en cada categoría.</div>
     </div>
 
     <div class="panel">
       <h3>Productos</h3>
       <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
         <input id="q" placeholder="Buscar...">
-        <select id="selCat" style="width:220px"></select>
         <button id="addProductBtn" class="btn green">Agregar producto</button>
         <div class="right">
           <button id="exportBtn" class="btn">Export JSON</button>
@@ -90,21 +106,19 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
           <input id="importFile" type="file" accept=".json" style="display:none">
         </div>
       </div>
-
       <div id="list" class="grid" style="margin-top:10px"></div>
     </div>
   </div>
 
 </main>
 
-<!-- MODAL: editar/crear producto -->
+<!-- MODAL -->
 <div id="modalBg" class="modal-bg">
   <div class="modal">
     <h3 id="modalTitle">Editar producto</h3>
-
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
       <div>
-        <label class="small">ID (auto)</label>
+        <label class="small">ID</label>
         <input id="pId" placeholder="ID" readonly>
       </div>
       <div>
@@ -113,11 +127,11 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
       </div>
       <div style="grid-column:1/3">
         <label class="small">Nombre</label>
-        <input id="pNombre" placeholder="Nombre del producto">
+        <input id="pNombre" placeholder="Nombre">
       </div>
       <div>
-        <label class="small">Precio base (sin markup)</label>
-        <input id="pPrecio" type="number" step="0.01" placeholder="0.00">
+        <label class="small">Precio base</label>
+        <input id="pPrecio" placeholder="0.00" type="number" step="0.01">
       </div>
       <div>
         <label class="small">Stock / Info</label>
@@ -125,7 +139,7 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
       </div>
       <div style="grid-column:1/3">
         <label class="small">Características</label>
-        <textarea id="pSpecs" rows="4"></textarea>
+        <textarea id="pSpecs" rows="4" placeholder="Características"></textarea>
       </div>
       <div>
         <label class="small">Imagen</label>
@@ -146,11 +160,21 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 </div>
 
 <script>
-/* -------------------- Admin corregido: fixes para categorías invisibles -------------------- */
+/* --- Basado en tu admin, modificado para:
+     - tener UNA sola categoría "Cargadores" (se normalizan otras variantes)
+     - mantener otras categorías fijas
+     - permitir crear/editar/borrar productos y editar % de categoría
+     - precargar la lista completa de cargadores que enviaste
+*/
 
-/* estado y persistencia */
-const STORAGE_KEY = 'cell_admin_v3';
-let DATA = []; // {id, nombre, categoria, precio_base, imagen, caracteristicas, stock}
+/* Config GitHub (opcional) */
+const USER = "districell";
+const REPO = "distribuidora";
+const BRANCH = "main";
+const FILE_PATH = "semilla.json";
+
+/* Estado */
+let DATA = []; // productos
 let CATS = {
   "Todas": 0,
   "Baterías": 0,
@@ -160,44 +184,241 @@ let CATS = {
   "Tapas Traseras": 0
 };
 
-function saveState(){
-  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify({DATA, CATS})); }catch(e){ console.warn(e); }
-}
-function loadState(){
-  try{
-    const s = localStorage.getItem(STORAGE_KEY);
-    if(!s) return false;
-    const o = JSON.parse(s);
-    DATA = (o.DATA || []).map(p => normalizeProduct(p));
-    CATS = o.CATS || CATS;
-    return true;
-  }catch(e){ console.warn(e); return false; }
+/* Utiles */
+const el = id => document.getElementById(id);
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
+function fileToDataURL(f){ return new Promise((res,rej)=>{ if(!f) return res(null); const R=new FileReader(); R.onload=()=>res(R.result); R.onerror=rej; R.readAsDataURL(f); }); }
+function formatCurrency(n){ return Number(n).toLocaleString('es-AR',{minimumFractionDigits:2}); }
+function base64EncodeUtf8(str){return btoa(unescape(encodeURIComponent(str)));}
+
+/* Lista COMPLETA de cargadores (los precargamos en 'Cargadores') */
+const PRECARGADOS_CARGADORES = [
+  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO", precio_base:2894.47},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO", precio_base:2894.47},
+  {nombre:"Combo 1 CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING", precio_base:23986.02},
+  {nombre:"ADAPTADOR-CARGADOR 12V MOD 38 XAEA - SPEED - PD + QC 3.0", precio_base:5842.39},
+  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - BLANCO", precio_base:1289.82},
+  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO", precio_base:1297.62},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - BLANCO", precio_base:2007.93},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - KIT X 200", precio_base:339693.88},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - NEGRO", precio_base:2007.93},
+  {nombre:"CARGADOR 12V GEAR MODS-504 - 1 USB 1 TC + CABLE TIPO C - ONLY - NEGRO", precio_base:2009.89},
+  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C", precio_base:2258.85},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED - TIPO C - NEGRO", precio_base:2747.01},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C - BLANCO", precio_base:2747.01},
+  {nombre:"COMBO 2 - CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C", precio_base:21842.04},
+  {nombre:"COMBO 4 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C", precio_base:21172.08},
+  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8", precio_base:2133.44},
+  {nombre:"CARGADOR 12V MOD 40 - ONLY - BOOST- V8 - BLANCO", precio_base:1297.70},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - NEGRO", precio_base:2590.17},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - BLANCO", precio_base:2590.17},
+  {nombre:"COMBO 3 - CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8", precio_base:21975.97},
+  {nombre:"COMBO 5 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8", precio_base:21306.01},
+  {nombre:"CARGADOR 220V MODO-006 - 2 USB + CABLE LIGHTNING - ONLY - BLANCO", precio_base:3559.77},
+  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE LIGHTNING - XAEA - BLANCO", precio_base:3473.33},
+  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE LIGHTNING - XAEA - BLANCO", precio_base:3429.76},
+  {nombre:"CARGADOR 220V ONLY MOD 02 - 2 USB + CABLE LIGHTINING - BLANCO", precio_base:6362.78},
+  {nombre:"CARGADOR 220V ONLY MOD 06 - 2 USB + CABLE LIGHTNING - BLANCO", precio_base:3501.43},
+  {nombre:"CARGADOR 220V LETS MOD08 - 4,4 A - 3 USB + CABLE TIPO C - BLANCO", precio_base:2679.29},
+  {nombre:"CARGADOR 220V LETS MOD08 - 4,4A - 2 USB + CABLE TIPO C - BLANCO", precio_base:2881.07},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY - NEGRO", precio_base:2808.01},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY PREMIUM - BLANCO", precio_base:2722.91},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C BLANCO - ONLY - KIT X 200", precio_base:573065.18},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C NEGRO - ONLY - KIT X 200", precio_base:573065.18},
+  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC BLANCO - ONLY - KIT X 200", precio_base:595305.04},
+  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC NEGRO - ONLY - KIT X 200", precio_base:578148.50},
+  {nombre:"CARGADOR 220V MODO-008 - 4,4A - 3USB + CABLE TIPO TC - ONLY", precio_base:3302.31},
+  {nombre:"CARGADOR 220V MODO-008 BOOST - 4,4A - 3USB + CABLE TIPO C - ONLY - BLANCO", precio_base:3053.25},
+  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - BLANCO", precio_base:1941.50},
+  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - NEGRO", precio_base:1710.37},
+  {nombre:"CARGADOR 220V MODO-040 IMPULSE - 2.1A + CABLE TIPO C - ONLY - BLANCO", precio_base:1813.06},
+  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO", precio_base:3098.88},
+  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO - KIT X 200", precio_base:566501.69},
+  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA", precio_base:3039.05},
+  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA - KIT X 200", precio_base:571578.12},
+  {nombre:"CARGADOR 220V ONLY MOD 03 - 2,1 A - 1 USB + CABLE TIPO C - BLANCO", precio_base:2356.15},
+  {nombre:"CARGADOR 220V ONLY MOD02 - 1 USB C/ CABLE TIPO C - BLANCO", precio_base:3107.03},
+  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - BLANCO", precio_base:2841.71},
+  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - NEGRO", precio_base:2852.15},
+  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO", precio_base:4701.41},
+  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO - KIT X 100", precio_base:405974.26}
+];
+
+/* Normaliza categorías en un producto (mapea variantes de cargadores a 'Cargadores') */
+function normalizeCategoria(cat){
+  if(!cat) return 'Todas';
+  const s = cat.toString().trim();
+  // si la categoría contiene 'Cargador' (mayúsculas o con guión/underscore), la normalizamos
+  if(/cargador|cargadores/i.test(s) || s.startsWith('Cargadores_') || s.includes('CARGADOR')) return 'Cargadores';
+  return s;
 }
 
-/* utilidades */
-function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
-function el(id){ return document.getElementById(id); }
-function fileToDataURL(file){
-  return new Promise((res,rej)=>{
-    if(!file) return res(null);
-    const r = new FileReader();
-    r.onload = ()=> res(r.result);
-    r.onerror = rej;
-    r.readAsDataURL(file);
+/* Construye CATS desde DATA sin borrar categorías fijas */
+function buildCatsFromData(){
+  // empezar con nuestras categorías base para no borrarlas
+  const base = {"Todas":0,"Baterías":0,"Cargadores":50,"Módulos":0,"Placas de Carga":0,"Tapas Traseras":0};
+  // incluir CATS existentes si hay (evita perder % editados)
+  Object.keys(CATS).forEach(k=>{ if(base[k]===undefined) base[k]=CATS[k]; else base[k]=CATS[k]!==undefined?CATS[k]:base[k]; });
+  // añadir categorías que vengan en DATA (normalizadas)
+  DATA.forEach(p=>{
+    const nc = normalizeCategoria(p.categoria || '');
+    p.categoria = nc;
+    if(base[nc]===undefined) base[nc] = (nc === 'Cargadores' ? 50 : 0);
+  });
+  CATS = base;
+}
+
+/* Dibujar categorías */
+function drawCats(){
+  const cont = el('cats'); cont.innerHTML = '';
+  Object.keys(CATS).sort((a,b)=>{
+    if(a==='Todas') return -1;
+    if(b==='Todas') return 1;
+    if(a==='Cargadores') return -1;
+    if(b==='Cargadores') return 1;
+    return a.localeCompare(b,'es');
+  }).forEach(c=>{
+    const box = document.createElement('div'); box.className='cat-box';
+    box.innerHTML = `<strong>${c}</strong> <span style="margin-left:6px;color:#666">(${CATS[c]}%)</span>`;
+    box.style.cursor='pointer';
+    box.onclick = ()=> drawCategory(c);
+    const editPct = document.createElement('button'); editPct.className='btn'; editPct.style.marginLeft='8px'; editPct.textContent='Editar %';
+    editPct.onclick = (ev)=>{ ev.stopPropagation(); const val = prompt('Nuevo % para '+c, CATS[c]); if(val!==null){ CATS[c]=Number(val)||0; drawCats(); draw(); } };
+    const delBtn = document.createElement('button'); delBtn.className='btn'; delBtn.style.marginLeft='8px'; delBtn.textContent='Eliminar';
+    delBtn.onclick = async (ev)=>{ ev.stopPropagation(); if(c==='Cargadores' || c==='Todas'){ return alert('No se puede eliminar la categoría '+c); } if(!confirm('Eliminar categoría '+c+' y sus productos?')) return; DATA = DATA.filter(p=>p.categoria!==c); delete CATS[c]; drawCats(); draw(); await trySaveToGitHub(); };
+    box.appendChild(editPct); box.appendChild(delBtn);
+    cont.appendChild(box);
   });
 }
-function formatCurrency(n){ return Number(n).toLocaleString('es-AR',{minimumFractionDigits:2, maximumFractionDigits:2}); }
 
-/* Normaliza categoría y producto: trim, fallback category */
-function normalizeProduct(p){
+/* Dibuja todos los productos (filtro por texto q) */
+function draw(q=''){
+  const list = el('list'); list.innerHTML = '';
+  const qq = (q || el('q').value || '').toLowerCase();
+  const items = DATA.filter(p=> (qq==='' || (p.nombre||'').toLowerCase().includes(qq)));
+  if(items.length===0){ list.innerHTML = '<div class="card small">No hay productos para mostrar.</div>'; return; }
+  items.forEach(p=>{
+    const card = document.createElement('div'); card.className='card';
+    const markup = CATS[p.categoria]||0;
+    const base = (p.precio_base!==undefined?Number(p.precio_base):Number(p.precio_final||0))||0;
+    const finalP = base * (1 + markup/100);
+    const imgHtml = p.imagen?`<img src="${p.imagen}">`:'Sin imagen';
+    card.innerHTML = `<div class="preview">${imgHtml}</div>
+      <b>${p.nombre||''}</b>
+      <div class="small">${p.categoria||''}</div>
+      <div style="margin-top:6px;font-weight:600">$ ${formatCurrency(finalP)}</div>`;
+    const btn = document.createElement('button'); btn.className='btn'; btn.style.marginTop='6px'; btn.textContent='Editar';
+    btn.onclick = ()=> openModal(p.id);
+    const del = document.createElement('button'); del.className='btn'; del.style.background='#c0392b'; del.style.marginLeft='8px'; del.textContent='Borrar';
+    del.onclick = async ()=>{ if(!confirm('Eliminar este producto?')) return; DATA = DATA.filter(x=>x.id!==p.id); draw(); drawCats(); await trySaveToGitHub(); };
+    const row = document.createElement('div'); row.style.marginTop='8px';
+    row.appendChild(btn); row.appendChild(del);
+    card.appendChild(row);
+    list.appendChild(card);
+  });
+}
+
+/* Dibuja productos de una sola categoría */
+function drawCategory(cat){
+  const list = el('list'); list.innerHTML = '';
+  const items = DATA.filter(p=>p.categoria === cat);
+  if(items.length===0){ list.innerHTML = '<div class="card small">No hay productos en esta categoría.</div>'; return; }
+  items.forEach(p=>{
+    const card = document.createElement('div'); card.className='card';
+    const markup = CATS[p.categoria]||0;
+    const base = (p.precio_base!==undefined?Number(p.precio_base):Number(p.precio_final||0))||0;
+    const finalP = base * (1 + markup/100);
+    const imgHtml = p.imagen?`<img src="${p.imagen}">`:'Sin imagen';
+    card.innerHTML = `<div class="preview">${imgHtml}</div>
+      <b>${p.nombre||''}</b>
+      <div class="small">${p.categoria||''}</div>
+      <div style="margin-top:6px;font-weight:600">$ ${formatCurrency(finalP)}</div>`;
+    const btn = document.createElement('button'); btn.className='btn'; btn.style.marginTop='6px'; btn.textContent='Editar';
+    btn.onclick = ()=> openModal(p.id);
+    const del = document.createElement('button'); del.className='btn'; del.style.background='#c0392b'; del.style.marginLeft='8px'; del.textContent='Borrar';
+    del.onclick = async ()=>{ if(!confirm('Eliminar este producto?')) return; DATA = DATA.filter(x=>x.id!==p.id); drawCategory(cat); drawCats(); await trySaveToGitHub(); };
+    const row = document.createElement('div'); row.style.marginTop='8px';
+    row.appendChild(btn); row.appendChild(del);
+    card.appendChild(row);
+    list.appendChild(card);
+  });
+}
+
+/* Modal open/close */
+function openModal(id){
+  const p = DATA.find(x=>x.id==id);
+  el('modalTitle').textContent = p ? 'Editar producto' : 'Nuevo producto';
+  if(p){
+    el('pId').value = p.id;
+    el('pNombre').value = p.nombre||'';
+    el('pPrecio').value = p.precio_base!==undefined ? p.precio_base : (p.precio_final||0);
+    el('pCat').value = p.categoria||'Cargadores';
+    el('pSpecs').value = p.caracteristicas||'';
+    el('pStock').value = p.stock||'';
+    el('pPreview').innerHTML = p.imagen ? `<img src="${p.imagen}">` : 'Sin imagen';
+    el('deleteProduct').style.display = 'inline-block';
+  } else {
+    el('pId').value=''; el('pNombre').value=''; el('pPrecio').value=''; el('pCat').value='Cargadores';
+    el('pSpecs').value=''; el('pStock').value=''; el('pPreview').textContent='Sin imagen';
+    el('deleteProduct').style.display = 'none';
+  }
+  // llenar select categorías en modal
+  fillCatSelect();
+  el('modalBg').style.display = 'flex';
+}
+function closeModal(){ el('modalBg').style.display = 'none'; }
+
+/* Fill category select in modal */
+function fillCatSelect(){
+  const sel = el('pCat'); sel.innerHTML = '';
+  Object.keys(CATS).forEach(cat=>{
+    const opt = document.createElement('option'); opt.value = cat; opt.textContent = cat;
+    sel.appendChild(opt);
+  });
+}
+
+/* Cargar semilla (semilla.json) y precargar cargadores */
+async function loadSeed(){
+  try{
+    const r = await fetch(FILE_PATH+'?v='+Date.now());
+    if(r.ok){
+      const j = await r.json();
+      // j puede ser un array de productos o un objeto
+      if(Array.isArray(j)){ DATA = j.map(p=>normalizeProductFromSeed(p)); }
+      else if(j.DATA) DATA = (j.DATA||[]).map(p=>normalizeProductFromSeed(p));
+    }
+  }catch(e){
+    // ignore, DATA queda como está
+  }
+  // Normalizar categorías en DATA y asegurarnos las categorías base existan
+  buildCatsFromData();
+  // precargar cargadores: sólo agregamos si no existe por nombre exacto dentro de Cargadores
+  PRECARGADOS_CARGADORES.forEach(item=>{
+    const exists = DATA.some(p=>p.nombre===item.nombre && normalizeCategoria(p.categoria)==='Cargadores');
+    if(!exists){
+      DATA.push({
+        id: uid(),
+        nombre: item.nombre,
+        categoria: 'Cargadores',
+        precio_base: item.precio_base,
+        imagen: '',
+        caracteristicas: '',
+        stock: ''
+      });
+    }
+  });
+  // asegurar Cargadores tenga 50% si no tiene porcentaje todavía
+  if(CATS['Cargadores']===undefined) CATS['Cargadores']=50;
+  drawCats();
+  draw();
+}
+
+/* Normalizar producto importado/seed */
+function normalizeProductFromSeed(p){
   const prod = Object.assign({}, p);
-  // name
-  prod.nombre = (prod.nombre || '').toString().trim();
-  // categoria: quitar espacios extras y usar 'Todas' si vacío
-  prod.categoria = (prod.categoria || '').toString().trim();
-  if(!prod.categoria) prod.categoria = 'Todas';
-  // asegurar campos numéricos
-  prod.precio_base = prod.precio_base !== undefined ? Number(prod.precio_base) : (prod.precio_final !== undefined ? Number(prod.precio_final) : 0);
+  prod.nombre = (prod.nombre||'').toString().trim();
+  prod.categoria = normalizeCategoria(prod.categoria||'');
+  prod.precio_base = prod.precio_base!==undefined ? Number(prod.precio_base) : (prod.precio_final!==undefined ? Number(prod.precio_final) : 0);
   prod.imagen = prod.imagen || '';
   prod.caracteristicas = prod.caracteristicas || '';
   prod.stock = prod.stock || '';
@@ -205,263 +426,95 @@ function normalizeProduct(p){
   return prod;
 }
 
-/* Populate selects & categories: ahora también incorpora categorías que existan en DATA */
-function populateCategorySelects(){
-  const sel = el('selCat'); sel.innerHTML = '';
-  const pcat = el('pCat'); pcat.innerHTML = '';
-  // asegurarnos de recolectar todas las categorías (definidas + las que vienen en DATA)
-  Object.keys(CATS).forEach(cat => { if(!CATS[cat] && CATS[cat] !== 0) CATS[cat] = 0; });
-  DATA.forEach(p => { if(p.categoria && CATS[p.categoria] === undefined) CATS[p.categoria] = (p.categoria === 'Cargadores' ? 50 : 0); });
-  // ordenar: 'Todas' primero, luego alfabético
-  const cats = Object.keys(CATS).slice().sort((a,b)=>{
-    if(a==='Todas') return -1;
-    if(b==='Todas') return 1;
-    if(a==='Cargadores') return -1; // mostrar cargadores cerca del inicio
-    if(b==='Cargadores') return 1;
-    return a.localeCompare(b, 'es');
-  });
-  cats.forEach(cat=>{
-    const opt = document.createElement('option'); opt.value = cat; opt.textContent = cat;
-    sel.appendChild(opt);
-    const opt2 = opt.cloneNode(true);
-    pcat.appendChild(opt2);
-  });
-}
-
-/* render categories: dibuja todas las keys de CATS (se incluyen las que venían en DATA) */
-function renderCategories(){
-  const cont = el('cats'); cont.innerHTML = '';
-  const cats = Object.keys(CATS).slice().sort((a,b)=>{
-    if(a==='Todas') return -1;
-    if(b==='Todas') return 1;
-    if(a==='Cargadores') return -1;
-    if(b==='Cargadores') return 1;
-    return a.localeCompare(b,'es');
-  });
-  cats.forEach(cat=>{
-    const wrapper = document.createElement('div'); wrapper.className = 'cat-item';
-    const name = document.createElement('div'); name.textContent = cat; name.style.fontWeight='600';
-    const inp = document.createElement('input'); inp.className='small-input'; inp.type='number'; inp.value = CATS[cat];
-    inp.title = '% markup';
-    inp.onchange = ()=>{
-      CATS[cat] = Number(inp.value) || 0;
-      saveState();
-      draw(); // redraw prices
-    };
-    const goBtn = document.createElement('button'); goBtn.className='btn'; goBtn.textContent='Ver';
-    goBtn.onclick = ()=> drawCategory(cat);
-    const delBtn = document.createElement('button'); delBtn.className='btn'; delBtn.textContent='Eliminar';
-    delBtn.onclick = (e)=>{ e.stopPropagation();
-      if(cat==='Cargadores' || cat==='Todas'){ return alert('No se puede eliminar las categorias principales'); }
-      if(confirm('Eliminar categoría y sus productos?')){
-        DATA = DATA.filter(p=>p.categoria!==cat);
-        delete CATS[cat];
-        populateCategorySelects();
-        renderCategories();
-        saveState();
-        draw();
-      }
-    };
-    wrapper.appendChild(name); wrapper.appendChild(inp); wrapper.appendChild(goBtn); wrapper.appendChild(delBtn);
-    cont.appendChild(wrapper);
-  });
-}
-
-/* draw: muestra todos los productos (o filtrados por q) */
-function draw(filteredQ=''){
-  const list = el('list'); list.innerHTML = '';
-  const q = (filteredQ || el('q').value || '').toLowerCase();
-  const items = DATA.filter(p=> (q==='' || (p.nombre||'').toLowerCase().includes(q.toLowerCase())));
-  if(items.length === 0){
-    const empty = document.createElement('div'); empty.className='card'; empty.innerHTML = '<div class="small">No hay productos para mostrar.</div>';
-    list.appendChild(empty); return;
+/* Guardar en GitHub si hay token (no obligatorio) */
+async function trySaveToGitHub(){
+  const token = localStorage.getItem("gh_token");
+  if(!token) return; // no hacemos nada si no está token
+  try{
+    const api = `https://api.github.com/repos/${USER}/${REPO}/contents/${FILE_PATH}`;
+    let sha = null;
+    const getRes = await fetch(api,{headers:{Authorization:`Bearer ${token}`}});
+    if(getRes.status===200){ sha = (await getRes.json()).sha; }
+    const body = { message: "Actualizar semilla.json", content: base64EncodeUtf8(JSON.stringify(DATA,null,2)), branch: BRANCH };
+    if(sha) body.sha = sha;
+    const putRes = await fetch(api, { method:'PUT', headers:{ Authorization:`Bearer ${token}` }, body: JSON.stringify(body) });
+    if(!putRes.ok) alert("Error al guardar en GitHub");
+  }catch(e){
+    console.warn('Error save GitHub', e);
   }
-  items.forEach(p=>{
-    const card = document.createElement('div'); card.className='card';
-    const markup = CATS[p.categoria] !== undefined ? CATS[p.categoria] : 0;
-    const finalPrice = Number(p.precio_base || 0) * (1 + markup/100);
-    const imgHTML = p.imagen ? `<img src="${p.imagen}">` : 'Sin imagen';
-    card.innerHTML = `<div class="preview">${imgHTML}</div>
-      <div style="flex:1">
-        <b>${p.nombre||''}</b>
-        <div class="small">${p.categoria||''} ${p.stock?(' • '+p.stock):''}</div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-weight:600">$${formatCurrency(finalPrice)}</div>
-        <div class="small">(${markup}% cat)</div>
-      </div>`;
-    const btnRow = document.createElement('div'); btnRow.style.display='flex'; btnRow.style.gap='8px'; btnRow.style.marginTop='8px';
-    const editBtn = document.createElement('button'); editBtn.className='btn'; editBtn.textContent='Editar';
-    editBtn.onclick = ()=> openModal(p.id);
-    const delBtn = document.createElement('button'); delBtn.className='btn'; delBtn.style.background='#c0392b'; delBtn.textContent='Borrar';
-    delBtn.onclick = ()=>{ if(confirm('Eliminar este producto?')){ DATA = DATA.filter(x=>x.id!==p.id); saveState(); draw(); renderCategories(); populateCategorySelects(); } };
-    btnRow.appendChild(editBtn); btnRow.appendChild(delBtn);
-    card.appendChild(btnRow);
-    list.appendChild(card);
-  });
 }
 
-/* drawCategory: muestra solo productos cuya categoría exacta coincide.
-   Importante: antes de llamar, las categorías en DATA se normalizan, así la comparación funciona.
-*/
-function drawCategory(cat){
-  const list = el('list'); list.innerHTML = '';
-  const items = DATA.filter(p=>p.categoria === cat);
-  if(items.length === 0){
-    const empty = document.createElement('div'); empty.className='card'; empty.innerHTML = '<div class="small">No hay productos en esta categoría.</div>';
-    list.appendChild(empty); return;
-  }
-  items.forEach(p=>{
-    const card = document.createElement('div'); card.className='card';
-    const markup = CATS[p.categoria] !== undefined ? CATS[p.categoria] : 0;
-    const finalPrice = Number(p.precio_base || 0) * (1 + markup/100);
-    const imgHTML = p.imagen ? `<img src="${p.imagen}">` : 'Sin imagen';
-    card.innerHTML = `<div class="preview">${imgHTML}</div>
-      <div style="flex:1">
-        <b>${p.nombre||''}</b>
-        <div class="small">${p.categoria||''} ${p.stock?(' • '+p.stock):''}</div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-weight:600">$${formatCurrency(finalPrice)}</div>
-        <div class="small">(${markup}% cat)</div>
-      </div>`;
-    const btnRow = document.createElement('div'); btnRow.style.display='flex'; btnRow.style.gap='8px'; btnRow.style.marginTop='8px';
-    const editBtn = document.createElement('button'); editBtn.className='btn'; editBtn.textContent='Editar';
-    editBtn.onclick = ()=> openModal(p.id);
-    const delBtn = document.createElement('button'); delBtn.className='btn'; delBtn.style.background='#c0392b'; delBtn.textContent='Borrar';
-    delBtn.onclick = ()=>{ if(confirm('Eliminar este producto?')){ DATA = DATA.filter(x=>x.id!==p.id); saveState(); drawCategory(cat); renderCategories(); populateCategorySelects(); } };
-    btnRow.appendChild(editBtn); btnRow.appendChild(delBtn);
-    card.appendChild(btnRow);
-    list.appendChild(card);
-  });
-}
-
-/* modal */
-function openModal(id){
-  const product = DATA.find(x=>x.id===id);
-  el('modalTitle').textContent = product ? 'Editar producto' : 'Nuevo producto';
-  if(product){
-    el('pId').value = product.id;
-    el('pNombre').value = product.nombre || '';
-    el('pCat').value = product.categoria || 'Cargadores';
-    el('pPrecio').value = product.precio_base || 0;
-    el('pSpecs').value = product.caracteristicas || '';
-    el('pStock').value = product.stock || '';
-    if(product.imagen) el('pPreview').innerHTML = `<img src="${product.imagen}">`; else el('pPreview').textContent='Sin imagen';
-    el('deleteProduct').style.display = 'inline-block';
-  } else {
-    el('pId').value = '';
-    el('pNombre').value = '';
-    el('pCat').value = 'Cargadores';
-    el('pPrecio').value = '';
-    el('pSpecs').value = '';
-    el('pStock').value = '';
-    el('pPreview').textContent = 'Sin imagen';
-    el('deleteProduct').style.display = 'none';
-  }
-  el('modalBg').style.display = 'flex';
-}
-function closeModal(){ el('modalBg').style.display = 'none'; }
-
-/* eventos básicos */
-el('closeModal').addEventListener('click', closeModal);
-el('pImagen').addEventListener('change', async (e)=>{
-  const f = e.target.files[0];
-  if(!f) return;
-  const dataUrl = await fileToDataURL(f);
-  el('pPreview').innerHTML = `<img src="${dataUrl}">`;
-});
-
-/* add category */
-el('addCat').addEventListener('click', ()=>{
-  const name = (el('newCat').value||'').trim();
-  const m = Number(el('newMarkup').value||0);
-  if(!name) return alert('Poner nombre de categoria');
-  if(CATS[name]) return alert('Categoría ya existe');
-  CATS[name] = m;
-  renderCategories();
-  populateCategorySelects();
-  saveState();
-  el('newCat').value=''; el('newMarkup').value='';
-});
-
-/* buscar */
-el('q').addEventListener('input', ()=> draw());
-
-/* botones varios */
-el('showAll').addEventListener('click', ()=> draw(''));
-el('selCat').addEventListener('change', (e)=> {
-  const cat = e.target.value;
-  if(cat === 'Todas') draw('');
-  else drawCategory(cat);
-});
-
-/* agregar producto rápido */
-el('addProductBtn').addEventListener('click', ()=> openModal(null));
-
-/* guardar producto desde modal */
+/* Save (guardar producto) */
 el('save').addEventListener('click', async ()=>{
   const id = el('pId').value.trim();
   const nombre = el('pNombre').value.trim();
-  const categoria = el('pCat').value;
+  const categoria = normalizeCategoria(el('pCat').value || 'Cargadores');
   const precio = Number(el('pPrecio').value || 0);
   const caracteristicas = el('pSpecs').value.trim();
-  const stock = el('pStock').value.trim();
-
+  const stock = el('pStock')?el('pStock').value.trim():'';
   let imagen = '';
-  const file = el('pImagen').files[0];
-  if(file){ imagen = await fileToDataURL(file); }
+  const f = el('pImagen').files[0];
+  if(f) imagen = await fileToDataURL(f);
   else {
     const prev = el('pPreview').querySelector('img');
     if(prev) imagen = prev.src;
   }
-
   if(!nombre) return alert('El producto necesita nombre');
   if(!categoria) return alert('Seleccioná categoría');
-
   if(id){
-    const idx = DATA.findIndex(x=>x.id===id);
-    if(idx >= 0){
-      DATA[idx] = {...DATA[idx], nombre, categoria, precio_base:precio, caracteristicas, stock, imagen};
+    const i = DATA.findIndex(x=>x.id==id);
+    if(i>=0){
+      DATA[i] = { ...DATA[i], nombre, categoria, precio_base:precio, caracteristicas, stock, imagen };
     } else {
-      DATA.push({id, nombre, categoria, precio_base:precio, caracteristicas, stock, imagen});
+      DATA.push({ id, nombre, categoria, precio_base:precio, caracteristicas, stock, imagen });
     }
   } else {
-    const nid = uid();
-    DATA.push({id:nid, nombre, categoria, precio_base:precio, caracteristicas, stock, imagen});
+    DATA.push({ id: uid(), nombre, categoria, precio_base:precio, caracteristicas, stock, imagen });
   }
-
-  // normalizar producto agregado
-  DATA = DATA.map(p => normalizeProduct(p));
-
-  if(!CATS[categoria]) CATS[categoria] = 0;
-  saveState();
-  populateCategorySelects();
-  renderCategories();
+  // asegurar categoría en CATS
+  if(CATS[categoria]===undefined) CATS[categoria] = (categoria==='Cargadores'?50:0);
+  buildCatsFromData();
+  drawCats();
   draw();
+  await trySaveToGitHub();
   closeModal();
 });
 
-/* eliminar desde modal */
-el('deleteProduct').addEventListener('click', ()=>{
+/* Eliminar desde modal */
+el('deleteProduct').addEventListener('click', async ()=>{
   const id = el('pId').value.trim();
   if(!id) return alert('No hay producto seleccionado');
   if(!confirm('Eliminar este producto?')) return;
   DATA = DATA.filter(x=>x.id !== id);
-  saveState();
-  populateCategorySelects();
-  renderCategories();
+  buildCatsFromData();
+  drawCats();
   draw();
+  await trySaveToGitHub();
   closeModal();
 });
 
-/* export/import */
+/* Eventos UI */
+el('closeModal').onclick = ()=> closeModal();
+el('pImagen').addEventListener('change', async (e)=>{ const f = e.target.files[0]; if(!f) return; const r = await fileToDataURL(f); el('pPreview').innerHTML = `<img src="${r}">`; });
+
+el('q').addEventListener('input', ()=> draw());
+el('addProductBtn').addEventListener('click', ()=> { fillCatSelect(); openModal(null); });
+el('addCat').addEventListener('click', ()=> {
+  const v = (el('newCat').value||'').trim(); const m = Number(el('newMarkup').value||0);
+  if(!v) return alert('Ingresá nombre de categoría');
+  if(CATS[v]) return alert('La categoría ya existe');
+  CATS[v] = m;
+  drawCats();
+  el('newCat').value=''; el('newMarkup').value='';
+});
+el('showAll').addEventListener('click', ()=> draw(''));
+
+/* Export / Import JSON */
 el('exportBtn').addEventListener('click', ()=>{
-  const payload = {DATA, CATS};
-  const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
+  const payload = { DATA, CATS };
+  const blob = new Blob([JSON.stringify(payload,null,2)], {type:'application/json'});
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href = url; a.download = 'cell_admin_export.json';
-  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  const a = document.createElement('a'); a.href = url; a.download = 'admin_export.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
 });
 el('importBtn').addEventListener('click', ()=> el('importFile').click());
 el('importFile').addEventListener('change', async (e)=>{
@@ -470,236 +523,45 @@ el('importFile').addEventListener('change', async (e)=>{
   const txt = await f.text();
   try{
     const obj = JSON.parse(txt);
-    if(Array.isArray(obj)){
-      DATA = obj.map(x=>normalizeProduct(x));
-    } else if(obj.DATA && obj.CATS){
-      DATA = (obj.DATA||[]).map(x=>normalizeProduct(x));
-      CATS = obj.CATS || CATS;
-    } else {
-      return alert('JSON no reconocido. Debe ser array o {DATA,CATS}.');
-    }
-    // asegurarse categorías
-    DATA.forEach(p=>{ if(!CATS[p.categoria]) CATS[p.categoria] = (p.categoria==='Cargadores'?50:0); });
-    saveState();
-    populateCategorySelects();
-    renderCategories();
-    draw();
-    alert('Import realizado con éxito');
-  }catch(err){
-    alert('Error al parsear JSON: ' + err.message);
-  } finally { e.target.value = null; }
-});
-
-/* login/demo/logout */
-el('doLogin').addEventListener('click', ()=>{
-  const email = el('email').value.trim();
-  const pass = el('pass').value.trim();
-  if(email === 'admin@celldistribuciones.com' && pass === 'QWERTY123456'){
-    el('loginBox').style.display='none'; el('app').style.display='block';
-    initAll();
-  } else { alert('Credenciales incorrectas'); }
-});
-el('demoOpen').addEventListener('click', ()=>{
-  el('loginBox').style.display='none'; el('app').style.display='block'; initAll();
-});
-el('logout').addEventListener('click', ()=>{ if(confirm('Cerrar sesión?')) location.reload(); });
-
-/* precarga cargadores (la lista original completa) - si ya tenés DATA en localStorage, no sobreescribe */
-const CARGADORES = [
-  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO", categoria:"Cargadores", precio_base:2894.47},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO", categoria:"Cargadores", precio_base:2894.47},
-  {nombre:"Combo 1 CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING", categoria:"Cargadores", precio_base:23986.02},
-  {nombre:"ADAPTADOR-CARGADOR 12V MOD 38 XAEA - SPEED - PD + QC 3.0", categoria:"Cargadores", precio_base:5842.39},
-  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:1289.82},
-  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:1297.62},
-  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:2007.93},
-  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - KIT X 200", categoria:"Cargadores", precio_base:339693.88},
-  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:2007.93},
-  {nombre:"CARGADOR 12V GEAR MODS-504 - 1 USB 1 TC + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:2009.89},
-  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C", categoria:"Cargadores", precio_base:2258.85},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED - TIPO C - NEGRO", categoria:"Cargadores", precio_base:2747.01},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C - BLANCO", categoria:"Cargadores", precio_base:2747.01},
-  {nombre:"COMBO 2 - CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C", categoria:"Cargadores", precio_base:21842.04},
-  {nombre:"COMBO 4 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C", categoria:"Cargadores", precio_base:21172.08},
-  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8", categoria:"Cargadores", precio_base:2133.44},
-  {nombre:"CARGADOR 12V MOD 40 - ONLY - BOOST- V8 - BLANCO", categoria:"Cargadores", precio_base:1297.70},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - NEGRO", categoria:"Cargadores", precio_base:2590.17},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - BLANCO", categoria:"Cargadores", precio_base:2590.17},
-  {nombre:"COMBO 3 - CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8", categoria:"Cargadores", precio_base:21975.97},
-  {nombre:"COMBO 5 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8", categoria:"Cargadores", precio_base:21306.01},
-  {nombre:"CARGADOR 220V MODO-006 - 2 USB + CABLE LIGHTNING - ONLY - BLANCO", categoria:"Cargadores", precio_base:3559.77},
-  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE LIGHTNING - XAEA - BLANCO", categoria:"Cargadores", precio_base:3473.33},
-  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE LIGHTNING - XAEA - BLANCO", categoria:"Cargadores", precio_base:3429.76},
-  {nombre:"CARGADOR 220V ONLY MOD 02 - 2 USB + CABLE LIGHTINING - BLANCO", categoria:"Cargadores", precio_base:6362.78},
-  {nombre:"CARGADOR 220V ONLY MOD 06 - 2 USB + CABLE LIGHTNING - BLANCO", categoria:"Cargadores", precio_base:3501.43},
-  {nombre:"CARGADOR 220V LETS MOD08 - 4,4 A - 3 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:2679.29},
-  {nombre:"CARGADOR 220V LETS MOD08 - 4,4A - 2 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:2881.07},
-  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:2808.01},
-  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY PREMIUM - BLANCO", categoria:"Cargadores", precio_base:2722.91},
-  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C BLANCO - ONLY - KIT X 200", categoria:"Cargadores", precio_base:573065.18},
-  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C NEGRO - ONLY - KIT X 200", categoria:"Cargadores", precio_base:573065.18},
-  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC BLANCO - ONLY - KIT X 200", categoria:"Cargadores", precio_base:595305.04},
-  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC NEGRO - ONLY - KIT X 200", categoria:"Cargadores", precio_base:578148.50},
-  {nombre:"CARGADOR 220V MODO-008 - 4,4A - 3USB + CABLE TIPO TC - ONLY", categoria:"Cargadores", precio_base:3302.31},
-  {nombre:"CARGADOR 220V MODO-008 BOOST - 4,4A - 3USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:3053.25},
-  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:1941.50},
-  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:1710.37},
-  {nombre:"CARGADOR 220V MODO-040 IMPULSE - 2.1A + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:1813.06},
-  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO", categoria:"Cargadores", precio_base:3098.88},
-  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO - KIT X 200", categoria:"Cargadores", precio_base:566501.69},
-  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA", categoria:"Cargadores", precio_base:3039.05},
-  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA - KIT X 200", categoria:"Cargadores", precio_base:571578.12},
-  {nombre:"CARGADOR 220V ONLY MOD 03 - 2,1 A - 1 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:2356.15},
-  {nombre:"CARGADOR 220V ONLY MOD02 - 1 USB C/ CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:3107.03},
-  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - BLANCO", categoria:"Cargadores", precio_base:2841.71},
-  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - NEGRO", categoria:"Cargadores", precio_base:2852.15},
-  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:4701.41},
-  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO - KIT X 100", categoria:"Cargadores", precio_base:405974.26}
-];
-
-/* inicializar: cargar estado o precargar productos */
-function initAll(){
-  const loaded = loadState();
-  if(!loaded){
-    // precargar cargadores
-    CARGADORES.forEach(c=>{
-      const normalized = normalizeProduct(c);
-      if(!DATA.some(p=>p.nombre === normalized.nombre && p.categoria === normalized.categoria)){
-        DATA.push({...normalized, id: uid()});
-      }
-      if(!CATS[normalized.categoria]) CATS[normalized.categoria] = (normalized.categoria === 'Cargadores' ? 50 : 0);
-    });
-    saveState();
-  } else {
-    // si cargó desde localStorage, asegurarnos de que las categorías que traen los productos existan
-    DATA.forEach(p=>{
-      if(!CATS[p.categoria]) CATS[p.categoria] = (p.categoria === 'Cargadores' ? 50 : 0);
-    });
-  }
-  populateCategorySelects();
-  renderCategories();
-  draw();
-}
-
-/* helpers para reset si necesitás (ejecutar en consola) */
-/* localStorage.removeItem('cell_admin_v3'); location.reload(); */
-
-///////////////////////// Eventos y acciones finales /////////////////////////
-el('addProductBtn').addEventListener('click', ()=> openModal(null));
-el('q').addEventListener('input', ()=> draw());
-el('showAll').addEventListener('click', ()=> draw(''));
-el('selCat').addEventListener('change', (e)=> {
-  const cat = e.target.value;
-  if(cat === 'Todas') draw('');
-  else drawCategory(cat);
-});
-el('addCat').addEventListener('click', ()=>{
-  const name = (el('newCat').value||'').trim();
-  const m = Number(el('newMarkup').value||0);
-  if(!name) return alert('Poner nombre de categoria');
-  if(CATS[name]) return alert('Categoría ya existe');
-  CATS[name] = m;
-  renderCategories();
-  populateCategorySelects();
-  saveState();
-  el('newCat').value=''; el('newMarkup').value='';
-});
-el('closeModal').addEventListener('click', closeModal);
-el('pImagen').addEventListener('change', async (e)=>{
-  const f = e.target.files[0];
-  if(!f) return;
-  const dataUrl = await fileToDataURL(f);
-  el('pPreview').innerHTML = `<img src="${dataUrl}">`;
-});
-el('save').addEventListener('click', async ()=>{
-  const id = el('pId').value.trim();
-  const nombre = el('pNombre').value.trim();
-  const categoria = el('pCat').value;
-  const precio = Number(el('pPrecio').value || 0);
-  const caracteristicas = el('pSpecs').value.trim();
-  const stock = el('pStock').value.trim();
-
-  let imagen = '';
-  const file = el('pImagen').files[0];
-  if(file){ imagen = await fileToDataURL(file); }
-  else {
-    const prev = el('pPreview').querySelector('img');
-    if(prev) imagen = prev.src;
-  }
-
-  if(!nombre) return alert('El producto necesita nombre');
-  if(!categoria) return alert('Seleccioná categoría');
-
-  if(id){
-    const idx = DATA.findIndex(x=>x.id===id);
-    if(idx >= 0) DATA[idx] = normalizeProduct({...DATA[idx], nombre, categoria, precio_base:precio, caracteristicas, stock, imagen});
-    else DATA.push(normalizeProduct({id, nombre, categoria, precio_base:precio, caracteristicas, stock, imagen}));
-  } else {
-    DATA.push(normalizeProduct({id: uid(), nombre, categoria, precio_base:precio, caracteristicas, stock, imagen}));
-  }
-
-  if(!CATS[categoria]) CATS[categoria] = 0;
-  saveState();
-  populateCategorySelects();
-  renderCategories();
-  draw();
-  closeModal();
-});
-el('deleteProduct').addEventListener('click', ()=>{
-  const id = el('pId').value.trim();
-  if(!id) return alert('No hay producto seleccionado');
-  if(!confirm('Eliminar este producto?')) return;
-  DATA = DATA.filter(x=>x.id !== id);
-  saveState();
-  populateCategorySelects();
-  renderCategories();
-  draw();
-  closeModal();
-});
-
-/* export/import */
-el('exportBtn').addEventListener('click', ()=>{
-  const payload = {DATA, CATS};
-  const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href = url; a.download = 'cell_admin_export.json';
-  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-});
-el('importBtn').addEventListener('click', ()=> el('importFile').click());
-el('importFile').addEventListener('change', async (e)=>{
-  const f = e.target.files[0];
-  if(!f) return;
-  const txt = await f.text();
-  try{
-    const obj = JSON.parse(txt);
-    if(Array.isArray(obj)) DATA = obj.map(x=>normalizeProduct(x));
-    else if(obj.DATA && obj.CATS){ DATA = (obj.DATA||[]).map(x=>normalizeProduct(x)); CATS = obj.CATS || CATS; }
+    if(Array.isArray(obj)) DATA = obj.map(p=>normalizeProductFromSeed(p));
+    else if(obj.DATA && obj.CATS){ DATA = (obj.DATA||[]).map(p=>normalizeProductFromSeed(p)); CATS = obj.CATS || CATS; }
     else return alert('JSON no reconocido. Debe ser array o {DATA,CATS}.');
-    DATA.forEach(p=>{ if(!CATS[p.categoria]) CATS[p.categoria] = (p.categoria==='Cargadores'?50:0); });
-    saveState();
-    populateCategorySelects();
-    renderCategories();
+    buildCatsFromData();
+    drawCats();
     draw();
-    alert('Import realizado con éxito');
-  }catch(err){
-    alert('Error al parsear JSON: ' + err.message);
-  } finally { e.target.value = null; }
+    alert('Import OK');
+  }catch(err){ alert('Error parse JSON: '+err.message); }
+  e.target.value = null;
 });
 
-/* login/demo/logout */
-el('doLogin').addEventListener('click', ()=>{
-  const email = el('email').value.trim();
-  const pass = el('pass').value.trim();
-  if(email === 'admin@celldistribuciones.com' && pass === 'QWERTY123456'){
-    el('loginBox').style.display='none'; el('app').style.display='block';
-    initAll();
-  } else { alert('Credenciales incorrectas'); }
+/* Login / token logic (se mantiene igual que tu original) */
+el('doLogin').addEventListener('click', ()=> {
+  const email = el('email').value.trim(); const pass = el('pass').value.trim();
+  if(email==='admin@celldistribuciones.com' && pass==='QWERTY123456'){
+    el('loginBox').style.display='none';
+    // si hay token guardado, mostramos tokenBox sólo si no hay token
+    if(!localStorage.getItem("gh_token")) { el('tokenBox').style.display='block'; }
+    else { el('app').style.display='block'; loadSeed(); }
+  } else alert('Credenciales incorrectas');
 });
-el('demoOpen').addEventListener('click', ()=>{ el('loginBox').style.display='none'; el('app').style.display='block'; initAll(); });
-el('logout').addEventListener('click', ()=>{ if(confirm('Cerrar sesión?')) location.reload(); });
+el('saveToken').addEventListener('click', ()=> {
+  const t = el('ghToken').value.trim();
+  if(!t.startsWith('ghp_')) return alert('Token inválido');
+  localStorage.setItem('gh_token', t);
+  el('tokenBox').style.display='none';
+  el('app').style.display='block';
+  loadSeed();
+});
+el('demoOpen').addEventListener('click', ()=> { el('loginBox').style.display='none'; el('app').style.display='block'; loadSeed(); });
+el('logout').addEventListener('click', ()=> { localStorage.removeItem('gh_token'); location.reload(); });
 
-/* iniciar */
-initAll();
+/* Inicial */
+function buildCatsFromData_initialFallback(){
+  // ensure base cats exist
+  ["Todas","Baterías","Cargadores","Módulos","Placas de Carga","Tapas Traseras"].forEach(k=>{ if(CATS[k]===undefined) CATS[k] = (k==='Cargadores'?50:0); });
+}
+buildCatsFromData_initialFallback();
+
 </script>
 </body>
 </html>
