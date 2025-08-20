@@ -114,7 +114,7 @@ const BRANCH = "main";
 const FILE_PATH = "semilla.json";
 let DATA = [];
 
-function base64EncodeUtf8(str){return btoa(unescape(encodeURIComponent(str)));}
+function base64EncodeUtf8(str){return btoa(unescape(encodeURIComponent(str)));} 
 function fileToDataURL(f){return new Promise((res,rej)=>{const R=new FileReader();R.onload=()=>res(R.result);R.onerror=rej;R.readAsDataURL(f);});}
 
 async function loadSeed(){
@@ -130,7 +130,7 @@ async function saveToGitHub(content){
   if(!token){ alert("Token no configurado."); return; }
   const api = `https://api.github.com/repos/${USER}/${REPO}/contents/${FILE_PATH}`;
   let sha = null;
-  const getRes = await fetch(api,{headers:{Authorization:`Bearer ${token}`}});
+  const getRes = await fetch(api,{headers:{Authorization:`Bearer ${token}`}}); 
   if(getRes.status===200){sha=(await getRes.json()).sha;}
   const body={message:"Actualizar semilla.json",content:base64EncodeUtf8(content),branch:BRANCH};
   if(sha) body.sha = sha;
@@ -147,23 +147,24 @@ function drawCats(){
     btn.onclick=()=>{DATA=DATA.filter(p=>p.categoria!==c);draw();drawCats();};
     box.appendChild(btn);cont.appendChild(box);
   });
-document.getElementById('addCat').onclick=async ()=>{
-  const v=document.getElementById('newCat').value.trim();
-  if(!v) return;
-  DATA.push({
-    id: Date.now().toString(),
-    nombre: 'Nuevo producto',
-    categoria: v,
-    precio_final: 0,
-    caracteristicas: '',
-    imagen: ''
-  });
-  draw();
-  drawCats();
-  await saveToGitHub(JSON.stringify(DATA, null, 2)); // 🔥 ahora guarda en semilla.json
-  document.getElementById('newCat').value = ''; // limpiar input
-};
 
+  // ✅ Corrección: onclick bien cerrado
+  document.getElementById('addCat').onclick = async ()=>{
+    const v=document.getElementById('newCat').value.trim();
+    if(!v) return;
+    DATA.push({
+      id: Date.now().toString(),
+      nombre: 'Nuevo producto',
+      categoria: v,
+      precio_final: 0,
+      caracteristicas: '',
+      imagen: ''
+    });
+    draw();
+    drawCats();
+    await saveToGitHub(JSON.stringify(DATA, null, 2)); // guarda cambios
+    document.getElementById('newCat').value = ''; // limpiar input
+  };
 }
 
 function draw(q=''){
@@ -187,9 +188,7 @@ function openModal(id){
   document.getElementById('modalBg').style.display='flex';
 }
 
-document.getElementById('closeModal').onclick=()=>{
-  document.getElementById('modalBg').style.display='none';
-}
+document.getElementById('closeModal').onclick=()=>{document.getElementById('modalBg').style.display='none';}
 
 document.getElementById('pImagen').addEventListener('change', async (e)=>{
   const f=e.target.files[0];if(!f)return;
