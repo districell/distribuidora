@@ -193,12 +193,40 @@ function drawCats(){
 });
 }
 
+.appendChild(btn); cont.appendChild(box);
+});
+}
+
 function draw(){
-   const list = document.getElementById('list'); list.innerHTML='';
-   const q = document.getElementById('q').value.toLowerCase();
-   DATA.filter(p=>p.categoria==="Cargadores" && p.nombre.toLowerCase().includes(q))
-    .forEach(p=>{
-     const card = document.createElement('div'); card.className='card';
-     card.innerHTML=<b>${p.nombre}</b><br>Precio final: $${p.precio_final.toFixed(2)}<br>Markup: ${p.markup}%;
-     list.appendChild(card);
- });
+const list = document.getElementById('list'); list.innerHTML='';
+const q = document.getElementById('q').value.toLowerCase();
+DATA.filter(p=>p.categoria==="Cargadores" && p.nombre.toLowerCase().includes(q))
+.forEach(p=>{
+const card = document.createElement('div'); card.className='card';
+card.innerHTML=<b>${p.nombre}</b><br>Precio final: $${p.precio_final.toFixed(2)}<br>Markup: ${p.markup}%;
+list.appendChild(card);
+});
+}
+
+document.getElementById('q').addEventListener('input',draw);
+
+document.getElementById('doLogin').addEventListener('click',()=>{
+if(document.getElementById('email').value && document.getElementById('pass').value){
+document.getElementById('loginBox').style.display='none';
+document.getElementById('tokenBox').style.display='block';
+} else { alert("Complete los campos"); }
+});
+
+document.getElementById('saveToken').addEventListener('click',()=>{
+const t = document.getElementById('ghToken').value;
+if(t){ localStorage.setItem("gh_token",t); document.getElementById('tokenBox').style.display='none'; document.getElementById('app').style.display='block'; loadSeed(); }
+});
+
+document.getElementById('logout').addEventListener('click',()=>{
+localStorage.removeItem("gh_token"); location.reload();
+});
+
+loadSeed();
+</script>
+
+</body> </html> ``
