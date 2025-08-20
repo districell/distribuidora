@@ -1,104 +1,289 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Admin de Productos</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Admin • Cell Distribuciones</title>
 <style>
-  body { font-family: Arial, sans-serif; margin: 20px; }
-  h1 { text-align: center; }
-  .categoria { margin-bottom: 20px; border: 1px solid #ccc; padding: 10px; }
-  .producto { border: 1px solid #aaa; padding: 8px; margin: 5px 0; cursor: pointer; background-color: #f9f9f9; }
-  .detalle { display: none; margin-top: 5px; padding: 5px; background-color: #efefef; }
-  input, button { margin: 5px 0; padding: 5px; }
+:root{--max:1100px;--green:#2ecc71;--border:#e5e5e5}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#fafafa;color:#111}
+header{background:#111;color:#fff;padding:12px}
+.wrap{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.main{max-width:var(--max);margin:16px auto;padding:0 12px}
+.panel{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:12px}
+.btn{padding:8px 12px;border:none;border-radius:8px;background:#111;color:#fff;cursor:pointer}
+.btn.green{background:#2ecc71}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.card{border:1px solid var(--border);border-radius:10px;padding:10px;background:#fff}
+.small{font-size:12px;color:#666}
+.login{max-width:420px;margin:40px auto;padding:12px;background:#fff;border-radius:10px;border:1px solid var(--border)}
+input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);border-radius:8px}
+.preview{height:150px;background:#f1f1f1;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.preview img{max-width:100%;max-height:100%}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+
+/* Modal flotante */
+.modal-bg {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+}
+.modal h3 {margin-top:0}
 </style>
 </head>
 <body>
+<header>
+  <div class="wrap">
+    <img src="logo.png" alt="Cell Distribuciones" style="height:28px;vertical-align:middle;">
+    <button id="logout" class="btn">Salir</button>
+  </div>
+</header>
 
-<h1>Administración de Productos</h1>
+<main class="main">
 
-<div id="categorias"></div>
+  <!-- LOGIN -->
+  <div id="loginBox" class="login">
+    <h3>Ingresar</h3>
+    <input id="email" placeholder="Email">
+    <input id="pass" placeholder="Contraseña" type="password">
+    <button id="doLogin" class="btn green">Entrar</button>
+  </div>
+
+  <!-- TOKEN -->
+  <div id="tokenBox" class="login" style="display:none">
+    <h3>Token de GitHub</h3>
+    <p class="small">Pegá tu token con permiso <b>public_repo</b>. Se guarda localmente.</p>
+    <input id="ghToken" placeholder="ghp_xxx..." autocomplete="off"><br><br>
+    <button id="saveToken" class="btn green">Guardar Token</button>
+  </div>
+
+  <!-- APP -->
+  <div id="app" style="display:none">
+    <div class="panel">
+      <h3>Categorías</h3>
+      <div class="row">
+        <input id="newCat" placeholder="Nueva categoría">
+        <input id="newMarkup" placeholder="% markup" type="number" step="1" style="width:100px">
+        <button id="addCat" class="btn">Agregar</button>
+      </div>
+      <div id="cats" class="row small" style="margin-top:8px"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Productos</h3>
+      <input id="q" placeholder="Buscar...">
+      <div id="list" class="grid" style="margin-top:10px"></div>
+    </div>
+  </div>
+
+</main>
+
+<!-- MODAL flotante -->
+<div id="modalBg" class="modal-bg">
+  <div class="modal">
+    <h3>Editar producto</h3>
+    <input id="pId" placeholder="ID">
+    <input id="pNombre" placeholder="Nombre">
+    <input id="pCat" placeholder="Categoría">
+    <input id="pPrecio" placeholder="Precio base" type="number" step="0.01">
+    <input id="pImagen" type="file" accept="image/*">
+    <div id="pPreview" class="preview">Sin imagen</div>
+    <textarea id="pSpecs" placeholder="Características" rows="4"></textarea>
+    <div style="margin-top:8px; display:flex; gap:8px;">
+      <button id="save" class="btn green">Guardar</button>
+      <button id="closeModal" class="btn" style="background:#c0392b">Cerrar</button>
+    </div>
+  </div>
+</div>
 
 <script>
-// --- Categorías y productos anteriores ---
-const PRODUCTOS_ANTERIORES = [
-  {nombre:"Producto A",categoria:"Categoría 1",precio:100},
-  {nombre:"Producto B",categoria:"Categoría 2",precio:200},
-  {nombre:"Producto C",categoria:"Categoría 3",precio:300}
+const USER = "districell";
+const REPO = "distribuidora";
+const BRANCH = "main";
+const FILE_PATH = "semilla.json";
+let DATA = [];
+let CATS = {}; // {nombre: porcentaje}
+
+// Funciones auxiliares
+function base64EncodeUtf8(str){return btoa(unescape(encodeURIComponent(str)));}
+
+function fileToDataURL(f){return new Promise((res,rej)=>{
+  const R=new FileReader();
+  R.onload=()=>res(R.result);
+  R.onerror=rej;
+  R.readAsDataURL(f);
+});}
+
+// Cargadores iniciales con 50% solo para los nuevos productos
+const NEW_CARGADORES = [
+  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO",categoria:"Cargadores_12V LIGHTNING",precio_final:2894.47,markup:50},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO",categoria:"Cargadores_12V LIGHTNING",precio_final:2894.47,markup:50},
+  {nombre:"Combo 1 CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING",categoria:"Cargadores_12V LIGHTNING",precio_final:23986.02,markup:50},
+  {nombre:"ADAPTADOR-CARGADOR 12V MOD 38 XAEA - SPEED - PD + QC 3.0",categoria:"Cargadores_12V TIPO C",precio_final:5842.39,markup:50},
+  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores_12V TIPO C",precio_final:1289.82,markup:50},
+  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores_12V TIPO C",precio_final:1297.62,markup:50}
+  // ... agregá el resto de los cargadores que quieras mantener
 ];
 
-// --- Lista de cargadores con +50% en precio ---
-const CARGADORES = [
-  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO",categoria:"Cargadores",precio:2894.47*1.5},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO",categoria:"Cargadores",precio:2894.47*1.5},
-  {nombre:"Combo 1 CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING",categoria:"Cargadores",precio:23986.02*1.5},
-  {nombre:"ADAPTADOR-CARGADOR 12V MOD 38 XAEA - SPEED - PD + QC 3.0",categoria:"Cargadores",precio:5842.39*1.5},
-  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores",precio:1289.82*1.5},
-  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio:1297.62*1.5},
-  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores",precio:2007.93*1.5},
-  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - KIT X 200",categoria:"Cargadores",precio:339693.88*1.5},
-  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio:2007.93*1.5},
-  {nombre:"CARGADOR 12V GEAR MODS-504 - 1 USB 1 TC + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio:2009.89*1.5},
-  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C",categoria:"Cargadores",precio:2258.85*1.5},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED - TIPO C - NEGRO",categoria:"Cargadores",precio:2747.01*1.5},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C - BLANCO",categoria:"Cargadores",precio:2747.01*1.5},
-  {nombre:"COMBO 2 - CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C",categoria:"Cargadores",precio:21842.04*1.5},
-  {nombre:"COMBO 4 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C",categoria:"Cargadores",precio:21172.08*1.5},
-  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8",categoria:"Cargadores",precio:2133.44*1.5},
-  {nombre:"CARGADOR 12V MOD 40 - ONLY - BOOST- V8 - BLANCO",categoria:"Cargadores",precio:1297.7*1.5},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - NEGRO",categoria:"Cargadores",precio:2590.17*1.5},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - BLANCO",categoria:"Cargadores",precio:2590.17*1.5},
-  {nombre:"COMBO 3 - CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8",categoria:"Cargadores",precio:21975.97*1.5},
-  {nombre:"COMBO 5 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8",categoria:"Cargadores",precio:21306.01*1.5},
-  // Aquí podés continuar agregando todos los cargadores restantes
-];
+async function loadSeed(){
+  try{
+    const r = await fetch(FILE_PATH+'?v='+Date.now());
+    DATA = await r.json();
+  }catch(e){DATA=[];}
 
-// --- Combinar productos anteriores con cargadores ---
-const TODOS_PRODUCTOS = [...PRODUCTOS_ANTERIORES, ...CARGADORES];
-
-const categoriasDiv = document.getElementById("categorias");
-
-// Obtener categorías únicas
-const categoriasUnicas = [...new Set(TODOS_PRODUCTOS.map(p => p.categoria))];
-
-// Crear interfaz por categoría
-categoriasUnicas.forEach(cat => {
-  const divCat = document.createElement("div");
-  divCat.className = "categoria";
-  const h2 = document.createElement("h2");
-  h2.textContent = cat;
-  divCat.appendChild(h2);
-
-  const prodDiv = document.createElement("div");
-  prodDiv.className = "productos";
-
-  TODOS_PRODUCTOS.filter(p => p.categoria === cat).forEach(prod => {
-    const pDiv = document.createElement("div");
-    pDiv.className = "producto";
-    pDiv.textContent = prod.nombre + " - $ " + prod.precio.toFixed(2);
-
-    const detalleDiv = document.createElement("div");
-    detalleDiv.className = "detalle";
-    detalleDiv.innerHTML = `
-      <label>Nombre:</label><br>
-      <input type="text" value="${prod.nombre}"><br>
-      <label>Precio:</label><br>
-      <input type="number" value="${prod.precio.toFixed(2)}"><br>
-      <label>Subir Imagen:</label><br>
-      <input type="file"><br>
-      <button onclick="alert('Guardado (simulado)')">Guardar</button>
-    `;
-
-    pDiv.addEventListener("click", () => {
-      detalleDiv.style.display = detalleDiv.style.display === "none" ? "block" : "none";
-    });
-
-    prodDiv.appendChild(pDiv);
-    prodDiv.appendChild(detalleDiv);
+  // Agregamos cargadores nuevos si no existen
+  NEW_CARGADORES.forEach(c=>{
+    if(!DATA.some(p=>p.nombre===c.nombre)){
+      DATA.push({...c,id:Date.now().toString() + Math.random()});
+    }
   });
 
-  divCat.appendChild(prodDiv);
-  categoriasDiv.appendChild(divCat);
+  buildCatsFromData();
+  drawCats();
+  draw();
+}
+
+async function saveToGitHub(content){
+  const token = localStorage.getItem("gh_token");
+  if(!token){ alert("Token no configurado."); return; }
+  const api = `https://api.github.com/repos/${USER}/${REPO}/contents/${FILE_PATH}`;
+  let sha = null;
+  const getRes = await fetch(api,{headers:{Authorization:`Bearer ${token}`}});
+  if(getRes.status===200){sha=(await getRes.json()).sha;}
+  const body={message:"Actualizar semilla.json",content:base64EncodeUtf8(content),branch:BRANCH};
+  if(sha) body.sha = sha;
+  const putRes = await fetch(api,{method:"PUT",headers:{Authorization:`Bearer ${token}`},body:JSON.stringify(body)});
+  if(!putRes.ok){alert("Error al guardar en GitHub");return;}
+}
+
+// Construimos categorías sin borrar las anteriores
+function buildCatsFromData(){
+  DATA.forEach(p=>{
+    if(p.categoria){
+      if(!CATS[p.categoria]) CATS[p.categoria] = p.markup || 0;
+    }
+  });
+}
+
+// Mostramos las categorías
+function drawCats(){
+  const cont = document.getElementById('cats'); cont.innerHTML='';
+  Object.keys(CATS).sort().forEach(c=>{
+    const box=document.createElement('div');
+    box.innerHTML = `<b>${c}</b> (Markup: ${CATS[c]}%) `;
+    const btn=document.createElement('button');btn.className='btn';btn.textContent='Eliminar';
+    btn.onclick=async()=>{
+      DATA=DATA.filter(p=>p.categoria!==c);
+      delete CATS[c];
+      draw();drawCats();
+      await saveToGitHub(JSON.stringify(DATA,null,2));
+    };
+    box.onclick=()=> drawCategory(c); // al hacer click listamos solo esa categoría
+    box.style.cursor = "pointer";
+    box.appendChild(btn);
+    cont.appendChild(box);
+  });
+}
+
+// Mostrar productos de solo una categoría
+function drawCategory(cat){
+  const list=document.getElementById('list');list.innerHTML='';
+  DATA.filter(p=>p.categoria===cat)
+      .forEach(p=>{
+        const card=document.createElement('div');card.className='card';
+        const markup = CATS[p.categoria]||0;
+        const finalPrice = Number(p.precio_final||0) * (1+markup/100);
+        card.innerHTML='<div class="preview">'+(p.imagen?('<img src="'+p.imagen+'">'):'Sin imagen')+'</div>'+
+        '<b>'+(p.nombre||'')+'</b><div class="small">'+(p.categoria||'')+'</div><div>$'+finalPrice.toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
+        const btn=document.createElement('button');btn.className='btn';btn.style.marginTop='6px';btn.textContent='Editar';
+        btn.onclick=()=> openModal(p.id);
+        card.appendChild(btn);list.appendChild(card);
+      });
+}
+
+// Dibujar todos los productos
+function draw(q=''){
+  const list=document.getElementById('list');list.innerHTML='';
+  DATA.filter(p=>!q||(p.nombre||'').toLowerCase().includes(q.toLowerCase()))
+      .forEach(p=>{
+        const card=document.createElement('div');card.className='card';
+        const markup = CATS[p.categoria]||0;
+        const finalPrice = Number(p.precio_final||0) * (1+markup/100);
+        card.innerHTML='<div class="preview">'+(p.imagen?('<img src="'+p.imagen+'">'):'Sin imagen')+'</div>'+
+        '<b>'+(p.nombre||'')+'</b><div class="small">'+(p.categoria||'')+'</div><div>$'+finalPrice.toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
+        const btn=document.createElement('button');btn.className='btn';btn.style.marginTop='6px';btn.textContent='Editar';
+        btn.onclick=()=> openModal(p.id);
+        card.appendChild(btn);list.appendChild(card);
+      });
+}
+
+// Modal
+function openModal(id){
+  const p=DATA.find(x=>x.id==id);
+  if(!p) return;
+  pId.value=p.id; pNombre.value=p.nombre||''; pCat.value=p.categoria||''; pPrecio.value=p.precio_final||0; pSpecs.value=p.caracteristicas||'';
+  if(p.imagen){pPreview.innerHTML='<img src="'+p.imagen+'">';} else {pPreview.textContent='Sin imagen';}
+  document.getElementById('modalBg').style.display='flex';
+}
+
+document.getElementById('closeModal').onclick=()=>{document.getElementById('modalBg').style.display='none';}
+
+document.getElementById('pImagen').addEventListener('change', async (e)=>{
+  const f=e.target.files[0];if(!f)return;
+  const r=await fileToDataURL(f);
+  pPreview.innerHTML='<img src="'+r+'">';
 });
+
+document.getElementById('save').onclick=async ()=>{
+  let id=pId.value.trim();const nombre=pNombre.value.trim();const categoria=pCat.value.trim();
+  const precio=Number(pPrecio.value||0);const caracteristicas=pSpecs.value.trim();
+  let imagen='';const f=pImagen.files[0];
+  if(f){imagen=await fileToDataURL(f);}else if(pPreview.querySelector('img')){imagen=pPreview.querySelector('img').src;}
+  if(id){
+    const i=DATA.findIndex(x=>x.id==id);
+    if(i>=0){DATA[i]={...DATA[i],nombre,categoria,precio_final:precio,caracteristicas,imagen:imagen||DATA[i].imagen||''};}
+    else{DATA.push({id,nombre,categoria,precio_final:precio,caracteristicas,imagen});}
+  }
+  if(categoria && !CATS[categoria]) CATS[categoria]=0;
+  draw();drawCats();
+  await saveToGitHub(JSON.stringify(DATA,null,2));
+  document.getElementById('modalBg').style.display='none';
+};
+
+document.getElementById('q').addEventListener('input',e=>draw(e.target.value));
+
+// Login
+document.getElementById('doLogin').onclick=()=>{
+  if(email.value==='admin@celldistribuciones.com'&&pass.value==='QWERTY123456'){
+    loginBox.style.display='none';
+    if(!localStorage.getItem("gh_token")) tokenBox.style.display='block';
+    else {app.style.display='block';loadSeed();}
+  }else alert('Credenciales incorrectas');
+};
+
+document.getElementById('saveToken').onclick=()=>{
+  const t=ghToken.value.trim();
+  if(!t.startsWith("ghp_")) return alert("Token inválido");
+  localStorage.setItem("gh_token",t);
+  tokenBox.style.display='none';
+  app.style.display='block';
+  loadSeed();
+};
+
+document.getElementById('logout').onclick=()=>{localStorage.removeItem("gh_token");location.reload();};
+
 </script>
 </body>
 </html>
