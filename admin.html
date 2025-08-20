@@ -22,8 +22,6 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 .preview{height:150px;background:#f1f1f1;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .preview img{max-width:100%;max-height:100%}
 .row{display:flex;gap:8px;flex-wrap:wrap}
-
-/* Modal flotante */
 .modal-bg {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -52,8 +50,6 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 </header>
 
 <main class="main">
-
-  <!-- LOGIN -->
   <div id="loginBox" class="login">
     <h3>Ingresar</h3>
     <input id="email" placeholder="Email">
@@ -61,7 +57,6 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
     <button id="doLogin" class="btn green">Entrar</button>
   </div>
 
-  <!-- TOKEN -->
   <div id="tokenBox" class="login" style="display:none">
     <h3>Token de GitHub</h3>
     <p class="small">Pegá tu token con permiso <b>public_repo</b>. Se guarda localmente.</p>
@@ -69,7 +64,6 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
     <button id="saveToken" class="btn green">Guardar Token</button>
   </div>
 
-  <!-- APP -->
   <div id="app" style="display:none">
     <div class="panel">
       <h3>Categorías</h3>
@@ -87,10 +81,8 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
       <div id="list" class="grid" style="margin-top:10px"></div>
     </div>
   </div>
-
 </main>
 
-<!-- MODAL flotante -->
 <div id="modalBg" class="modal-bg">
   <div class="modal">
     <h3>Editar producto</h3>
@@ -114,9 +106,8 @@ const REPO = "distribuidora";
 const BRANCH = "main";
 const FILE_PATH = "semilla.json";
 let DATA = [];
-let CATS = {}; // {nombre: porcentaje}
+let CATS = {};
 
-// Funciones auxiliares
 function base64EncodeUtf8(str){return btoa(unescape(encodeURIComponent(str)));}
 
 function fileToDataURL(f){return new Promise((res,rej)=>{
@@ -126,7 +117,7 @@ function fileToDataURL(f){return new Promise((res,rej)=>{
   R.readAsDataURL(f);
 });}
 
-// Lista de cargadores (solo una categoría) con 50% de markup
+// Lista de cargadores con 50% agregada
 const NEW_CARGADORES = [
   {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO",categoria:"Cargadores",precio_final:2894.47,markup:50},
   {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO",categoria:"Cargadores",precio_final:2894.47,markup:50},
@@ -134,7 +125,7 @@ const NEW_CARGADORES = [
   {nombre:"ADAPTADOR-CARGADOR 12V MOD 38 XAEA - SPEED - PD + QC 3.0",categoria:"Cargadores",precio_final:5842.39,markup:50},
   {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores",precio_final:1289.82,markup:50},
   {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio_final:1297.62,markup:50}
-  // Podés agregar el resto de la lista siguiendo el mismo formato
+  // Agregá los demás de la lista completa siguiendo este patrón
 ];
 
 async function loadSeed(){
@@ -143,7 +134,6 @@ async function loadSeed(){
     DATA = await r.json();
   }catch(e){DATA=[];}
 
-  // Agregamos cargadores nuevos si no existen
   NEW_CARGADORES.forEach(c=>{
     if(!DATA.some(p=>p.nombre===c.nombre)){
       DATA.push({...c,id:Date.now().toString() + Math.random()});
@@ -168,7 +158,6 @@ async function saveToGitHub(content){
   if(!putRes.ok){alert("Error al guardar en GitHub");return;}
 }
 
-// Construimos categorías sin borrar las anteriores
 function buildCatsFromData(){
   DATA.forEach(p=>{
     if(p.categoria){
@@ -177,20 +166,18 @@ function buildCatsFromData(){
   });
 }
 
-// Mostramos las categorías
 function drawCats(){
   const cont = document.getElementById('cats'); cont.innerHTML='';
   Object.keys(CATS).sort().forEach(c=>{
     const box=document.createElement('div');
     box.innerHTML = `<b>${c}</b> (Markup: ${CATS[c]}%) `;
     const btn=document.createElement('button');btn.className='btn';btn.textContent='Eliminar';
-    btn.onclick=async(e=>{
-      e.stopPropagation();
+    btn.onclick=async()=>{
       DATA=DATA.filter(p=>p.categoria!==c);
       delete CATS[c];
       draw();drawCats();
       await saveToGitHub(JSON.stringify(DATA,null,2));
-    });
+    };
     box.onclick=()=> drawCategory(c);
     box.style.cursor = "pointer";
     box.appendChild(btn);
@@ -198,7 +185,6 @@ function drawCats(){
   });
 }
 
-// Mostrar productos de solo una categoría
 function drawCategory(cat){
   const list=document.getElementById('list');list.innerHTML='';
   DATA.filter(p=>p.categoria===cat)
@@ -214,7 +200,6 @@ function drawCategory(cat){
       });
 }
 
-// Dibujar todos los productos
 function draw(q=''){
   const list=document.getElementById('list');list.innerHTML='';
   DATA.filter(p=>!q||(p.nombre||'').toLowerCase().includes(q.toLowerCase()))
@@ -230,7 +215,6 @@ function draw(q=''){
       });
 }
 
-// Modal
 function openModal(id){
   const p=DATA.find(x=>x.id==id);
   if(!p) return;
@@ -265,16 +249,12 @@ document.getElementById('save').onclick=async ()=>{
 
 document.getElementById('q').addEventListener('input',e=>draw(e.target.value));
 
-// Login
 document.getElementById('doLogin').onclick=()=>{
-    const email = document.getElementById('email');
-    const pass = document.getElementById('pass');
-
-    if(email.value==='admin@celldistribuciones.com' && pass.value==='QWERTY123456'){
-        loginBox.style.display='none';
-        if(!localStorage.getItem("gh_token")) tokenBox.style.display='block';
-        else {app.style.display='block';loadSeed();}
-    } else alert('Credenciales incorrectas');
+  if(email.value==='admin@celldistribuciones.com'&&pass.value==='QWERTY123456'){
+    loginBox.style.display='none';
+    if(!localStorage.getItem("gh_token")) tokenBox.style.display='block';
+    else {app.style.display='block';loadSeed();}
+  }else alert('Credenciales incorrectas');
 };
 
 document.getElementById('saveToken').onclick=()=>{
@@ -287,6 +267,8 @@ document.getElementById('saveToken').onclick=()=>{
 };
 
 document.getElementById('logout').onclick=()=>{localStorage.removeItem("gh_token");location.reload();};
+
 </script>
 </body>
 </html>
+
