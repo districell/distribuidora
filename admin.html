@@ -22,6 +22,8 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 .preview{height:150px;background:#f1f1f1;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .preview img{max-width:100%;max-height:100%}
 .row{display:flex;gap:8px;flex-wrap:wrap}
+
+/* Modal flotante */
 .modal-bg {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -51,6 +53,7 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 
 <main class="main">
 
+  <!-- LOGIN -->
   <div id="loginBox" class="login">
     <h3>Ingresar</h3>
     <input id="email" placeholder="Email">
@@ -58,16 +61,15 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
     <button id="doLogin" class="btn green">Entrar</button>
   </div>
 
-  <div id="tokenBox" class="login" style="display:none">
-    <h3>Token de GitHub</h3>
-    <p class="small">Pegá tu token con permiso <b>public_repo</b>. Se guarda localmente.</p>
-    <input id="ghToken" placeholder="ghp_xxx..." autocomplete="off"><br><br>
-    <button id="saveToken" class="btn green">Guardar Token</button>
-  </div>
-
+  <!-- APP -->
   <div id="app" style="display:none">
     <div class="panel">
-      <h3>Categoría</h3>
+      <h3>Categorías</h3>
+      <div class="row">
+        <input id="newCat" placeholder="Nueva categoría">
+        <input id="newMarkup" placeholder="% markup" type="number" step="1" style="width:100px">
+        <button id="addCat" class="btn">Agregar</button>
+      </div>
       <div id="cats" class="row small" style="margin-top:8px"></div>
     </div>
 
@@ -80,6 +82,7 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 
 </main>
 
+<!-- MODAL flotante -->
 <div id="modalBg" class="modal-bg">
   <div class="modal">
     <h3>Editar producto</h3>
@@ -98,14 +101,9 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 </div>
 
 <script>
-const USER = "districell";
-const REPO = "distribuidora";
-const BRANCH = "main";
-const FILE_PATH = "semilla.json";
-let DATA = [];
-let CATS = {"Cargadores":50};
-
-// Lista completa de cargadores
+const DATA = [];
+const CATS = {};
+// Lista de cargadores completa
 const NEW_CARGADORES = [
   {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO",categoria:"Cargadores",precio_final:2894.47,markup:50},
   {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO",categoria:"Cargadores",precio_final:2894.47,markup:50},
@@ -158,75 +156,102 @@ const NEW_CARGADORES = [
   {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO - KIT X 100",categoria:"Cargadores",precio_final:405974.26,markup:50}
 ];
 
-function base64EncodeUtf8(str){return btoa(unescape(encodeURIComponent(str)));}
-function fileToDataURL(f){return new Promise((res,rej)=>{const R=new FileReader();R.onload=()=>res(R.result);R.onerror=rej;R.readAsDataURL(f);});}
-
-async function loadSeed(){
-  try{ const r = await fetch(FILE_PATH+'?v='+Date.now()); DATA = await r.json(); }catch(e){DATA=[];}
-  NEW_CARGADORES.forEach(c=>{if(!DATA.some(p=>p.nombre===c.nombre)){DATA.push({...c,id:Date.now().toString() + Math.random()});}});
+// Inicialización de datos
+function initData(){
+  NEW_CARGADORES.forEach(c=>{
+    if(!DATA.some(p=>p.nombre===c.nombre)){
+      DATA.push({...c,id:Date.now().toString() + Math.random()});
+    }
+  });
+  buildCatsFromData();
   drawCats();
   draw();
 }
 
-async function saveToGitHub(content){
-  const token = localStorage.getItem("gh_token");
-  if(!token){ alert("Token no configurado."); return; }
-  const api = `https://api.github.com/repos/${USER}/${REPO}/contents/${FILE_PATH}`;
-  let sha = null;
-  const getRes = await fetch(api,{headers:{Authorization:`Bearer ${token}`}});
-  if(getRes.status===200){sha=(await getRes.json()).sha;}
-  const body={message:"Actualizar semilla.json",content:base64EncodeUtf8(content),branch:BRANCH};
-  if(sha) body.sha = sha;
-  const putRes = await fetch(api,{method:"PUT",headers:{Authorization:`Bearer ${token}`},body:JSON.stringify(body)});
-  if(!putRes.ok){alert("Error al guardar en GitHub");return;}
+function buildCatsFromData(){
+  DATA.forEach(p=>{
+    if(p.categoria && !CATS[p.categoria]) CATS[p.categoria] = p.markup || 0;
+  });
 }
 
 function drawCats(){
   const cont = document.getElementById('cats'); cont.innerHTML='';
-  Object.keys(CATS).forEach(c=>{
+  Object.keys(CATS).sort().forEach(c=>{
     const box=document.createElement('div');
     box.innerHTML = `<b>${c}</b> (Markup: ${CATS[c]}%) `;
     const btn=document.createElement('button');btn.className='btn';btn.textContent='Eliminar';
-    btn.onclick=async()=>{DATA=DATA.filter(p=>p.categoria!==c);delete CATS[c];draw();drawCats();await saveToGitHub(JSON.stringify(DATA,null,2));};
-    box
-    .appendChild(btn); cont.appendChild(box);
-});
+    btn.onclick=()=>{
+      DATA=DATA.filter(p=>p.categoria!==c);
+      delete CATS[c];
+      draw();drawCats();
+    };
+    box.onclick=()=> drawCategory(c);
+    box.style.cursor = "pointer";
+    box.appendChild(btn);
+    cont.appendChild(box);
+  });
 }
 
-.appendChild(btn); cont.appendChild(box);
-});
+function drawCategory(cat){
+  const list=document.getElementById('list');list.innerHTML='';
+  DATA.filter(p=>p.categoria===cat)
+      .forEach(p=>{
+        const card=document.createElement('div');card.className='card';
+        const markup = CATS[p.categoria]||0;
+        const finalPrice = Number(p.precio_final||0) * (1+markup/100);
+        card.innerHTML='<div class="preview">'+(p.imagen?('<img src="'+p.imagen+'">'):'Sin imagen')+'</div>'+
+        '<b>'+p.nombre+'</b><div class="small">'+p.categoria+'</div><div>$'+finalPrice.toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
+        const btn=document.createElement('button');btn.className='btn';btn.style.marginTop='6px';btn.textContent='Editar';
+        btn.onclick=()=> openModal(p.id);
+        card.appendChild(btn);list.appendChild(card);
+      });
 }
 
-function draw(){
-const list = document.getElementById('list'); list.innerHTML='';
-const q = document.getElementById('q').value.toLowerCase();
-DATA.filter(p=>p.categoria==="Cargadores" && p.nombre.toLowerCase().includes(q))
-.forEach(p=>{
-const card = document.createElement('div'); card.className='card';
-card.innerHTML=<b>${p.nombre}</b><br>Precio final: $${p.precio_final.toFixed(2)}<br>Markup: ${p.markup}%;
-list.appendChild(card);
-});
+function draw(q=''){
+  const list=document.getElementById('list');list.innerHTML='';
+  DATA.filter(p=>!q||(p.nombre||'').toLowerCase().includes(q.toLowerCase()))
+      .forEach(p=>{
+        const card=document.createElement('div');card.className='card';
+        const markup = CATS[p.categoria]||0;
+        const finalPrice = Number(p.precio_final||0) * (1+markup/100);
+        card.innerHTML='<div class="preview">'+(p.imagen?('<img src="'+p.imagen+'">'):'Sin imagen')+'</div>'+
+        '<b>'+p.nombre+'</b><div class="small">'+p.categoria+'</div><div>$'+finalPrice.toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
+        const btn=document.createElement('button');btn.className='btn';btn.style.marginTop='6px';btn.textContent='Editar';
+        btn.onclick=()=> openModal(p.id);
+        card.appendChild(btn);list.appendChild(card);
+      });
 }
 
-document.getElementById('q').addEventListener('input',draw);
+// Modal
+function openModal(id){
+  const p=DATA.find(x=>x.id==id);
+  if(!p) return;
+  pId.value=p.id; pNombre.value=p.nombre; pCat.value=p.categoria; pPrecio.value=p.precio_final; pSpecs.value=p.caracteristicas||'';
+  if(p.imagen) pPreview.innerHTML='<img src="'+p.imagen+'">'; else pPreview.textContent='Sin imagen';
+  document.getElementById('modalBg').style.display='flex';
+}
 
-document.getElementById('doLogin').addEventListener('click',()=>{
-if(document.getElementById('email').value && document.getElementById('pass').value){
-document.getElementById('loginBox').style.display='none';
-document.getElementById('tokenBox').style.display='block';
-} else { alert("Complete los campos"); }
+document.getElementById('closeModal').onclick=()=>{document.getElementById('modalBg').style.display='none';};
+document.getElementById('pImagen').addEventListener('change', async (e)=>{
+  const f=e.target.files[0]; if(!f) return;
+  const r=await new Promise((res,rej)=>{const R=new FileReader();R.onload=()=>res(R.result);R.onerror=rej;R.readAsDataURL(f);});
+  pPreview.innerHTML='<img src="'+r+'">';
 });
+document.getElementById('save').onclick=()=>{
+  const id=pId.value.trim(); const nombre=pNombre.value.trim(); const categoria=pCat.value.trim(); const precio=Number(pPrecio.value||0); const caracteristicas=pSpecs.value.trim();
+  let imagen=''; const f=pImagen.files[0]; if(f) imagen = URL.createObjectURL(f); else if(pPreview.querySelector('img')) imagen = pPreview.querySelector('img').src;
+  if(id){ const i=DATA.findIndex(x=>x.id==id); if(i>=0){DATA[i]={...DATA[i],nombre,categoria,precio_final:precio,caracteristicas,imagen};} else{DATA.push({id,nombre,categoria,precio_final:precio,caracteristicas,imagen});}}
+  if(categoria && !CATS[categoria]) CATS[categoria]=0;
+  draw(); drawCats(); document.getElementById('modalBg').style.display='none';
+};
 
-document.getElementById('saveToken').addEventListener('click',()=>{
-const t = document.getElementById('ghToken').value;
-if(t){ localStorage.setItem("gh_token",t); document.getElementById('tokenBox').style.display='none'; document.getElementById('app').style.display='block'; loadSeed(); }
-});
+document.getElementById('q').addEventListener('input', e=>draw(e.target.value));
 
-document.getElementById('logout').addEventListener('click',()=>{
-localStorage.removeItem("gh_token"); location.reload();
-});
-
-loadSeed();
+document.getElementById('doLogin').onclick=()=>{
+  if(email.value==='admin@celldistribuciones.com' && pass.value==='QWERTY123456'){ loginBox.style.display='none'; app.style.display='block'; initData();}
+  else alert('Credenciales incorrectas');
+};
+document.getElementById('logout').onclick=()=>{location.reload();};
 </script>
-
-</body> </html> ``
+</body>
+</html>
