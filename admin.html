@@ -60,19 +60,17 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 
 <main class="main">
 
-  <!-- LOGIN -->
+  <!-- LOGIN (sin mostrar credenciales ni demo) -->
   <div id="loginBox" class="login">
     <h3>Ingresar</h3>
     <input id="email" placeholder="Email">
     <input id="pass" placeholder="Contraseña" type="password">
     <div style="margin-top:8px;display:flex;gap:8px">
       <button id="doLogin" class="btn green">Entrar</button>
-      <button id="demoOpen" class="btn">Demo</button>
     </div>
-    <div class="note">Usuario: <b>admin@celldistribuciones.com</b> / Pass: <b>QWERTY123456</b></div>
   </div>
 
-  <!-- TOKEN (opcional, si usás GitHub) -->
+  <!-- TOKEN (opcional) -->
   <div id="tokenBox" class="login" style="display:none">
     <h3>Token de GitHub</h3>
     <p class="small">Pegá tu token con permiso <b>public_repo</b>. Se guarda localmente.</p>
@@ -160,12 +158,8 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 </div>
 
 <script>
-/* --- Basado en tu admin, modificado para:
-     - tener UNA sola categoría "Cargadores" (se normalizan otras variantes)
-     - mantener otras categorías fijas
-     - permitir crear/editar/borrar productos y editar % de categoría
-     - precargar la lista completa de cargadores que enviaste
-*/
+/* -- Misma lógica que teníamos, pero sin mostrar credenciales ni Demo.
+   Copié la versión estable y sólo quité la sugerencia visible y el Demo. */
 
 /* Config GitHub (opcional) */
 const USER = "districell";
@@ -174,7 +168,7 @@ const BRANCH = "main";
 const FILE_PATH = "semilla.json";
 
 /* Estado */
-let DATA = []; // productos
+let DATA = [];
 let CATS = {
   "Todas": 0,
   "Baterías": 0,
@@ -184,14 +178,14 @@ let CATS = {
   "Tapas Traseras": 0
 };
 
-/* Utiles */
+/* Utils */
 const el = id => document.getElementById(id);
 function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
 function fileToDataURL(f){ return new Promise((res,rej)=>{ if(!f) return res(null); const R=new FileReader(); R.onload=()=>res(R.result); R.onerror=rej; R.readAsDataURL(f); }); }
 function formatCurrency(n){ return Number(n).toLocaleString('es-AR',{minimumFractionDigits:2}); }
 function base64EncodeUtf8(str){return btoa(unescape(encodeURIComponent(str)));}
 
-/* Lista COMPLETA de cargadores (los precargamos en 'Cargadores') */
+/* Precargados (lista completa de cargadores) */
 const PRECARGADOS_CARGADORES = [
   {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO", precio_base:2894.47},
   {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO", precio_base:2894.47},
@@ -244,31 +238,26 @@ const PRECARGADOS_CARGADORES = [
   {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO - KIT X 100", precio_base:405974.26}
 ];
 
-/* Normaliza categorías en un producto (mapea variantes de cargadores a 'Cargadores') */
+/* Normalizar categoría: mapear variantes de cargadores a 'Cargadores' */
 function normalizeCategoria(cat){
   if(!cat) return 'Todas';
   const s = cat.toString().trim();
-  // si la categoría contiene 'Cargador' (mayúsculas o con guión/underscore), la normalizamos
-  if(/cargador|cargadores/i.test(s) || s.startsWith('Cargadores_') || s.includes('CARGADOR')) return 'Cargadores';
+  if(/cargador|cargadores|CARGADOR|CARGADORES|Cargadores_|Cargadores_/i.test(s)) return 'Cargadores';
   return s;
 }
 
-/* Construye CATS desde DATA sin borrar categorías fijas */
+/* Construir categorías desde DATA sin borrar base */
 function buildCatsFromData(){
-  // empezar con nuestras categorías base para no borrarlas
   const base = {"Todas":0,"Baterías":0,"Cargadores":50,"Módulos":0,"Placas de Carga":0,"Tapas Traseras":0};
-  // incluir CATS existentes si hay (evita perder % editados)
-  Object.keys(CATS).forEach(k=>{ if(base[k]===undefined) base[k]=CATS[k]; else base[k]=CATS[k]!==undefined?CATS[k]:base[k]; });
-  // añadir categorías que vengan en DATA (normalizadas)
+  Object.keys(CATS).forEach(k=>{ if(base[k]===undefined) base[k]=CATS[k]; else base[k] = (CATS[k]!==undefined?CATS[k]:base[k]); });
   DATA.forEach(p=>{
-    const nc = normalizeCategoria(p.categoria || '');
-    p.categoria = nc;
-    if(base[nc]===undefined) base[nc] = (nc === 'Cargadores' ? 50 : 0);
+    p.categoria = normalizeCategoria(p.categoria || '');
+    if(base[p.categoria]===undefined) base[p.categoria] = (p.categoria==='Cargadores'?50:0);
   });
   CATS = base;
 }
 
-/* Dibujar categorías */
+/* render categorías */
 function drawCats(){
   const cont = el('cats'); cont.innerHTML = '';
   Object.keys(CATS).sort((a,b)=>{
@@ -291,7 +280,7 @@ function drawCats(){
   });
 }
 
-/* Dibuja todos los productos (filtro por texto q) */
+/* dibujar productos */
 function draw(q=''){
   const list = el('list'); list.innerHTML = '';
   const qq = (q || el('q').value || '').toLowerCase();
@@ -318,7 +307,7 @@ function draw(q=''){
   });
 }
 
-/* Dibuja productos de una sola categoría */
+/* drawCategory */
 function drawCategory(cat){
   const list = el('list'); list.innerHTML = '';
   const items = DATA.filter(p=>p.categoria === cat);
@@ -336,7 +325,7 @@ function drawCategory(cat){
     const btn = document.createElement('button'); btn.className='btn'; btn.style.marginTop='6px'; btn.textContent='Editar';
     btn.onclick = ()=> openModal(p.id);
     const del = document.createElement('button'); del.className='btn'; del.style.background='#c0392b'; del.style.marginLeft='8px'; del.textContent='Borrar';
-    del.onclick = async ()=>{ if(!confirm('Eliminar este producto?')) return; DATA = DATA.filter(x=>x.id!==p.id); drawCategory(cat); drawCats(); await trySaveToGitHub(); };
+    del.onclick = async ()=>{ if(!confirm('Eliminar este producto?')) return; DATA = DATA.filter(x=>x.id!==p.id); drawCategory(cat); drawCats(); populateCategories(); await trySaveToGitHub(); };
     const row = document.createElement('div'); row.style.marginTop='8px';
     row.appendChild(btn); row.appendChild(del);
     card.appendChild(row);
@@ -344,14 +333,14 @@ function drawCategory(cat){
   });
 }
 
-/* Modal open/close */
+/* modal open/close y llenar select */
 function openModal(id){
   const p = DATA.find(x=>x.id==id);
   el('modalTitle').textContent = p ? 'Editar producto' : 'Nuevo producto';
   if(p){
     el('pId').value = p.id;
     el('pNombre').value = p.nombre||'';
-    el('pPrecio').value = p.precio_base!==undefined ? p.precio_base : (p.precio_final||0);
+    el('pPrecio').value = p.precio_base!==undefined? p.precio_base : (p.precio_final||0);
     el('pCat').value = p.categoria||'Cargadores';
     el('pSpecs').value = p.caracteristicas||'';
     el('pStock').value = p.stock||'';
@@ -362,13 +351,10 @@ function openModal(id){
     el('pSpecs').value=''; el('pStock').value=''; el('pPreview').textContent='Sin imagen';
     el('deleteProduct').style.display = 'none';
   }
-  // llenar select categorías en modal
   fillCatSelect();
   el('modalBg').style.display = 'flex';
 }
 function closeModal(){ el('modalBg').style.display = 'none'; }
-
-/* Fill category select in modal */
 function fillCatSelect(){
   const sel = el('pCat'); sel.innerHTML = '';
   Object.keys(CATS).forEach(cat=>{
@@ -377,45 +363,29 @@ function fillCatSelect(){
   });
 }
 
-/* Cargar semilla (semilla.json) y precargar cargadores */
+/* cargar semilla y precargar cargadores */
 async function loadSeed(){
   try{
     const r = await fetch(FILE_PATH+'?v='+Date.now());
     if(r.ok){
       const j = await r.json();
-      // j puede ser un array de productos o un objeto
-      if(Array.isArray(j)){ DATA = j.map(p=>normalizeProductFromSeed(p)); }
+      if(Array.isArray(j)) DATA = j.map(p=>normalizeProductFromSeed(p));
       else if(j.DATA) DATA = (j.DATA||[]).map(p=>normalizeProductFromSeed(p));
     }
-  }catch(e){
-    // ignore, DATA queda como está
-  }
-  // Normalizar categorías en DATA y asegurarnos las categorías base existan
+  }catch(e){ /* ignore */ }
   buildCatsFromData();
-  // precargar cargadores: sólo agregamos si no existe por nombre exacto dentro de Cargadores
   PRECARGADOS_CARGADORES.forEach(item=>{
-    const exists = DATA.some(p=>p.nombre===item.nombre && normalizeCategoria(p.categoria)==='Cargadores');
+    const exists = DATA.some(p=>p.nombre===item.nombre && p.categoria==='Cargadores');
     if(!exists){
-      DATA.push({
-        id: uid(),
-        nombre: item.nombre,
-        categoria: 'Cargadores',
-        precio_base: item.precio_base,
-        imagen: '',
-        caracteristicas: '',
-        stock: ''
-      });
+      DATA.push({ id: uid(), nombre: item.nombre, categoria: 'Cargadores', precio_base: item.precio_base, imagen:'', caracteristicas:'', stock:'' });
     }
   });
-  // asegurar Cargadores tenga 50% si no tiene porcentaje todavía
-  if(CATS['Cargadores']===undefined) CATS['Cargadores']=50;
+  if(CATS['Cargadores']===undefined) CATS['Cargadores'] = 50;
   drawCats();
   draw();
 }
-
-/* Normalizar producto importado/seed */
 function normalizeProductFromSeed(p){
-  const prod = Object.assign({}, p);
+  const prod = Object.assign({},p);
   prod.nombre = (prod.nombre||'').toString().trim();
   prod.categoria = normalizeCategoria(prod.categoria||'');
   prod.precio_base = prod.precio_base!==undefined ? Number(prod.precio_base) : (prod.precio_final!==undefined ? Number(prod.precio_final) : 0);
@@ -426,10 +396,10 @@ function normalizeProductFromSeed(p){
   return prod;
 }
 
-/* Guardar en GitHub si hay token (no obligatorio) */
+/* Guardado en GitHub si token */
 async function trySaveToGitHub(){
   const token = localStorage.getItem("gh_token");
-  if(!token) return; // no hacemos nada si no está token
+  if(!token) return;
   try{
     const api = `https://api.github.com/repos/${USER}/${REPO}/contents/${FILE_PATH}`;
     let sha = null;
@@ -439,12 +409,10 @@ async function trySaveToGitHub(){
     if(sha) body.sha = sha;
     const putRes = await fetch(api, { method:'PUT', headers:{ Authorization:`Bearer ${token}` }, body: JSON.stringify(body) });
     if(!putRes.ok) alert("Error al guardar en GitHub");
-  }catch(e){
-    console.warn('Error save GitHub', e);
-  }
+  }catch(e){ console.warn('Error save GitHub', e); }
 }
 
-/* Save (guardar producto) */
+/* guardar producto */
 el('save').addEventListener('click', async ()=>{
   const id = el('pId').value.trim();
   const nombre = el('pNombre').value.trim();
@@ -463,15 +431,11 @@ el('save').addEventListener('click', async ()=>{
   if(!categoria) return alert('Seleccioná categoría');
   if(id){
     const i = DATA.findIndex(x=>x.id==id);
-    if(i>=0){
-      DATA[i] = { ...DATA[i], nombre, categoria, precio_base:precio, caracteristicas, stock, imagen };
-    } else {
-      DATA.push({ id, nombre, categoria, precio_base:precio, caracteristicas, stock, imagen });
-    }
+    if(i>=0) DATA[i] = { ...DATA[i], nombre, categoria, precio_base:precio, caracteristicas, stock, imagen };
+    else DATA.push({ id, nombre, categoria, precio_base:precio, caracteristicas, stock, imagen });
   } else {
     DATA.push({ id: uid(), nombre, categoria, precio_base:precio, caracteristicas, stock, imagen });
   }
-  // asegurar categoría en CATS
   if(CATS[categoria]===undefined) CATS[categoria] = (categoria==='Cargadores'?50:0);
   buildCatsFromData();
   drawCats();
@@ -480,7 +444,7 @@ el('save').addEventListener('click', async ()=>{
   closeModal();
 });
 
-/* Eliminar desde modal */
+/* eliminar desde modal */
 el('deleteProduct').addEventListener('click', async ()=>{
   const id = el('pId').value.trim();
   if(!id) return alert('No hay producto seleccionado');
@@ -493,10 +457,9 @@ el('deleteProduct').addEventListener('click', async ()=>{
   closeModal();
 });
 
-/* Eventos UI */
+/* UI events */
 el('closeModal').onclick = ()=> closeModal();
 el('pImagen').addEventListener('change', async (e)=>{ const f = e.target.files[0]; if(!f) return; const r = await fileToDataURL(f); el('pPreview').innerHTML = `<img src="${r}">`; });
-
 el('q').addEventListener('input', ()=> draw());
 el('addProductBtn').addEventListener('click', ()=> { fillCatSelect(); openModal(null); });
 el('addCat').addEventListener('click', ()=> {
@@ -509,7 +472,7 @@ el('addCat').addEventListener('click', ()=> {
 });
 el('showAll').addEventListener('click', ()=> draw(''));
 
-/* Export / Import JSON */
+/* export/import */
 el('exportBtn').addEventListener('click', ()=>{
   const payload = { DATA, CATS };
   const blob = new Blob([JSON.stringify(payload,null,2)], {type:'application/json'});
@@ -534,12 +497,11 @@ el('importFile').addEventListener('change', async (e)=>{
   e.target.value = null;
 });
 
-/* Login / token logic (se mantiene igual que tu original) */
+/* login/token/logout (ahora sin Demo visible) */
 el('doLogin').addEventListener('click', ()=> {
   const email = el('email').value.trim(); const pass = el('pass').value.trim();
   if(email==='admin@celldistribuciones.com' && pass==='QWERTY123456'){
     el('loginBox').style.display='none';
-    // si hay token guardado, mostramos tokenBox sólo si no hay token
     if(!localStorage.getItem("gh_token")) { el('tokenBox').style.display='block'; }
     else { el('app').style.display='block'; loadSeed(); }
   } else alert('Credenciales incorrectas');
@@ -552,16 +514,10 @@ el('saveToken').addEventListener('click', ()=> {
   el('app').style.display='block';
   loadSeed();
 });
-el('demoOpen').addEventListener('click', ()=> { el('loginBox').style.display='none'; el('app').style.display='block'; loadSeed(); });
 el('logout').addEventListener('click', ()=> { localStorage.removeItem('gh_token'); location.reload(); });
 
-/* Inicial */
-function buildCatsFromData_initialFallback(){
-  // ensure base cats exist
-  ["Todas","Baterías","Cargadores","Módulos","Placas de Carga","Tapas Traseras"].forEach(k=>{ if(CATS[k]===undefined) CATS[k] = (k==='Cargadores'?50:0); });
-}
-buildCatsFromData_initialFallback();
-
+/* Inicial: aseguramos categorías base */
+["Todas","Baterías","Cargadores","Módulos","Placas de Carga","Tapas Traseras"].forEach(k=>{ if(CATS[k]===undefined) CATS[k]= (k==='Cargadores'?50:0); });
 </script>
 </body>
 </html>
