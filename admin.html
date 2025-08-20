@@ -83,9 +83,7 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
       <h3>Productos</h3>
       <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
         <input id="q" placeholder="Buscar...">
-        <select id="selCat" style="width:220px">
-          <!-- se llena dinámicamente -->
-        </select>
+        <select id="selCat" style="width:220px"></select>
         <button id="addProductBtn" class="btn green">Agregar producto</button>
         <div class="right">
           <button id="exportBtn" class="btn">Export JSON</button>
@@ -149,15 +147,16 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 </div>
 
 <script>
-/*
-  Admin completo (parte 1)
-  - Esta primera mitad trae estructura, estilos y funciones auxiliares.
-  - La segunda mitad incluye la lista completa de cargadores y la inicialización final.
-*/
+/* --------------------------------------------------------------------------
+   Admin completo (UN SOLO ARCHIVO)
+   - Toda la lógica JS está aquí: categorías, productos, preload de cargadores,
+     CRUD, export/import y ajuste de % por categoría.
+   - No hay texto JS fuera del <script> (así no se mostrará en la página).
+   -------------------------------------------------------------------------- */
 
-/* ----- Estado y persistencia ----- */
-const STORAGE_KEY = 'cell_admin_v1';
-let DATA = []; // array de productos { id, nombre, categoria, precio_base, imagen, caracteristicas, stock }
+/* ----- estado y persistencia ----- */
+const STORAGE_KEY = 'cell_admin_v2';
+let DATA = []; // {id, nombre, categoria, precio_base, imagen, caracteristicas, stock}
 let CATS = {
   "Todas": 0,
   "Baterías": 0,
@@ -168,11 +167,8 @@ let CATS = {
 };
 
 function saveState(){
-  try{
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({DATA, CATS}));
-  }catch(e){ console.warn("No se pudo guardar localmente", e); }
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify({DATA, CATS})); }catch(e){ console.warn(e); }
 }
-
 function loadState(){
   try{
     const s = localStorage.getItem(STORAGE_KEY);
@@ -186,190 +182,19 @@ function loadState(){
 
 /* ----- utilidades ----- */
 function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
-
+function el(id){ return document.getElementById(id); }
 function fileToDataURL(file){
   return new Promise((res,rej)=>{
     if(!file) return res(null);
-    const reader = new FileReader();
-    reader.onload = ()=> res(reader.result);
-    reader.onerror = rej;
-    reader.readAsDataURL(file);
+    const r = new FileReader();
+    r.onload = ()=> res(r.result);
+    r.onerror = rej;
+    r.readAsDataURL(file);
   });
 }
+function formatCurrency(n){ return Number(n).toLocaleString('es-AR',{minimumFractionDigits:2, maximumFractionDigits:2}); }
 
-/* ----- DOM referencias ----- */
-const el = id => document.getElementById(id);
-
-/* ----- RENDER: categorías ----- */
-function populateCategorySelects(){
-  const sel = el('selCat'); sel.innerHTML = '';
-  const pcat = el('pCat'); pcat.innerHTML = '';
-  Object.keys(CATS).forEach(cat=>{
-    const opt = document.createElement('option'); opt.value = cat; opt.textContent = cat;
-    sel.appendChild(opt);
-    const opt2 = opt.cloneNode(true);
-    pcat.appendChild(opt2);
-  });
-}
-
-function renderCategories(){
-  const cont = el('cats'); cont.innerHTML = '';
-  Object.keys(CATS).forEach(cat=>{
-    const wrapper = document.createElement('div'); wrapper.className = 'cat-item';
-    const name = document.createElement('div'); name.textContent = cat;
-    name.style.fontWeight = '600';
-    const inp = document.createElement('input'); inp.className='small-input'; inp.type='number'; inp.value = CATS[cat];
-    inp.title = '% markup';
-    inp.onchange = ()=>{
-      CATS[cat] = Number(inp.value) || 0;
-      saveState();
-      draw(); // redraw prices
-    };
-    const goBtn = document.createElement('button'); goBtn.className='btn'; goBtn.textContent='Ver';
-    goBtn.onclick = ()=> drawCategory(cat);
-    const delBtn = document.createElement('button'); delBtn.className='btn'; delBtn.textContent='Eliminar';
-    delBtn.onclick = (e)=>{ e.stopPropagation(); if(cat==='Cargadores' || cat==='Todas'){ return alert('No se puede eliminar las categorias principales'); } if(confirm('Eliminar categoría y sus productos?')){ DATA = DATA.filter(p=>p.categoria!==cat); delete CATS[cat]; populateCategorySelects(); renderCategories(); saveState(); draw(); } };
-    wrapper.appendChild(name);
-    wrapper.appendChild(inp);
-    wrapper.appendChild(goBtn);
-    wrapper.appendChild(delBtn);
-    cont.appendChild(wrapper);
-  });
-}
-
-/* ----- RENDER: productos ----- */
-function formatCurrency(n){
-  return Number(n).toLocaleString('es-AR',{minimumFractionDigits:2, maximumFractionDigits:2});
-}
-
-function draw(filteredQ=''){
-  const list = el('list'); list.innerHTML = '';
-  const q = (filteredQ || el('q').value || '').toLowerCase();
-  DATA.filter(p=> (q==='' || (p.nombre||'').toLowerCase().includes(q.toLowerCase())) )
-      .forEach(p=>{
-        const card = document.createElement('div'); card.className='card';
-        const markup = CATS[p.categoria] !== undefined ? CATS[p.categoria] : 0;
-        const finalPrice = Number(p.precio_base || p.precio_final || 0) * (1 + markup/100);
-        const imgHTML = p.imagen ? `<img src="${p.imagen}">` : 'Sin imagen';
-        card.innerHTML = `<div class="preview">${imgHTML}</div>
-          <div style="flex:1">
-            <b>${p.nombre||''}</b>
-            <div class="small">${p.categoria||''} ${p.stock?(' • '+p.stock):''}</div>
-          </div>
-          <div style="text-align:right">
-            <div style="font-weight:600">$${formatCurrency(finalPrice)}</div>
-            <div class="small">(${markup}% cat)</div>
-          </div>`;
-        const btnRow = document.createElement('div'); btnRow.style.display='flex'; btnRow.style.gap='8px';
-        const editBtn = document.createElement('button'); editBtn.className='btn'; editBtn.textContent='Editar';
-        editBtn.onclick = ()=> openModal(p.id);
-        const delBtn = document.createElement('button'); delBtn.className='btn'; delBtn.style.background='#c0392b'; delBtn.textContent='Borrar';
-        delBtn.onclick = ()=>{
-          if(confirm('Eliminar este producto?')){ DATA = DATA.filter(x=>x.id!==p.id); saveState(); draw(); renderCategories(); populateCategorySelects(); }
-        };
-        btnRow.appendChild(editBtn); btnRow.appendChild(delBtn);
-        card.appendChild(btnRow);
-        list.appendChild(card);
-      });
-}
-
-/* ----- Modal ----- */
-function openModal(id){
-  const product = DATA.find(x=>x.id===id);
-  el('modalTitle').textContent = product ? 'Editar producto' : 'Nuevo producto';
-  if(product){
-    el('pId').value = product.id;
-    el('pNombre').value = product.nombre || '';
-    el('pCat').value = product.categoria || 'Cargadores';
-    el('pPrecio').value = product.precio_base || product.precio_final || 0;
-    el('pSpecs').value = product.caracteristicas || '';
-    el('pStock').value = product.stock || '';
-    if(product.imagen) el('pPreview').innerHTML = `<img src="${product.imagen}">`; else el('pPreview').textContent='Sin imagen';
-    el('deleteProduct').style.display = 'inline-block';
-  } else {
-    el('pId').value = '';
-    el('pNombre').value = '';
-    el('pCat').value = 'Cargadores';
-    el('pPrecio').value = '';
-    el('pSpecs').value = '';
-    el('pStock').value = '';
-    el('pPreview').textContent = 'Sin imagen';
-    el('deleteProduct').style.display = 'none';
-  }
-  el('modalBg').style.display = 'flex';
-}
-
-function closeModal(){
-  el('modalBg').style.display = 'none';
-}
-
-/* ----- Eventos que ya están listos (continuará en la segunda mitad) ----- */
-el('closeModal').addEventListener('click', closeModal);
-
-el('pImagen').addEventListener('change', async (e)=>{
-  const f = e.target.files[0];
-  if(!f) return;
-  const dataUrl = await fileToDataURL(f);
-  el('pPreview').innerHTML = `<img src="${dataUrl}">`;
-});
-
-el('addCat').addEventListener('click', ()=>{
-  const name = (el('newCat').value||'').trim();
-  const m = Number(el('newMarkup').value||0);
-  if(!name) return alert('Poner nombre de categoria');
-  if(CATS[name]) return alert('Categoría ya existe');
-  CATS[name] = m;
-  renderCategories();
-  populateCategorySelects();
-  saveState();
-  el('newCat').value=''; el('newMarkup').value='';
-});
-
-el('showAll').addEventListener('click', ()=> draw(''));
-
-/* Search & add product btn & export/import - actions set in 2nd half */
-el('q').addEventListener('input', ()=> draw());
-
-el('addProductBtn').addEventListener('click', ()=> {
-  // abrir modal nuevo producto; se completará guardar en 2ª parte
-  openModal(null);
-});
-
-/* Login */
-el('doLogin').addEventListener('click', ()=>{
-  const email = el('email').value.trim();
-  const pass = el('pass').value.trim();
-  if(email === 'admin@celldistribuciones.com' && pass === 'QWERTY123456'){
-    el('loginBox').style.display='none';
-    el('app').style.display='block';
-    // initialización completa en segunda mitad
-  } else {
-    alert('Credenciales incorrectas');
-  }
-});
-
-/* Demo quick entry (para probar sin credenciales) */
-el('demoOpen').addEventListener('click', ()=>{
-  el('loginBox').style.display='none';
-  el('app').style.display='block';
-});
-
-/* Logout */
-el('logout').addEventListener('click', ()=>{
-  if(confirm('Cerrar sesión?')){ location.reload(); }
-});
-
-/* NOTE: La segunda mitad incluye:
-   - la LISTA COMPLETA de cargadores (array),
-   - la lógica para inicializar DATA (cargar desde localStorage o pre-cargar cargadores),
-   - la implementación final de guardar producto (botón save), eliminar desde modal,
-   - export/import JSON,
-   - botones para subir/bajar % por categoría si querés.
-   -> Pega la segunda mitad exactamente después de esta línea.
-*/
-</script>
-</body>
-</html>
+/* ----- CARGADORES: lista completa (precio base) ----- */
 const CARGADORES = [
   {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO", categoria:"Cargadores", precio_base:2894.47},
   {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO", categoria:"Cargadores", precio_base:2894.47},
@@ -422,26 +247,156 @@ const CARGADORES = [
   {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO - KIT X 100", categoria:"Cargadores", precio_base:405974.26}
 ];
 
-/* Inicialización: cargar desde localStorage o precargar cargadores */
-function initAll(){
-  const loaded = loadState();
-  if(!loaded){
-    // precargar CARGADORES sin eliminar otros (DATA puede tener productos si cargó antes)
-    CARGADORES.forEach(c=>{
-      if(!DATA.some(p=>p.nombre === c.nombre && p.categoria === c.categoria)){
-        DATA.push({...c, id: uid(), imagen:'', caracteristicas:'', stock:''});
-      }
-      // asegurar categoría en CATS
-      if(!CATS[c.categoria]) CATS[c.categoria] = 50;
-    });
-    saveState();
-  }
-  populateCategorySelects();
-  renderCategories();
-  draw();
+/* ----- renderización de UI ----- */
+
+function populateCategorySelects(){
+  const sel = el('selCat'); sel.innerHTML = '';
+  const pcat = el('pCat'); pcat.innerHTML = '';
+  Object.keys(CATS).forEach(cat=>{
+    const opt = document.createElement('option'); opt.value = cat; opt.textContent = cat;
+    sel.appendChild(opt);
+    const opt2 = opt.cloneNode(true);
+    pcat.appendChild(opt2);
+  });
 }
 
-/* Guardar producto desde modal */
+function renderCategories(){
+  const cont = el('cats'); cont.innerHTML = '';
+  Object.keys(CATS).forEach(cat=>{
+    const wrapper = document.createElement('div'); wrapper.className = 'cat-item';
+    const name = document.createElement('div'); name.textContent = cat; name.style.fontWeight='600';
+    const inp = document.createElement('input'); inp.className='small-input'; inp.type='number'; inp.value = CATS[cat];
+    inp.title = '% markup';
+    inp.onchange = ()=>{ CATS[cat] = Number(inp.value) || 0; saveState(); draw(); };
+    const goBtn = document.createElement('button'); goBtn.className='btn'; goBtn.textContent='Ver';
+    goBtn.onclick = ()=> drawCategory(cat);
+    const delBtn = document.createElement('button'); delBtn.className='btn'; delBtn.textContent='Eliminar';
+    delBtn.onclick = (e)=>{ e.stopPropagation(); if(cat==='Cargadores' || cat==='Todas'){ return alert('No se puede eliminar las categorias principales'); } if(confirm('Eliminar categoría y sus productos?')){ DATA = DATA.filter(p=>p.categoria!==cat); delete CATS[cat]; populateCategorySelects(); renderCategories(); saveState(); draw(); } };
+    wrapper.appendChild(name); wrapper.appendChild(inp); wrapper.appendChild(goBtn); wrapper.appendChild(delBtn);
+    cont.appendChild(wrapper);
+  });
+}
+
+function draw(filteredQ=''){
+  const list = el('list'); list.innerHTML = '';
+  const q = (filteredQ || el('q').value || '').toLowerCase();
+  DATA.filter(p=> (q==='' || (p.nombre||'').toLowerCase().includes(q.toLowerCase())) )
+      .forEach(p=>{
+        const card = document.createElement('div'); card.className='card';
+        const markup = CATS[p.categoria] !== undefined ? CATS[p.categoria] : 0;
+        const finalPrice = Number(p.precio_base || p.precio_final || 0) * (1 + markup/100);
+        const imgHTML = p.imagen ? `<img src="${p.imagen}">` : 'Sin imagen';
+        card.innerHTML = `<div class="preview">${imgHTML}</div>
+          <div style="flex:1">
+            <b>${p.nombre||''}</b>
+            <div class="small">${p.categoria||''} ${p.stock?(' • '+p.stock):''}</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-weight:600">$${formatCurrency(finalPrice)}</div>
+            <div class="small">(${markup}% cat)</div>
+          </div>`;
+        const btnRow = document.createElement('div'); btnRow.style.display='flex'; btnRow.style.gap='8px'; btnRow.style.marginTop='8px';
+        const editBtn = document.createElement('button'); editBtn.className='btn'; editBtn.textContent='Editar';
+        editBtn.onclick = ()=> openModal(p.id);
+        const delBtn = document.createElement('button'); delBtn.className='btn'; delBtn.style.background='#c0392b'; delBtn.textContent='Borrar';
+        delBtn.onclick = ()=>{ if(confirm('Eliminar este producto?')){ DATA = DATA.filter(x=>x.id!==p.id); saveState(); draw(); renderCategories(); populateCategorySelects(); } };
+        btnRow.appendChild(editBtn); btnRow.appendChild(delBtn);
+        card.appendChild(btnRow);
+        list.appendChild(card);
+      });
+}
+
+function drawCategory(cat){
+  const list = el('list'); list.innerHTML = '';
+  DATA.filter(p=>p.categoria === cat).forEach(p=>{
+    const card = document.createElement('div'); card.className='card';
+    const markup = CATS[p.categoria] !== undefined ? CATS[p.categoria] : 0;
+    const finalPrice = Number(p.precio_base || p.precio_final || 0) * (1 + markup/100);
+    const imgHTML = p.imagen ? `<img src="${p.imagen}">` : 'Sin imagen';
+    card.innerHTML = `<div class="preview">${imgHTML}</div>
+      <div style="flex:1">
+        <b>${p.nombre||''}</b>
+        <div class="small">${p.categoria||''} ${p.stock?(' • '+p.stock):''}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-weight:600">$${formatCurrency(finalPrice)}</div>
+        <div class="small">(${markup}% cat)</div>
+      </div>`;
+    const btnRow = document.createElement('div'); btnRow.style.display='flex'; btnRow.style.gap='8px'; btnRow.style.marginTop='8px';
+    const editBtn = document.createElement('button'); editBtn.className='btn'; editBtn.textContent='Editar';
+    editBtn.onclick = ()=> openModal(p.id);
+    const delBtn = document.createElement('button'); delBtn.className='btn'; delBtn.style.background='#c0392b'; delBtn.textContent='Borrar';
+    delBtn.onclick = ()=>{ if(confirm('Eliminar este producto?')){ DATA = DATA.filter(x=>x.id!==p.id); saveState(); drawCategory(cat); renderCategories(); populateCategorySelects(); } };
+    btnRow.appendChild(editBtn); btnRow.appendChild(delBtn);
+    card.appendChild(btnRow);
+    list.appendChild(card);
+  });
+}
+
+/* ----- modal ----- */
+function openModal(id){
+  const product = DATA.find(x=>x.id===id);
+  el('modalTitle').textContent = product ? 'Editar producto' : 'Nuevo producto';
+  if(product){
+    el('pId').value = product.id;
+    el('pNombre').value = product.nombre || '';
+    el('pCat').value = product.categoria || 'Cargadores';
+    el('pPrecio').value = product.precio_base || product.precio_final || 0;
+    el('pSpecs').value = product.caracteristicas || '';
+    el('pStock').value = product.stock || '';
+    if(product.imagen) el('pPreview').innerHTML = `<img src="${product.imagen}">`; else el('pPreview').textContent='Sin imagen';
+    el('deleteProduct').style.display = 'inline-block';
+  } else {
+    el('pId').value = '';
+    el('pNombre').value = '';
+    el('pCat').value = 'Cargadores';
+    el('pPrecio').value = '';
+    el('pSpecs').value = '';
+    el('pStock').value = '';
+    el('pPreview').textContent = 'Sin imagen';
+    el('deleteProduct').style.display = 'none';
+  }
+  el('modalBg').style.display = 'flex';
+}
+function closeModal(){ el('modalBg').style.display = 'none'; }
+
+/* ----- events ----- */
+el('closeModal').addEventListener('click', closeModal);
+el('pImagen').addEventListener('change', async (e)=>{
+  const f = e.target.files[0];
+  if(!f) return;
+  const dataUrl = await fileToDataURL(f);
+  el('pPreview').innerHTML = `<img src="${dataUrl}">`;
+});
+
+/* agregar categoria */
+el('addCat').addEventListener('click', ()=>{
+  const name = (el('newCat').value||'').trim();
+  const m = Number(el('newMarkup').value||0);
+  if(!name) return alert('Poner nombre de categoria');
+  if(CATS[name]) return alert('Categoría ya existe');
+  CATS[name] = m;
+  renderCategories();
+  populateCategorySelects();
+  saveState();
+  el('newCat').value=''; el('newMarkup').value='';
+});
+
+/* buscar */
+el('q').addEventListener('input', ()=> draw());
+
+/* botones varios */
+el('showAll').addEventListener('click', ()=> draw(''));
+el('selCat').addEventListener('change', (e)=> {
+  const cat = e.target.value;
+  if(cat === 'Todas') draw('');
+  else drawCategory(cat);
+});
+
+/* agregar producto rápido */
+el('addProductBtn').addEventListener('click', ()=> openModal(null));
+
+/* guardar producto desde modal */
 el('save').addEventListener('click', async ()=>{
   const id = el('pId').value.trim();
   const nombre = el('pNombre').value.trim();
@@ -449,35 +404,31 @@ el('save').addEventListener('click', async ()=>{
   const precio = Number(el('pPrecio').value || 0);
   const caracteristicas = el('pSpecs').value.trim();
   const stock = el('pStock').value.trim();
-  // imagen: preferir archivo si se cargó
+
   let imagen = '';
   const file = el('pImagen').files[0];
-  if(file){
-    imagen = await fileToDataURL(file);
-  } else {
-    const prevImg = el('pPreview').querySelector('img');
-    if(prevImg) imagen = prevImg.src;
+  if(file){ imagen = await fileToDataURL(file); }
+  else {
+    const prev = el('pPreview').querySelector('img');
+    if(prev) imagen = prev.src;
   }
-  if(!nombre){ return alert('El producto necesita nombre'); }
-  if(!categoria){ return alert('Seleccioná categoría'); }
+
+  if(!nombre) return alert('El producto necesita nombre');
+  if(!categoria) return alert('Seleccioná categoría');
 
   if(id){
-    // update
-    const idx = DATA.findIndex(x=>x.id === id);
+    const idx = DATA.findIndex(x=>x.id===id);
     if(idx >= 0){
       DATA[idx] = {...DATA[idx], nombre, categoria, precio_base:precio, caracteristicas, stock, imagen};
     } else {
       DATA.push({id, nombre, categoria, precio_base:precio, caracteristicas, stock, imagen});
     }
   } else {
-    // create
     const nid = uid();
     DATA.push({id:nid, nombre, categoria, precio_base:precio, caracteristicas, stock, imagen});
   }
 
-  // asegurar categoria exista y tenga markup por defecto si no
   if(!CATS[categoria]) CATS[categoria] = 0;
-
   saveState();
   populateCategorySelects();
   renderCategories();
@@ -485,7 +436,7 @@ el('save').addEventListener('click', async ()=>{
   closeModal();
 });
 
-/* Eliminar producto desde modal */
+/* eliminar desde modal */
 el('deleteProduct').addEventListener('click', ()=>{
   const id = el('pId').value.trim();
   if(!id) return alert('No hay producto seleccionado');
@@ -498,38 +449,29 @@ el('deleteProduct').addEventListener('click', ()=>{
   closeModal();
 });
 
-/* Exportar JSON (DATA + CATS) */
+/* export/import */
 el('exportBtn').addEventListener('click', ()=>{
   const payload = {DATA, CATS};
   const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'cell_admin_export.json';
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
+  const a = document.createElement('a'); a.href = url; a.download = 'cell_admin_export.json';
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
 });
-
-/* Importar JSON */
 el('importBtn').addEventListener('click', ()=> el('importFile').click());
-
 el('importFile').addEventListener('change', async (e)=>{
   const f = e.target.files[0];
   if(!f) return;
   const txt = await f.text();
   try{
     const obj = JSON.parse(txt);
-    if(Array.isArray(obj)){ // if file contains just array, treat as DATA
+    if(Array.isArray(obj)){
       DATA = obj.map(x=>({...x, id: x.id || uid()}));
     } else if(obj.DATA && obj.CATS){
       DATA = obj.DATA.map(x=>({...x, id: x.id || uid()}));
       CATS = obj.CATS;
     } else {
-      return alert('JSON no reconocido. Debe ser array de productos o {DATA,CATS}.');
+      return alert('JSON no reconocido. Debe ser array o {DATA,CATS}.');
     }
-    // ensure categories present for products
     DATA.forEach(p=>{ if(!CATS[p.categoria]) CATS[p.categoria] = 0; });
     saveState();
     populateCategorySelects();
@@ -538,27 +480,51 @@ el('importFile').addEventListener('change', async (e)=>{
     alert('Import realizado con éxito');
   }catch(err){
     alert('Error al parsear JSON: ' + err.message);
-  } finally {
-    e.target.value = null;
+  } finally { e.target.value = null; }
+});
+
+/* login/demo/logout */
+el('doLogin').addEventListener('click', ()=>{
+  const email = el('email').value.trim();
+  const pass = el('pass').value.trim();
+  if(email === 'admin@celldistribuciones.com' && pass === 'QWERTY123456'){
+    el('loginBox').style.display='none'; el('app').style.display='block';
+    initAll();
+  } else { alert('Credenciales incorrectas'); }
+});
+el('demoOpen').addEventListener('click', ()=>{
+  el('loginBox').style.display='none'; el('app').style.display='block'; initAll();
+});
+el('logout').addEventListener('click', ()=>{ if(confirm('Cerrar sesión?')) location.reload(); });
+
+/* ----- inicialización: cargar localStorage o precargar cargadores ----- */
+function initAll(){
+  const loaded = loadState();
+  if(!loaded){
+    // precargamos cargadores
+    CARGADORES.forEach(c=>{
+      if(!DATA.some(p=>p.nombre === c.nombre && p.categoria === c.categoria)){
+        DATA.push({...c, id: uid(), imagen:'', caracteristicas:'', stock:''});
+      }
+      if(!CATS[c.categoria]) CATS[c.categoria] = 50;
+    });
+    saveState();
+  } else {
+    // asegurar que todas las categorias principales existan
+    ["Todas","Baterías","Cargadores","Módulos","Placas de Carga","Tapas Traseras"].forEach(cat=>{
+      if(CATS[cat]===undefined) CATS[cat]= (cat==='Cargadores'?50:0);
+    });
   }
-});
+  populateCategorySelects();
+  renderCategories();
+  draw();
+}
 
-/* Botones útiles: ver lista completa, filtrar por select */
-el('showAll').addEventListener('click', ()=> draw(''));
-el('selCat').addEventListener('change', (e)=>{
-  const cat = e.target.value;
-  if(cat === 'Todas') draw('');
-  else drawCategory(cat);
-});
+/* si querés, podés abrir la consola del navegador y ejecutar:
+   localStorage.removeItem('cell_admin_v2'); location.reload();
+   para resetear la data precargada.
+*/
 
-/* Agregar producto rápido por botón (abre modal vacío) ya registrado en primera mitad */
-el('addProductBtn').addEventListener('click', ()=> openModal(null));
-
-/* Al iniciar, cargamos estado o precargamos y ponemos todo listo */
-initAll();
-
-/* Fin segunda mitad (pegá esto justo después de la nota de continuidad del primer bloque) */
-/* ------------------ EOF ------------------ */
 </script>
 </body>
 </html>
