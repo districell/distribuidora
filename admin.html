@@ -147,11 +147,23 @@ function drawCats(){
     btn.onclick=()=>{DATA=DATA.filter(p=>p.categoria!==c);draw();drawCats();};
     box.appendChild(btn);cont.appendChild(box);
   });
-  document.getElementById('addCat').onclick=()=>{
-    const v=document.getElementById('newCat').value.trim();if(!v)return;
-    DATA.push({id:Date.now().toString(),nombre:'Nuevo producto',categoria:v,precio_final:0,caracteristicas:'',imagen:''});
-    draw();drawCats();
-  };
+document.getElementById('addCat').onclick=async ()=>{
+  const v=document.getElementById('newCat').value.trim();
+  if(!v) return;
+  DATA.push({
+    id: Date.now().toString(),
+    nombre: 'Nuevo producto',
+    categoria: v,
+    precio_final: 0,
+    caracteristicas: '',
+    imagen: ''
+  });
+  draw();
+  drawCats();
+  await saveToGitHub(JSON.stringify(DATA, null, 2)); // 🔥 ahora guarda en semilla.json
+  document.getElementById('newCat').value = ''; // limpiar input
+};
+
 }
 
 function draw(q=''){
