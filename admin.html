@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Admin • Cell Distribuciones</title>
+<title>Admin • Cell Distribuciones (corregido)</title>
 <style>
 :root{--max:1200px;--green:#2ecc71;--border:#e5e5e5}
 *{box-sizing:border-box}
@@ -22,7 +22,6 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 .preview{height:140px;background:#f1f1f1;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .preview img{max-width:100%;max-height:100%}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.kv{display:flex;gap:6px;align-items:center}
 .cat-item{padding:6px 8px;border-radius:8px;background:#fff;border:1px solid var(--border);display:flex;gap:8px;align-items:center}
 .small-input{width:80px;padding:6px}
 .right{margin-left:auto}
@@ -147,15 +146,10 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 </div>
 
 <script>
-/* --------------------------------------------------------------------------
-   Admin completo (UN SOLO ARCHIVO)
-   - Toda la lógica JS está aquí: categorías, productos, preload de cargadores,
-     CRUD, export/import y ajuste de % por categoría.
-   - No hay texto JS fuera del <script> (así no se mostrará en la página).
-   -------------------------------------------------------------------------- */
+/* -------------------- Admin corregido: fixes para categorías invisibles -------------------- */
 
-/* ----- estado y persistencia ----- */
-const STORAGE_KEY = 'cell_admin_v2';
+/* estado y persistencia */
+const STORAGE_KEY = 'cell_admin_v3';
 let DATA = []; // {id, nombre, categoria, precio_base, imagen, caracteristicas, stock}
 let CATS = {
   "Todas": 0,
@@ -174,13 +168,13 @@ function loadState(){
     const s = localStorage.getItem(STORAGE_KEY);
     if(!s) return false;
     const o = JSON.parse(s);
-    DATA = o.DATA || [];
+    DATA = (o.DATA || []).map(p => normalizeProduct(p));
     CATS = o.CATS || CATS;
     return true;
-  }catch(e){ return false; }
+  }catch(e){ console.warn(e); return false; }
 }
 
-/* ----- utilidades ----- */
+/* utilidades */
 function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
 function el(id){ return document.getElementById(id); }
 function fileToDataURL(file){
@@ -194,65 +188,39 @@ function fileToDataURL(file){
 }
 function formatCurrency(n){ return Number(n).toLocaleString('es-AR',{minimumFractionDigits:2, maximumFractionDigits:2}); }
 
-/* ----- CARGADORES: lista completa (precio base) ----- */
-const CARGADORES = [
-  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO", categoria:"Cargadores", precio_base:2894.47},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO", categoria:"Cargadores", precio_base:2894.47},
-  {nombre:"Combo 1 CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING", categoria:"Cargadores", precio_base:23986.02},
-  {nombre:"ADAPTADOR-CARGADOR 12V MOD 38 XAEA - SPEED - PD + QC 3.0", categoria:"Cargadores", precio_base:5842.39},
-  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:1289.82},
-  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:1297.62},
-  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:2007.93},
-  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - KIT X 200", categoria:"Cargadores", precio_base:339693.88},
-  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:2007.93},
-  {nombre:"CARGADOR 12V GEAR MODS-504 - 1 USB 1 TC + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:2009.89},
-  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C", categoria:"Cargadores", precio_base:2258.85},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED - TIPO C - NEGRO", categoria:"Cargadores", precio_base:2747.01},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C - BLANCO", categoria:"Cargadores", precio_base:2747.01},
-  {nombre:"COMBO 2 - CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C", categoria:"Cargadores", precio_base:21842.04},
-  {nombre:"COMBO 4 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C", categoria:"Cargadores", precio_base:21172.08},
-  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8", categoria:"Cargadores", precio_base:2133.44},
-  {nombre:"CARGADOR 12V MOD 40 - ONLY - BOOST- V8 - BLANCO", categoria:"Cargadores", precio_base:1297.70},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - NEGRO", categoria:"Cargadores", precio_base:2590.17},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - BLANCO", categoria:"Cargadores", precio_base:2590.17},
-  {nombre:"COMBO 3 - CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8", categoria:"Cargadores", precio_base:21975.97},
-  {nombre:"COMBO 5 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8", categoria:"Cargadores", precio_base:21306.01},
-  {nombre:"CARGADOR 220V MODO-006 - 2 USB + CABLE LIGHTNING - ONLY - BLANCO", categoria:"Cargadores", precio_base:3559.77},
-  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE LIGHTNING - XAEA - BLANCO", categoria:"Cargadores", precio_base:3473.33},
-  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE LIGHTNING - XAEA - BLANCO", categoria:"Cargadores", precio_base:3429.76},
-  {nombre:"CARGADOR 220V ONLY MOD 02 - 2 USB + CABLE LIGHTINING - BLANCO", categoria:"Cargadores", precio_base:6362.78},
-  {nombre:"CARGADOR 220V ONLY MOD 06 - 2 USB + CABLE LIGHTNING - BLANCO", categoria:"Cargadores", precio_base:3501.43},
-  {nombre:"CARGADOR 220V LETS MOD08 - 4,4 A - 3 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:2679.29},
-  {nombre:"CARGADOR 220V LETS MOD08 - 4,4A - 2 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:2881.07},
-  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:2808.01},
-  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY PREMIUM - BLANCO", categoria:"Cargadores", precio_base:2722.91},
-  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C BLANCO - ONLY - KIT X 200", categoria:"Cargadores", precio_base:573065.18},
-  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C NEGRO - ONLY - KIT X 200", categoria:"Cargadores", precio_base:573065.18},
-  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC BLANCO - ONLY - KIT X 200", categoria:"Cargadores", precio_base:595305.04},
-  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC NEGRO - ONLY - KIT X 200", categoria:"Cargadores", precio_base:578148.50},
-  {nombre:"CARGADOR 220V MODO-008 - 4,4A - 3USB + CABLE TIPO TC - ONLY", categoria:"Cargadores", precio_base:3302.31},
-  {nombre:"CARGADOR 220V MODO-008 BOOST - 4,4A - 3USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:3053.25},
-  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:1941.50},
-  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:1710.37},
-  {nombre:"CARGADOR 220V MODO-040 IMPULSE - 2.1A + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:1813.06},
-  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO", categoria:"Cargadores", precio_base:3098.88},
-  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO - KIT X 200", categoria:"Cargadores", precio_base:566501.69},
-  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA", categoria:"Cargadores", precio_base:3039.05},
-  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA - KIT X 200", categoria:"Cargadores", precio_base:571578.12},
-  {nombre:"CARGADOR 220V ONLY MOD 03 - 2,1 A - 1 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:2356.15},
-  {nombre:"CARGADOR 220V ONLY MOD02 - 1 USB C/ CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:3107.03},
-  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - BLANCO", categoria:"Cargadores", precio_base:2841.71},
-  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - NEGRO", categoria:"Cargadores", precio_base:2852.15},
-  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:4701.41},
-  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO - KIT X 100", categoria:"Cargadores", precio_base:405974.26}
-];
+/* Normaliza categoría y producto: trim, fallback category */
+function normalizeProduct(p){
+  const prod = Object.assign({}, p);
+  // name
+  prod.nombre = (prod.nombre || '').toString().trim();
+  // categoria: quitar espacios extras y usar 'Todas' si vacío
+  prod.categoria = (prod.categoria || '').toString().trim();
+  if(!prod.categoria) prod.categoria = 'Todas';
+  // asegurar campos numéricos
+  prod.precio_base = prod.precio_base !== undefined ? Number(prod.precio_base) : (prod.precio_final !== undefined ? Number(prod.precio_final) : 0);
+  prod.imagen = prod.imagen || '';
+  prod.caracteristicas = prod.caracteristicas || '';
+  prod.stock = prod.stock || '';
+  prod.id = prod.id || uid();
+  return prod;
+}
 
-/* ----- renderización de UI ----- */
-
+/* Populate selects & categories: ahora también incorpora categorías que existan en DATA */
 function populateCategorySelects(){
   const sel = el('selCat'); sel.innerHTML = '';
   const pcat = el('pCat'); pcat.innerHTML = '';
-  Object.keys(CATS).forEach(cat=>{
+  // asegurarnos de recolectar todas las categorías (definidas + las que vienen en DATA)
+  Object.keys(CATS).forEach(cat => { if(!CATS[cat] && CATS[cat] !== 0) CATS[cat] = 0; });
+  DATA.forEach(p => { if(p.categoria && CATS[p.categoria] === undefined) CATS[p.categoria] = (p.categoria === 'Cargadores' ? 50 : 0); });
+  // ordenar: 'Todas' primero, luego alfabético
+  const cats = Object.keys(CATS).slice().sort((a,b)=>{
+    if(a==='Todas') return -1;
+    if(b==='Todas') return 1;
+    if(a==='Cargadores') return -1; // mostrar cargadores cerca del inicio
+    if(b==='Cargadores') return 1;
+    return a.localeCompare(b, 'es');
+  });
+  cats.forEach(cat=>{
     const opt = document.createElement('option'); opt.value = cat; opt.textContent = cat;
     sel.appendChild(opt);
     const opt2 = opt.cloneNode(true);
@@ -260,58 +228,93 @@ function populateCategorySelects(){
   });
 }
 
+/* render categories: dibuja todas las keys de CATS (se incluyen las que venían en DATA) */
 function renderCategories(){
   const cont = el('cats'); cont.innerHTML = '';
-  Object.keys(CATS).forEach(cat=>{
+  const cats = Object.keys(CATS).slice().sort((a,b)=>{
+    if(a==='Todas') return -1;
+    if(b==='Todas') return 1;
+    if(a==='Cargadores') return -1;
+    if(b==='Cargadores') return 1;
+    return a.localeCompare(b,'es');
+  });
+  cats.forEach(cat=>{
     const wrapper = document.createElement('div'); wrapper.className = 'cat-item';
     const name = document.createElement('div'); name.textContent = cat; name.style.fontWeight='600';
     const inp = document.createElement('input'); inp.className='small-input'; inp.type='number'; inp.value = CATS[cat];
     inp.title = '% markup';
-    inp.onchange = ()=>{ CATS[cat] = Number(inp.value) || 0; saveState(); draw(); };
+    inp.onchange = ()=>{
+      CATS[cat] = Number(inp.value) || 0;
+      saveState();
+      draw(); // redraw prices
+    };
     const goBtn = document.createElement('button'); goBtn.className='btn'; goBtn.textContent='Ver';
     goBtn.onclick = ()=> drawCategory(cat);
     const delBtn = document.createElement('button'); delBtn.className='btn'; delBtn.textContent='Eliminar';
-    delBtn.onclick = (e)=>{ e.stopPropagation(); if(cat==='Cargadores' || cat==='Todas'){ return alert('No se puede eliminar las categorias principales'); } if(confirm('Eliminar categoría y sus productos?')){ DATA = DATA.filter(p=>p.categoria!==cat); delete CATS[cat]; populateCategorySelects(); renderCategories(); saveState(); draw(); } };
+    delBtn.onclick = (e)=>{ e.stopPropagation();
+      if(cat==='Cargadores' || cat==='Todas'){ return alert('No se puede eliminar las categorias principales'); }
+      if(confirm('Eliminar categoría y sus productos?')){
+        DATA = DATA.filter(p=>p.categoria!==cat);
+        delete CATS[cat];
+        populateCategorySelects();
+        renderCategories();
+        saveState();
+        draw();
+      }
+    };
     wrapper.appendChild(name); wrapper.appendChild(inp); wrapper.appendChild(goBtn); wrapper.appendChild(delBtn);
     cont.appendChild(wrapper);
   });
 }
 
+/* draw: muestra todos los productos (o filtrados por q) */
 function draw(filteredQ=''){
   const list = el('list'); list.innerHTML = '';
   const q = (filteredQ || el('q').value || '').toLowerCase();
-  DATA.filter(p=> (q==='' || (p.nombre||'').toLowerCase().includes(q.toLowerCase())) )
-      .forEach(p=>{
-        const card = document.createElement('div'); card.className='card';
-        const markup = CATS[p.categoria] !== undefined ? CATS[p.categoria] : 0;
-        const finalPrice = Number(p.precio_base || p.precio_final || 0) * (1 + markup/100);
-        const imgHTML = p.imagen ? `<img src="${p.imagen}">` : 'Sin imagen';
-        card.innerHTML = `<div class="preview">${imgHTML}</div>
-          <div style="flex:1">
-            <b>${p.nombre||''}</b>
-            <div class="small">${p.categoria||''} ${p.stock?(' • '+p.stock):''}</div>
-          </div>
-          <div style="text-align:right">
-            <div style="font-weight:600">$${formatCurrency(finalPrice)}</div>
-            <div class="small">(${markup}% cat)</div>
-          </div>`;
-        const btnRow = document.createElement('div'); btnRow.style.display='flex'; btnRow.style.gap='8px'; btnRow.style.marginTop='8px';
-        const editBtn = document.createElement('button'); editBtn.className='btn'; editBtn.textContent='Editar';
-        editBtn.onclick = ()=> openModal(p.id);
-        const delBtn = document.createElement('button'); delBtn.className='btn'; delBtn.style.background='#c0392b'; delBtn.textContent='Borrar';
-        delBtn.onclick = ()=>{ if(confirm('Eliminar este producto?')){ DATA = DATA.filter(x=>x.id!==p.id); saveState(); draw(); renderCategories(); populateCategorySelects(); } };
-        btnRow.appendChild(editBtn); btnRow.appendChild(delBtn);
-        card.appendChild(btnRow);
-        list.appendChild(card);
-      });
-}
-
-function drawCategory(cat){
-  const list = el('list'); list.innerHTML = '';
-  DATA.filter(p=>p.categoria === cat).forEach(p=>{
+  const items = DATA.filter(p=> (q==='' || (p.nombre||'').toLowerCase().includes(q.toLowerCase())));
+  if(items.length === 0){
+    const empty = document.createElement('div'); empty.className='card'; empty.innerHTML = '<div class="small">No hay productos para mostrar.</div>';
+    list.appendChild(empty); return;
+  }
+  items.forEach(p=>{
     const card = document.createElement('div'); card.className='card';
     const markup = CATS[p.categoria] !== undefined ? CATS[p.categoria] : 0;
-    const finalPrice = Number(p.precio_base || p.precio_final || 0) * (1 + markup/100);
+    const finalPrice = Number(p.precio_base || 0) * (1 + markup/100);
+    const imgHTML = p.imagen ? `<img src="${p.imagen}">` : 'Sin imagen';
+    card.innerHTML = `<div class="preview">${imgHTML}</div>
+      <div style="flex:1">
+        <b>${p.nombre||''}</b>
+        <div class="small">${p.categoria||''} ${p.stock?(' • '+p.stock):''}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-weight:600">$${formatCurrency(finalPrice)}</div>
+        <div class="small">(${markup}% cat)</div>
+      </div>`;
+    const btnRow = document.createElement('div'); btnRow.style.display='flex'; btnRow.style.gap='8px'; btnRow.style.marginTop='8px';
+    const editBtn = document.createElement('button'); editBtn.className='btn'; editBtn.textContent='Editar';
+    editBtn.onclick = ()=> openModal(p.id);
+    const delBtn = document.createElement('button'); delBtn.className='btn'; delBtn.style.background='#c0392b'; delBtn.textContent='Borrar';
+    delBtn.onclick = ()=>{ if(confirm('Eliminar este producto?')){ DATA = DATA.filter(x=>x.id!==p.id); saveState(); draw(); renderCategories(); populateCategorySelects(); } };
+    btnRow.appendChild(editBtn); btnRow.appendChild(delBtn);
+    card.appendChild(btnRow);
+    list.appendChild(card);
+  });
+}
+
+/* drawCategory: muestra solo productos cuya categoría exacta coincide.
+   Importante: antes de llamar, las categorías en DATA se normalizan, así la comparación funciona.
+*/
+function drawCategory(cat){
+  const list = el('list'); list.innerHTML = '';
+  const items = DATA.filter(p=>p.categoria === cat);
+  if(items.length === 0){
+    const empty = document.createElement('div'); empty.className='card'; empty.innerHTML = '<div class="small">No hay productos en esta categoría.</div>';
+    list.appendChild(empty); return;
+  }
+  items.forEach(p=>{
+    const card = document.createElement('div'); card.className='card';
+    const markup = CATS[p.categoria] !== undefined ? CATS[p.categoria] : 0;
+    const finalPrice = Number(p.precio_base || 0) * (1 + markup/100);
     const imgHTML = p.imagen ? `<img src="${p.imagen}">` : 'Sin imagen';
     card.innerHTML = `<div class="preview">${imgHTML}</div>
       <div style="flex:1">
@@ -333,7 +336,7 @@ function drawCategory(cat){
   });
 }
 
-/* ----- modal ----- */
+/* modal */
 function openModal(id){
   const product = DATA.find(x=>x.id===id);
   el('modalTitle').textContent = product ? 'Editar producto' : 'Nuevo producto';
@@ -341,7 +344,7 @@ function openModal(id){
     el('pId').value = product.id;
     el('pNombre').value = product.nombre || '';
     el('pCat').value = product.categoria || 'Cargadores';
-    el('pPrecio').value = product.precio_base || product.precio_final || 0;
+    el('pPrecio').value = product.precio_base || 0;
     el('pSpecs').value = product.caracteristicas || '';
     el('pStock').value = product.stock || '';
     if(product.imagen) el('pPreview').innerHTML = `<img src="${product.imagen}">`; else el('pPreview').textContent='Sin imagen';
@@ -360,7 +363,7 @@ function openModal(id){
 }
 function closeModal(){ el('modalBg').style.display = 'none'; }
 
-/* ----- events ----- */
+/* eventos básicos */
 el('closeModal').addEventListener('click', closeModal);
 el('pImagen').addEventListener('change', async (e)=>{
   const f = e.target.files[0];
@@ -369,7 +372,7 @@ el('pImagen').addEventListener('change', async (e)=>{
   el('pPreview').innerHTML = `<img src="${dataUrl}">`;
 });
 
-/* agregar categoria */
+/* add category */
 el('addCat').addEventListener('click', ()=>{
   const name = (el('newCat').value||'').trim();
   const m = Number(el('newMarkup').value||0);
@@ -428,6 +431,9 @@ el('save').addEventListener('click', async ()=>{
     DATA.push({id:nid, nombre, categoria, precio_base:precio, caracteristicas, stock, imagen});
   }
 
+  // normalizar producto agregado
+  DATA = DATA.map(p => normalizeProduct(p));
+
   if(!CATS[categoria]) CATS[categoria] = 0;
   saveState();
   populateCategorySelects();
@@ -465,14 +471,15 @@ el('importFile').addEventListener('change', async (e)=>{
   try{
     const obj = JSON.parse(txt);
     if(Array.isArray(obj)){
-      DATA = obj.map(x=>({...x, id: x.id || uid()}));
+      DATA = obj.map(x=>normalizeProduct(x));
     } else if(obj.DATA && obj.CATS){
-      DATA = obj.DATA.map(x=>({...x, id: x.id || uid()}));
-      CATS = obj.CATS;
+      DATA = (obj.DATA||[]).map(x=>normalizeProduct(x));
+      CATS = obj.CATS || CATS;
     } else {
       return alert('JSON no reconocido. Debe ser array o {DATA,CATS}.');
     }
-    DATA.forEach(p=>{ if(!CATS[p.categoria]) CATS[p.categoria] = 0; });
+    // asegurarse categorías
+    DATA.forEach(p=>{ if(!CATS[p.categoria]) CATS[p.categoria] = (p.categoria==='Cargadores'?50:0); });
     saveState();
     populateCategorySelects();
     renderCategories();
@@ -497,22 +504,76 @@ el('demoOpen').addEventListener('click', ()=>{
 });
 el('logout').addEventListener('click', ()=>{ if(confirm('Cerrar sesión?')) location.reload(); });
 
-/* ----- inicialización: cargar localStorage o precargar cargadores ----- */
+/* precarga cargadores (la lista original completa) - si ya tenés DATA en localStorage, no sobreescribe */
+const CARGADORES = [
+  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO", categoria:"Cargadores", precio_base:2894.47},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO", categoria:"Cargadores", precio_base:2894.47},
+  {nombre:"Combo 1 CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING", categoria:"Cargadores", precio_base:23986.02},
+  {nombre:"ADAPTADOR-CARGADOR 12V MOD 38 XAEA - SPEED - PD + QC 3.0", categoria:"Cargadores", precio_base:5842.39},
+  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:1289.82},
+  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:1297.62},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:2007.93},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - KIT X 200", categoria:"Cargadores", precio_base:339693.88},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:2007.93},
+  {nombre:"CARGADOR 12V GEAR MODS-504 - 1 USB 1 TC + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:2009.89},
+  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C", categoria:"Cargadores", precio_base:2258.85},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED - TIPO C - NEGRO", categoria:"Cargadores", precio_base:2747.01},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C - BLANCO", categoria:"Cargadores", precio_base:2747.01},
+  {nombre:"COMBO 2 - CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C", categoria:"Cargadores", precio_base:21842.04},
+  {nombre:"COMBO 4 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C", categoria:"Cargadores", precio_base:21172.08},
+  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8", categoria:"Cargadores", precio_base:2133.44},
+  {nombre:"CARGADOR 12V MOD 40 - ONLY - BOOST- V8 - BLANCO", categoria:"Cargadores", precio_base:1297.70},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - NEGRO", categoria:"Cargadores", precio_base:2590.17},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - BLANCO", categoria:"Cargadores", precio_base:2590.17},
+  {nombre:"COMBO 3 - CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8", categoria:"Cargadores", precio_base:21975.97},
+  {nombre:"COMBO 5 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8", categoria:"Cargadores", precio_base:21306.01},
+  {nombre:"CARGADOR 220V MODO-006 - 2 USB + CABLE LIGHTNING - ONLY - BLANCO", categoria:"Cargadores", precio_base:3559.77},
+  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE LIGHTNING - XAEA - BLANCO", categoria:"Cargadores", precio_base:3473.33},
+  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE LIGHTNING - XAEA - BLANCO", categoria:"Cargadores", precio_base:3429.76},
+  {nombre:"CARGADOR 220V ONLY MOD 02 - 2 USB + CABLE LIGHTINING - BLANCO", categoria:"Cargadores", precio_base:6362.78},
+  {nombre:"CARGADOR 220V ONLY MOD 06 - 2 USB + CABLE LIGHTNING - BLANCO", categoria:"Cargadores", precio_base:3501.43},
+  {nombre:"CARGADOR 220V LETS MOD08 - 4,4 A - 3 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:2679.29},
+  {nombre:"CARGADOR 220V LETS MOD08 - 4,4A - 2 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:2881.07},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:2808.01},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY PREMIUM - BLANCO", categoria:"Cargadores", precio_base:2722.91},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C BLANCO - ONLY - KIT X 200", categoria:"Cargadores", precio_base:573065.18},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C NEGRO - ONLY - KIT X 200", categoria:"Cargadores", precio_base:573065.18},
+  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC BLANCO - ONLY - KIT X 200", categoria:"Cargadores", precio_base:595305.04},
+  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC NEGRO - ONLY - KIT X 200", categoria:"Cargadores", precio_base:578148.50},
+  {nombre:"CARGADOR 220V MODO-008 - 4,4A - 3USB + CABLE TIPO TC - ONLY", categoria:"Cargadores", precio_base:3302.31},
+  {nombre:"CARGADOR 220V MODO-008 BOOST - 4,4A - 3USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:3053.25},
+  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:1941.50},
+  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:1710.37},
+  {nombre:"CARGADOR 220V MODO-040 IMPULSE - 2.1A + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:1813.06},
+  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO", categoria:"Cargadores", precio_base:3098.88},
+  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO - KIT X 200", categoria:"Cargadores", precio_base:566501.69},
+  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA", categoria:"Cargadores", precio_base:3039.05},
+  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA - KIT X 200", categoria:"Cargadores", precio_base:571578.12},
+  {nombre:"CARGADOR 220V ONLY MOD 03 - 2,1 A - 1 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:2356.15},
+  {nombre:"CARGADOR 220V ONLY MOD02 - 1 USB C/ CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:3107.03},
+  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - BLANCO", categoria:"Cargadores", precio_base:2841.71},
+  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - NEGRO", categoria:"Cargadores", precio_base:2852.15},
+  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:4701.41},
+  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO - KIT X 100", categoria:"Cargadores", precio_base:405974.26}
+];
+
+/* inicializar: cargar estado o precargar productos */
 function initAll(){
   const loaded = loadState();
   if(!loaded){
-    // precargamos cargadores
+    // precargar cargadores
     CARGADORES.forEach(c=>{
-      if(!DATA.some(p=>p.nombre === c.nombre && p.categoria === c.categoria)){
-        DATA.push({...c, id: uid(), imagen:'', caracteristicas:'', stock:''});
+      const normalized = normalizeProduct(c);
+      if(!DATA.some(p=>p.nombre === normalized.nombre && p.categoria === normalized.categoria)){
+        DATA.push({...normalized, id: uid()});
       }
-      if(!CATS[c.categoria]) CATS[c.categoria] = 50;
+      if(!CATS[normalized.categoria]) CATS[normalized.categoria] = (normalized.categoria === 'Cargadores' ? 50 : 0);
     });
     saveState();
   } else {
-    // asegurar que todas las categorias principales existan
-    ["Todas","Baterías","Cargadores","Módulos","Placas de Carga","Tapas Traseras"].forEach(cat=>{
-      if(CATS[cat]===undefined) CATS[cat]= (cat==='Cargadores'?50:0);
+    // si cargó desde localStorage, asegurarnos de que las categorías que traen los productos existan
+    DATA.forEach(p=>{
+      if(!CATS[p.categoria]) CATS[p.categoria] = (p.categoria === 'Cargadores' ? 50 : 0);
     });
   }
   populateCategorySelects();
@@ -520,11 +581,125 @@ function initAll(){
   draw();
 }
 
-/* si querés, podés abrir la consola del navegador y ejecutar:
-   localStorage.removeItem('cell_admin_v2'); location.reload();
-   para resetear la data precargada.
-*/
+/* helpers para reset si necesitás (ejecutar en consola) */
+/* localStorage.removeItem('cell_admin_v3'); location.reload(); */
 
+///////////////////////// Eventos y acciones finales /////////////////////////
+el('addProductBtn').addEventListener('click', ()=> openModal(null));
+el('q').addEventListener('input', ()=> draw());
+el('showAll').addEventListener('click', ()=> draw(''));
+el('selCat').addEventListener('change', (e)=> {
+  const cat = e.target.value;
+  if(cat === 'Todas') draw('');
+  else drawCategory(cat);
+});
+el('addCat').addEventListener('click', ()=>{
+  const name = (el('newCat').value||'').trim();
+  const m = Number(el('newMarkup').value||0);
+  if(!name) return alert('Poner nombre de categoria');
+  if(CATS[name]) return alert('Categoría ya existe');
+  CATS[name] = m;
+  renderCategories();
+  populateCategorySelects();
+  saveState();
+  el('newCat').value=''; el('newMarkup').value='';
+});
+el('closeModal').addEventListener('click', closeModal);
+el('pImagen').addEventListener('change', async (e)=>{
+  const f = e.target.files[0];
+  if(!f) return;
+  const dataUrl = await fileToDataURL(f);
+  el('pPreview').innerHTML = `<img src="${dataUrl}">`;
+});
+el('save').addEventListener('click', async ()=>{
+  const id = el('pId').value.trim();
+  const nombre = el('pNombre').value.trim();
+  const categoria = el('pCat').value;
+  const precio = Number(el('pPrecio').value || 0);
+  const caracteristicas = el('pSpecs').value.trim();
+  const stock = el('pStock').value.trim();
+
+  let imagen = '';
+  const file = el('pImagen').files[0];
+  if(file){ imagen = await fileToDataURL(file); }
+  else {
+    const prev = el('pPreview').querySelector('img');
+    if(prev) imagen = prev.src;
+  }
+
+  if(!nombre) return alert('El producto necesita nombre');
+  if(!categoria) return alert('Seleccioná categoría');
+
+  if(id){
+    const idx = DATA.findIndex(x=>x.id===id);
+    if(idx >= 0) DATA[idx] = normalizeProduct({...DATA[idx], nombre, categoria, precio_base:precio, caracteristicas, stock, imagen});
+    else DATA.push(normalizeProduct({id, nombre, categoria, precio_base:precio, caracteristicas, stock, imagen}));
+  } else {
+    DATA.push(normalizeProduct({id: uid(), nombre, categoria, precio_base:precio, caracteristicas, stock, imagen}));
+  }
+
+  if(!CATS[categoria]) CATS[categoria] = 0;
+  saveState();
+  populateCategorySelects();
+  renderCategories();
+  draw();
+  closeModal();
+});
+el('deleteProduct').addEventListener('click', ()=>{
+  const id = el('pId').value.trim();
+  if(!id) return alert('No hay producto seleccionado');
+  if(!confirm('Eliminar este producto?')) return;
+  DATA = DATA.filter(x=>x.id !== id);
+  saveState();
+  populateCategorySelects();
+  renderCategories();
+  draw();
+  closeModal();
+});
+
+/* export/import */
+el('exportBtn').addEventListener('click', ()=>{
+  const payload = {DATA, CATS};
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'cell_admin_export.json';
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+});
+el('importBtn').addEventListener('click', ()=> el('importFile').click());
+el('importFile').addEventListener('change', async (e)=>{
+  const f = e.target.files[0];
+  if(!f) return;
+  const txt = await f.text();
+  try{
+    const obj = JSON.parse(txt);
+    if(Array.isArray(obj)) DATA = obj.map(x=>normalizeProduct(x));
+    else if(obj.DATA && obj.CATS){ DATA = (obj.DATA||[]).map(x=>normalizeProduct(x)); CATS = obj.CATS || CATS; }
+    else return alert('JSON no reconocido. Debe ser array o {DATA,CATS}.');
+    DATA.forEach(p=>{ if(!CATS[p.categoria]) CATS[p.categoria] = (p.categoria==='Cargadores'?50:0); });
+    saveState();
+    populateCategorySelects();
+    renderCategories();
+    draw();
+    alert('Import realizado con éxito');
+  }catch(err){
+    alert('Error al parsear JSON: ' + err.message);
+  } finally { e.target.value = null; }
+});
+
+/* login/demo/logout */
+el('doLogin').addEventListener('click', ()=>{
+  const email = el('email').value.trim();
+  const pass = el('pass').value.trim();
+  if(email === 'admin@celldistribuciones.com' && pass === 'QWERTY123456'){
+    el('loginBox').style.display='none'; el('app').style.display='block';
+    initAll();
+  } else { alert('Credenciales incorrectas'); }
+});
+el('demoOpen').addEventListener('click', ()=>{ el('loginBox').style.display='none'; el('app').style.display='block'; initAll(); });
+el('logout').addEventListener('click', ()=>{ if(confirm('Cerrar sesión?')) location.reload(); });
+
+/* iniciar */
+initAll();
 </script>
 </body>
 </html>
