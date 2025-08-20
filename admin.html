@@ -5,37 +5,46 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Admin • Cell Distribuciones</title>
 <style>
-:root{--max:1100px;--green:#2ecc71;--border:#e5e5e5}
+:root{--max:1200px;--green:#2ecc71;--border:#e5e5e5}
 *{box-sizing:border-box}
 body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#fafafa;color:#111}
 header{background:#111;color:#fff;padding:12px}
-.wrap{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.wrap{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .main{max-width:var(--max);margin:16px auto;padding:0 12px}
 .panel{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:12px}
 .btn{padding:8px 12px;border:none;border-radius:8px;background:#111;color:#fff;cursor:pointer}
-.btn.green{background:#2ecc71}
+.btn.green{background:var(--green)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-.card{border:1px solid var(--border);border-radius:10px;padding:10px;background:#fff}
+.card{border:1px solid var(--border);border-radius:10px;padding:10px;background:#fff;display:flex;flex-direction:column;gap:8px}
 .small{font-size:12px;color:#666}
 .login{max-width:420px;margin:40px auto;padding:12px;background:#fff;border-radius:10px;border:1px solid var(--border)}
 input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);border-radius:8px}
-.preview{height:150px;background:#f1f1f1;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.preview{height:140px;background:#f1f1f1;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .preview img{max-width:100%;max-height:100%}
-.row{display:flex;gap:8px;flex-wrap:wrap}
-.modal-bg {
-  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.6);
-  display: none; align-items: center; justify-content: center; z-index: 999;
-}
-.modal {background: #fff; padding: 20px; border-radius: 10px; max-width: 500px; width: 100%;}
-.modal h3 {margin-top:0}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.kv{display:flex;gap:6px;align-items:center}
+.cat-item{padding:6px 8px;border-radius:8px;background:#fff;border:1px solid var(--border);display:flex;gap:8px;align-items:center}
+.small-input{width:80px;padding:6px}
+.right{margin-left:auto}
+.note{font-size:12px;color:#666;margin-top:6px}
+
+/* Modal */
+.modal-bg {position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 9999;}
+.modal {background: #fff; padding: 18px; border-radius: 10px; width: 100%; max-width: 640px; max-height: 90vh; overflow:auto;}
+.modal h3{margin-top:0}
+.footer-row{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap">
-    <img src="logo.png" alt="Cell Distribuciones" style="height:28px;vertical-align:middle;">
-    <button id="logout" class="btn">Salir</button>
+    <div style="display:flex; gap:12px; align-items:center">
+      <img src="logo.png" alt="Cell Distribuciones" style="height:32px;vertical-align:middle;">
+      <div class="note">Admin • Cell Distribuciones</div>
+    </div>
+    <div style="display:flex; gap:8px; align-items:center">
+      <button id="logout" class="btn">Salir</button>
+    </div>
   </div>
 </header>
 
@@ -44,158 +53,515 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
   <!-- LOGIN -->
   <div id="loginBox" class="login">
     <h3>Ingresar</h3>
-    <input id="email" placeholder="Email">
-    <input id="pass" placeholder="Contraseña" type="password">
-    <button id="doLogin" class="btn green">Entrar</button>
+    <input id="email" placeholder="Email (admin@celldistribuciones.com)">
+    <input id="pass" placeholder="Contraseña (QWERTY123456)" type="password">
+    <div style="margin-top:8px;display:flex;gap:8px">
+      <button id="doLogin" class="btn green">Entrar</button>
+      <button id="demoOpen" class="btn" title="Abrir demo sin credencial">Demo</button>
+    </div>
+    <div class="note">Usuario: <b>admin@celldistribuciones.com</b> / Pass: <b>QWERTY123456</b></div>
   </div>
 
   <!-- APP -->
   <div id="app" style="display:none">
+
     <div class="panel">
       <h3>Categorías</h3>
-      <div class="row">
-        <input id="newCat" placeholder="Nueva categoría">
-        <input id="newMarkup" placeholder="% markup" type="number" step="1" style="width:100px">
+      <div class="row" style="margin-bottom:8px">
+        <input id="newCat" placeholder="Nueva categoría (ej: Baterías)">
+        <input id="newMarkup" class="small-input" placeholder="% markup" type="number" step="1">
         <button id="addCat" class="btn">Agregar</button>
+        <div class="right">
+          <button id="showAll" class="btn">Ver Todas</button>
+        </div>
       </div>
       <div id="cats" class="row small" style="margin-top:8px"></div>
+      <div class="note" style="margin-top:8px">Hacé click en una categoría para listarla. Podés editar % directo en cada categoría.</div>
     </div>
 
     <div class="panel">
       <h3>Productos</h3>
-      <input id="q" placeholder="Buscar...">
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+        <input id="q" placeholder="Buscar...">
+        <select id="selCat" style="width:220px">
+          <!-- se llena dinámicamente -->
+        </select>
+        <button id="addProductBtn" class="btn green">Agregar producto</button>
+        <div class="right">
+          <button id="exportBtn" class="btn">Export JSON</button>
+          <button id="importBtn" class="btn">Import JSON</button>
+          <input id="importFile" type="file" accept=".json" style="display:none">
+        </div>
+      </div>
+
       <div id="list" class="grid" style="margin-top:10px"></div>
     </div>
   </div>
 
 </main>
 
+<!-- MODAL: editar/crear producto -->
 <div id="modalBg" class="modal-bg">
   <div class="modal">
-    <h3>Editar producto</h3>
-    <input id="pId" placeholder="ID">
-    <input id="pNombre" placeholder="Nombre">
-    <input id="pCat" placeholder="Categoría">
-    <input id="pPrecio" placeholder="Precio base" type="number" step="0.01">
-    <input id="pImagen" type="file" accept="image/*">
-    <div id="pPreview" class="preview">Sin imagen</div>
-    <textarea id="pSpecs" placeholder="Características" rows="4"></textarea>
-    <div style="margin-top:8px; display:flex; gap:8px;">
+    <h3 id="modalTitle">Editar producto</h3>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div>
+        <label class="small">ID (auto)</label>
+        <input id="pId" placeholder="ID" readonly>
+      </div>
+      <div>
+        <label class="small">Categoría</label>
+        <select id="pCat"></select>
+      </div>
+      <div style="grid-column:1/3">
+        <label class="small">Nombre</label>
+        <input id="pNombre" placeholder="Nombre del producto">
+      </div>
+      <div>
+        <label class="small">Precio base (sin markup)</label>
+        <input id="pPrecio" type="number" step="0.01" placeholder="0.00">
+      </div>
+      <div>
+        <label class="small">Stock / Info</label>
+        <input id="pStock" placeholder="Stock, codigo, etc">
+      </div>
+      <div style="grid-column:1/3">
+        <label class="small">Características</label>
+        <textarea id="pSpecs" rows="4"></textarea>
+      </div>
+      <div>
+        <label class="small">Imagen</label>
+        <input id="pImagen" type="file" accept="image/*">
+      </div>
+      <div>
+        <label class="small">Preview</label>
+        <div id="pPreview" class="preview">Sin imagen</div>
+      </div>
+    </div>
+
+    <div class="footer-row">
+      <button id="deleteProduct" class="btn" style="background:#c0392b">Eliminar</button>
+      <button id="closeModal" class="btn">Cerrar</button>
       <button id="save" class="btn green">Guardar</button>
-      <button id="closeModal" class="btn" style="background:#c0392b">Cerrar</button>
     </div>
   </div>
 </div>
 
 <script>
-const DATA = []; // Aquí vamos a cargar todos los productos
-const CATS = { "Todas":0, "Baterías":0, "Cargadores":50, "Módulos":0, "Placas de Carga":0, "Tapas Traseras":0 };
-// Lista completa de cargadores
-const CARGADORES = [
-  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO", categoria:"Cargadores", precio_final:2894.47},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO", categoria:"Cargadores", precio_final:2894.47},
-  {nombre:"Combo 1 CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING", categoria:"Cargadores", precio_final:23986.02},
-  {nombre:"ADAPTADOR-CARGADOR 12V MOD 38 XAEA - SPEED - PD + QC 3.0", categoria:"Cargadores", precio_final:5842.39},
-  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_final:1289.82},
-  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_final:1297.62},
-  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_final:2007.93},
-  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - KIT X 200", categoria:"Cargadores", precio_final:339693.88},
-  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_final:2007.93},
-  {nombre:"CARGADOR 12V GEAR MODS-504 - 1 USB 1 TC + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_final:2009.89},
-  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C", categoria:"Cargadores", precio_final:2258.85},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED - TIPO C - NEGRO", categoria:"Cargadores", precio_final:2747.01},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C - BLANCO", categoria:"Cargadores", precio_final:2747.01},
-  {nombre:"COMBO 2 - CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C", categoria:"Cargadores", precio_final:21842.04},
-  {nombre:"COMBO 4 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C", categoria:"Cargadores", precio_final:21172.08},
-  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8", categoria:"Cargadores", precio_final:2133.44},
-  {nombre:"CARGADOR 12V MOD 40 - ONLY - BOOST- V8 - BLANCO", categoria:"Cargadores", precio_final:1297.70},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - NEGRO", categoria:"Cargadores", precio_final:2590.17},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - BLANCO", categoria:"Cargadores", precio_final:2590.17},
-  {nombre:"COMBO 3 - CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8", categoria:"Cargadores", precio_final:21975.97},
-  {nombre:"COMBO 5 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8", categoria:"Cargadores", precio_final:21306.01},
-  {nombre:"CARGADOR 220V MODO-006 - 2 USB + CABLE LIGHTNING - ONLY - BLANCO", categoria:"Cargadores", precio_final:3559.77},
-  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE LIGHTNING - XAEA - BLANCO", categoria:"Cargadores", precio_final:3473.33},
-  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE LIGHTNING - XAEA - BLANCO", categoria:"Cargadores", precio_final:3429.76},
-  {nombre:"CARGADOR 220V ONLY MOD 02 - 2 USB + CABLE LIGHTINING - BLANCO", categoria:"Cargadores", precio_final:6362.78},
-  {nombre:"CARGADOR 220V ONLY MOD 06 - 2 USB + CABLE LIGHTNING - BLANCO", categoria:"Cargadores", precio_final:3501.43},
-  {nombre:"CARGADOR 220V LETS MOD08 - 4,4 A - 3 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_final:2679.29},
-  {nombre:"CARGADOR 220V LETS MOD08 - 4,4A - 2 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_final:2881.07},
-  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_final:2808.01},
-  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY PREMIUM - BLANCO", categoria:"Cargadores", precio_final:2722.91},
-  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C BLANCO - ONLY - KIT X 200", categoria:"Cargadores", precio_final:573065.18},
-  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C NEGRO - ONLY - KIT X 200", categoria:"Cargadores", precio_final:573065.18},
-  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC BLANCO - ONLY - KIT X 200", categoria:"Cargadores", precio_final:595305.04},
-  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC NEGRO - ONLY - KIT X 200", categoria:"Cargadores", precio_final:578148.50},
-  {nombre:"CARGADOR 220V MODO-008 - 4,4A - 3USB + CABLE TIPO TC - ONLY", categoria:"Cargadores", precio_final:3302.31},
-  {nombre:"CARGADOR 220V MODO-008 BOOST - 4,4A - 3USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_final:3053.25},
-  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_final:1941.50},
-  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_final:1710.37},
-  {nombre:"CARGADOR 220V MODO-040 IMPULSE - 2.1A + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_final:1813.06},
-  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO", categoria:"Cargadores", precio_final:3098.88},
-  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO - KIT X 200", categoria:"Cargadores", precio_final:566501.69},
-  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA", categoria:"Cargadores", precio_final:3039.05},
-  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA - KIT X 200", categoria:"Cargadores", precio_final:571578.12},
-  {nombre:"CARGADOR 220V ONLY MOD 03 - 2,1 A - 1 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_final:2356.15},
-  {nombre:"CARGADOR 220V ONLY MOD02 - 1 USB C/ CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_final:3107.03},
-  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - BLANCO", categoria:"Cargadores", precio_final:2841.71},
-  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - NEGRO", categoria:"Cargadores", precio_final:2852.15},
-  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_final:4701.41},
-  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO - KIT X 100", categoria:"Cargadores", precio_final:405974.26}
-];
+/*
+  Admin completo (parte 1)
+  - Esta primera mitad trae estructura, estilos y funciones auxiliares.
+  - La segunda mitad incluye la lista completa de cargadores y la inicialización final.
+*/
 
-// Inicializamos DATA con los cargadores
-CARGADORES.forEach(c=>DATA.push({...c,id:Date.now().toString() + Math.random()}));
+/* ----- Estado y persistencia ----- */
+const STORAGE_KEY = 'cell_admin_v1';
+let DATA = []; // array de productos { id, nombre, categoria, precio_base, imagen, caracteristicas, stock }
+let CATS = {
+  "Todas": 0,
+  "Baterías": 0,
+  "Cargadores": 50,
+  "Módulos": 0,
+  "Placas de Carga": 0,
+  "Tapas Traseras": 0
+};
 
-// Funciones de dibujo
-function draw(q=''){
-  const list=document.getElementById('list'); list.innerHTML='';
-  DATA.filter(p=>!q||(p.nombre||'').toLowerCase().includes(q.toLowerCase()))
-      .forEach(p=>{
-        const card=document.createElement('div'); card.className='card';
-        const markup = CATS[p.categoria]||0;
-        const finalPrice = Number(p.precio_final||0) * (1+markup/100);
-        card.innerHTML='<div class="preview">'+(p.imagen?('<img src="'+p.imagen+'">'):'Sin imagen')+'</div>'+
-          '<b>'+(p.nombre||'')+'</b><div class="small">'+(p.categoria||'')+'</div><div>$'+finalPrice.toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
-        const btn=document.createElement('button');btn.className='btn';btn.style.marginTop='6px';btn.textContent='Editar';
-        btn.onclick=()=> openModal(p.id);
-        card.appendChild(btn); list.appendChild(card);
-      });
+function saveState(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({DATA, CATS}));
+  }catch(e){ console.warn("No se pudo guardar localmente", e); }
 }
 
-// Filtrar por categoría
-function drawCategory(cat){
-  const list=document.getElementById('list'); list.innerHTML='';
-  DATA.filter(p=>p.categoria===cat).forEach(p=>{
-    const card=document.createElement('div'); card.className='card';
-    const markup = CATS[p.categoria]||0;
-    const finalPrice = Number(p.precio_final||0) * (1+markup/100);
-    card.innerHTML='<div class="preview">'+(p.imagen?('<img src="'+p.imagen+'">'):'Sin imagen')+'</div>'+
-      '<b>'+(p.nombre||'')+'</b><div class="small">'+(p.categoria||'')+'</div><div>$'+finalPrice.toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
-    const btn=document.createElement('button');btn.className='btn';btn.style.marginTop='6px';btn.textContent='Editar';
-    btn.onclick=()=> openModal(p.id);
-    card.appendChild(btn); list.appendChild(card);
+function loadState(){
+  try{
+    const s = localStorage.getItem(STORAGE_KEY);
+    if(!s) return false;
+    const o = JSON.parse(s);
+    DATA = o.DATA || [];
+    CATS = o.CATS || CATS;
+    return true;
+  }catch(e){ return false; }
+}
+
+/* ----- utilidades ----- */
+function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
+
+function fileToDataURL(file){
+  return new Promise((res,rej)=>{
+    if(!file) return res(null);
+    const reader = new FileReader();
+    reader.onload = ()=> res(reader.result);
+    reader.onerror = rej;
+    reader.readAsDataURL(file);
   });
 }
 
-// Modal y eventos
-function openModal(id){
-  const p=DATA.find(x=>x.id==id); if(!p)return;
-  pId.value=p.id; pNombre.value=p.nombre||''; pCat.value=p.categoria||''; pPrecio.value=p.precio_final||0; pSpecs.value=p.caracteristicas||'';
-  if(p.imagen){pPreview.innerHTML='<img src="'+p.imagen+'">';}else{pPreview.textContent='Sin imagen';}
-  document.getElementById('modalBg').style.display='flex';
+/* ----- DOM referencias ----- */
+const el = id => document.getElementById(id);
+
+/* ----- RENDER: categorías ----- */
+function populateCategorySelects(){
+  const sel = el('selCat'); sel.innerHTML = '';
+  const pcat = el('pCat'); pcat.innerHTML = '';
+  Object.keys(CATS).forEach(cat=>{
+    const opt = document.createElement('option'); opt.value = cat; opt.textContent = cat;
+    sel.appendChild(opt);
+    const opt2 = opt.cloneNode(true);
+    pcat.appendChild(opt2);
+  });
 }
-document.getElementById('closeModal').onclick=()=>{document.getElementById('modalBg').style.display='none';};
-document.getElementById('q').addEventListener('input', e=>draw(e.target.value));
 
-document.getElementById('doLogin').onclick=()=>{
-  if(email.value==='admin@celldistribuciones.com'&&pass.value==='QWERTY123456'){
-    loginBox.style.display='none';
-    app.style.display='block';
+function renderCategories(){
+  const cont = el('cats'); cont.innerHTML = '';
+  Object.keys(CATS).forEach(cat=>{
+    const wrapper = document.createElement('div'); wrapper.className = 'cat-item';
+    const name = document.createElement('div'); name.textContent = cat;
+    name.style.fontWeight = '600';
+    const inp = document.createElement('input'); inp.className='small-input'; inp.type='number'; inp.value = CATS[cat];
+    inp.title = '% markup';
+    inp.onchange = ()=>{
+      CATS[cat] = Number(inp.value) || 0;
+      saveState();
+      draw(); // redraw prices
+    };
+    const goBtn = document.createElement('button'); goBtn.className='btn'; goBtn.textContent='Ver';
+    goBtn.onclick = ()=> drawCategory(cat);
+    const delBtn = document.createElement('button'); delBtn.className='btn'; delBtn.textContent='Eliminar';
+    delBtn.onclick = (e)=>{ e.stopPropagation(); if(cat==='Cargadores' || cat==='Todas'){ return alert('No se puede eliminar las categorias principales'); } if(confirm('Eliminar categoría y sus productos?')){ DATA = DATA.filter(p=>p.categoria!==cat); delete CATS[cat]; populateCategorySelects(); renderCategories(); saveState(); draw(); } };
+    wrapper.appendChild(name);
+    wrapper.appendChild(inp);
+    wrapper.appendChild(goBtn);
+    wrapper.appendChild(delBtn);
+    cont.appendChild(wrapper);
+  });
+}
+
+/* ----- RENDER: productos ----- */
+function formatCurrency(n){
+  return Number(n).toLocaleString('es-AR',{minimumFractionDigits:2, maximumFractionDigits:2});
+}
+
+function draw(filteredQ=''){
+  const list = el('list'); list.innerHTML = '';
+  const q = (filteredQ || el('q').value || '').toLowerCase();
+  DATA.filter(p=> (q==='' || (p.nombre||'').toLowerCase().includes(q.toLowerCase())) )
+      .forEach(p=>{
+        const card = document.createElement('div'); card.className='card';
+        const markup = CATS[p.categoria] !== undefined ? CATS[p.categoria] : 0;
+        const finalPrice = Number(p.precio_base || p.precio_final || 0) * (1 + markup/100);
+        const imgHTML = p.imagen ? `<img src="${p.imagen}">` : 'Sin imagen';
+        card.innerHTML = `<div class="preview">${imgHTML}</div>
+          <div style="flex:1">
+            <b>${p.nombre||''}</b>
+            <div class="small">${p.categoria||''} ${p.stock?(' • '+p.stock):''}</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-weight:600">$${formatCurrency(finalPrice)}</div>
+            <div class="small">(${markup}% cat)</div>
+          </div>`;
+        const btnRow = document.createElement('div'); btnRow.style.display='flex'; btnRow.style.gap='8px';
+        const editBtn = document.createElement('button'); editBtn.className='btn'; editBtn.textContent='Editar';
+        editBtn.onclick = ()=> openModal(p.id);
+        const delBtn = document.createElement('button'); delBtn.className='btn'; delBtn.style.background='#c0392b'; delBtn.textContent='Borrar';
+        delBtn.onclick = ()=>{
+          if(confirm('Eliminar este producto?')){ DATA = DATA.filter(x=>x.id!==p.id); saveState(); draw(); renderCategories(); populateCategorySelects(); }
+        };
+        btnRow.appendChild(editBtn); btnRow.appendChild(delBtn);
+        card.appendChild(btnRow);
+        list.appendChild(card);
+      });
+}
+
+/* ----- Modal ----- */
+function openModal(id){
+  const product = DATA.find(x=>x.id===id);
+  el('modalTitle').textContent = product ? 'Editar producto' : 'Nuevo producto';
+  if(product){
+    el('pId').value = product.id;
+    el('pNombre').value = product.nombre || '';
+    el('pCat').value = product.categoria || 'Cargadores';
+    el('pPrecio').value = product.precio_base || product.precio_final || 0;
+    el('pSpecs').value = product.caracteristicas || '';
+    el('pStock').value = product.stock || '';
+    if(product.imagen) el('pPreview').innerHTML = `<img src="${product.imagen}">`; else el('pPreview').textContent='Sin imagen';
+    el('deleteProduct').style.display = 'inline-block';
+  } else {
+    el('pId').value = '';
+    el('pNombre').value = '';
+    el('pCat').value = 'Cargadores';
+    el('pPrecio').value = '';
+    el('pSpecs').value = '';
+    el('pStock').value = '';
+    el('pPreview').textContent = 'Sin imagen';
+    el('deleteProduct').style.display = 'none';
+  }
+  el('modalBg').style.display = 'flex';
+}
+
+function closeModal(){
+  el('modalBg').style.display = 'none';
+}
+
+/* ----- Eventos que ya están listos (continuará en la segunda mitad) ----- */
+el('closeModal').addEventListener('click', closeModal);
+
+el('pImagen').addEventListener('change', async (e)=>{
+  const f = e.target.files[0];
+  if(!f) return;
+  const dataUrl = await fileToDataURL(f);
+  el('pPreview').innerHTML = `<img src="${dataUrl}">`;
+});
+
+el('addCat').addEventListener('click', ()=>{
+  const name = (el('newCat').value||'').trim();
+  const m = Number(el('newMarkup').value||0);
+  if(!name) return alert('Poner nombre de categoria');
+  if(CATS[name]) return alert('Categoría ya existe');
+  CATS[name] = m;
+  renderCategories();
+  populateCategorySelects();
+  saveState();
+  el('newCat').value=''; el('newMarkup').value='';
+});
+
+el('showAll').addEventListener('click', ()=> draw(''));
+
+/* Search & add product btn & export/import - actions set in 2nd half */
+el('q').addEventListener('input', ()=> draw());
+
+el('addProductBtn').addEventListener('click', ()=> {
+  // abrir modal nuevo producto; se completará guardar en 2ª parte
+  openModal(null);
+});
+
+/* Login */
+el('doLogin').addEventListener('click', ()=>{
+  const email = el('email').value.trim();
+  const pass = el('pass').value.trim();
+  if(email === 'admin@celldistribuciones.com' && pass === 'QWERTY123456'){
+    el('loginBox').style.display='none';
+    el('app').style.display='block';
+    // initialización completa en segunda mitad
+  } else {
+    alert('Credenciales incorrectas');
+  }
+});
+
+/* Demo quick entry (para probar sin credenciales) */
+el('demoOpen').addEventListener('click', ()=>{
+  el('loginBox').style.display='none';
+  el('app').style.display='block';
+});
+
+/* Logout */
+el('logout').addEventListener('click', ()=>{
+  if(confirm('Cerrar sesión?')){ location.reload(); }
+});
+
+/* NOTE: La segunda mitad incluye:
+   - la LISTA COMPLETA de cargadores (array),
+   - la lógica para inicializar DATA (cargar desde localStorage o pre-cargar cargadores),
+   - la implementación final de guardar producto (botón save), eliminar desde modal,
+   - export/import JSON,
+   - botones para subir/bajar % por categoría si querés.
+   -> Pega la segunda mitad exactamente después de esta línea.
+*/
+</script>
+</body>
+</html>
+/* ------------------ segunda mitad: datos, inicialización y acciones ------------------ */
+
+/* Lista completa de cargadores (precio base) */
+const CARGADORES = [
+  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO", categoria:"Cargadores", precio_base:2894.47},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO", categoria:"Cargadores", precio_base:2894.47},
+  {nombre:"Combo 1 CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING", categoria:"Cargadores", precio_base:23986.02},
+  {nombre:"ADAPTADOR-CARGADOR 12V MOD 38 XAEA - SPEED - PD + QC 3.0", categoria:"Cargadores", precio_base:5842.39},
+  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:1289.82},
+  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:1297.62},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:2007.93},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - KIT X 200", categoria:"Cargadores", precio_base:339693.88},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:2007.93},
+  {nombre:"CARGADOR 12V GEAR MODS-504 - 1 USB 1 TC + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:2009.89},
+  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C", categoria:"Cargadores", precio_base:2258.85},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED - TIPO C - NEGRO", categoria:"Cargadores", precio_base:2747.01},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C - BLANCO", categoria:"Cargadores", precio_base:2747.01},
+  {nombre:"COMBO 2 - CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C", categoria:"Cargadores", precio_base:21842.04},
+  {nombre:"COMBO 4 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C", categoria:"Cargadores", precio_base:21172.08},
+  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8", categoria:"Cargadores", precio_base:2133.44},
+  {nombre:"CARGADOR 12V MOD 40 - ONLY - BOOST- V8 - BLANCO", categoria:"Cargadores", precio_base:1297.70},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - NEGRO", categoria:"Cargadores", precio_base:2590.17},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - BLANCO", categoria:"Cargadores", precio_base:2590.17},
+  {nombre:"COMBO 3 - CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8", categoria:"Cargadores", precio_base:21975.97},
+  {nombre:"COMBO 5 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8", categoria:"Cargadores", precio_base:21306.01},
+  {nombre:"CARGADOR 220V MODO-006 - 2 USB + CABLE LIGHTNING - ONLY - BLANCO", categoria:"Cargadores", precio_base:3559.77},
+  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE LIGHTNING - XAEA - BLANCO", categoria:"Cargadores", precio_base:3473.33},
+  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE LIGHTNING - XAEA - BLANCO", categoria:"Cargadores", precio_base:3429.76},
+  {nombre:"CARGADOR 220V ONLY MOD 02 - 2 USB + CABLE LIGHTINING - BLANCO", categoria:"Cargadores", precio_base:6362.78},
+  {nombre:"CARGADOR 220V ONLY MOD 06 - 2 USB + CABLE LIGHTNING - BLANCO", categoria:"Cargadores", precio_base:3501.43},
+  {nombre:"CARGADOR 220V LETS MOD08 - 4,4 A - 3 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:2679.29},
+  {nombre:"CARGADOR 220V LETS MOD08 - 4,4A - 2 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:2881.07},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:2808.01},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY PREMIUM - BLANCO", categoria:"Cargadores", precio_base:2722.91},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C BLANCO - ONLY - KIT X 200", categoria:"Cargadores", precio_base:573065.18},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C NEGRO - ONLY - KIT X 200", categoria:"Cargadores", precio_base:573065.18},
+  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC BLANCO - ONLY - KIT X 200", categoria:"Cargadores", precio_base:595305.04},
+  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC NEGRO - ONLY - KIT X 200", categoria:"Cargadores", precio_base:578148.50},
+  {nombre:"CARGADOR 220V MODO-008 - 4,4A - 3USB + CABLE TIPO TC - ONLY", categoria:"Cargadores", precio_base:3302.31},
+  {nombre:"CARGADOR 220V MODO-008 BOOST - 4,4A - 3USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:3053.25},
+  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:1941.50},
+  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_base:1710.37},
+  {nombre:"CARGADOR 220V MODO-040 IMPULSE - 2.1A + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_base:1813.06},
+  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO", categoria:"Cargadores", precio_base:3098.88},
+  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO - KIT X 200", categoria:"Cargadores", precio_base:566501.69},
+  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA", categoria:"Cargadores", precio_base:3039.05},
+  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA - KIT X 200", categoria:"Cargadores", precio_base:571578.12},
+  {nombre:"CARGADOR 220V ONLY MOD 03 - 2,1 A - 1 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:2356.15},
+  {nombre:"CARGADOR 220V ONLY MOD02 - 1 USB C/ CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:3107.03},
+  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - BLANCO", categoria:"Cargadores", precio_base:2841.71},
+  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - NEGRO", categoria:"Cargadores", precio_base:2852.15},
+  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_base:4701.41},
+  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO - KIT X 100", categoria:"Cargadores", precio_base:405974.26}
+];
+
+/* Inicialización: cargar desde localStorage o precargar cargadores */
+function initAll(){
+  const loaded = loadState();
+  if(!loaded){
+    // precargar CARGADORES sin eliminar otros (DATA puede tener productos si cargó antes)
+    CARGADORES.forEach(c=>{
+      if(!DATA.some(p=>p.nombre === c.nombre && p.categoria === c.categoria)){
+        DATA.push({...c, id: uid(), imagen:'', caracteristicas:'', stock:''});
+      }
+      // asegurar categoría en CATS
+      if(!CATS[c.categoria]) CATS[c.categoria] = 50;
+    });
+    saveState();
+  }
+  populateCategorySelects();
+  renderCategories();
+  draw();
+}
+
+/* Guardar producto desde modal */
+el('save').addEventListener('click', async ()=>{
+  const id = el('pId').value.trim();
+  const nombre = el('pNombre').value.trim();
+  const categoria = el('pCat').value;
+  const precio = Number(el('pPrecio').value || 0);
+  const caracteristicas = el('pSpecs').value.trim();
+  const stock = el('pStock').value.trim();
+  // imagen: preferir archivo si se cargó
+  let imagen = '';
+  const file = el('pImagen').files[0];
+  if(file){
+    imagen = await fileToDataURL(file);
+  } else {
+    const prevImg = el('pPreview').querySelector('img');
+    if(prevImg) imagen = prevImg.src;
+  }
+  if(!nombre){ return alert('El producto necesita nombre'); }
+  if(!categoria){ return alert('Seleccioná categoría'); }
+
+  if(id){
+    // update
+    const idx = DATA.findIndex(x=>x.id === id);
+    if(idx >= 0){
+      DATA[idx] = {...DATA[idx], nombre, categoria, precio_base:precio, caracteristicas, stock, imagen};
+    } else {
+      DATA.push({id, nombre, categoria, precio_base:precio, caracteristicas, stock, imagen});
+    }
+  } else {
+    // create
+    const nid = uid();
+    DATA.push({id:nid, nombre, categoria, precio_base:precio, caracteristicas, stock, imagen});
+  }
+
+  // asegurar categoria exista y tenga markup por defecto si no
+  if(!CATS[categoria]) CATS[categoria] = 0;
+
+  saveState();
+  populateCategorySelects();
+  renderCategories();
+  draw();
+  closeModal();
+});
+
+/* Eliminar producto desde modal */
+el('deleteProduct').addEventListener('click', ()=>{
+  const id = el('pId').value.trim();
+  if(!id) return alert('No hay producto seleccionado');
+  if(!confirm('Eliminar este producto?')) return;
+  DATA = DATA.filter(x=>x.id !== id);
+  saveState();
+  populateCategorySelects();
+  renderCategories();
+  draw();
+  closeModal();
+});
+
+/* Exportar JSON (DATA + CATS) */
+el('exportBtn').addEventListener('click', ()=>{
+  const payload = {DATA, CATS};
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'cell_admin_export.json';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+});
+
+/* Importar JSON */
+el('importBtn').addEventListener('click', ()=> el('importFile').click());
+
+el('importFile').addEventListener('change', async (e)=>{
+  const f = e.target.files[0];
+  if(!f) return;
+  const txt = await f.text();
+  try{
+    const obj = JSON.parse(txt);
+    if(Array.isArray(obj)){ // if file contains just array, treat as DATA
+      DATA = obj.map(x=>({...x, id: x.id || uid()}));
+    } else if(obj.DATA && obj.CATS){
+      DATA = obj.DATA.map(x=>({...x, id: x.id || uid()}));
+      CATS = obj.CATS;
+    } else {
+      return alert('JSON no reconocido. Debe ser array de productos o {DATA,CATS}.');
+    }
+    // ensure categories present for products
+    DATA.forEach(p=>{ if(!CATS[p.categoria]) CATS[p.categoria] = 0; });
+    saveState();
+    populateCategorySelects();
+    renderCategories();
     draw();
-  }else alert('Credenciales incorrectas');
-};
-document.getElementById('logout').onclick=()=>{location.reload();};
+    alert('Import realizado con éxito');
+  }catch(err){
+    alert('Error al parsear JSON: ' + err.message);
+  } finally {
+    e.target.value = null;
+  }
+});
 
+/* Botones útiles: ver lista completa, filtrar por select */
+el('showAll').addEventListener('click', ()=> draw(''));
+el('selCat').addEventListener('change', (e)=>{
+  const cat = e.target.value;
+  if(cat === 'Todas') draw('');
+  else drawCategory(cat);
+});
+
+/* Agregar producto rápido por botón (abre modal vacío) ya registrado en primera mitad */
+el('addProductBtn').addEventListener('click', ()=> openModal(null));
+
+/* Al iniciar, cargamos estado o precargamos y ponemos todo listo */
+initAll();
+
+/* Fin segunda mitad (pegá esto justo después de la nota de continuidad del primer bloque) */
+/* ------------------ EOF ------------------ */
 </script>
 </body>
 </html>
