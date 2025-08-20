@@ -194,11 +194,11 @@ function drawCats(){
 }
 
 function draw(){
-const list = document.getElementById('list'); list.innerHTML='';
-const q = document.getElementById('q').value.toLowerCase();
-DATA.filter(p=>p.categoria==="Cargadores" && p.nombre.toLowerCase().includes(q))
-.forEach(p=>{
-const card = document.createElement('div'); card.className='card';
-card.innerHTML=<b>${p.nombre}</b><br>Precio final: $${p.precio_final.toFixed(2)}<br>Markup: ${p.markup}%;
-list.appendChild(card);
-});
+   const list = document.getElementById('list'); list.innerHTML='';
+   const q = document.getElementById('q').value.toLowerCase();
+   DATA.filter(p=>p.categoria==="Cargadores" && p.nombre.toLowerCase().includes(q))
+    .forEach(p=>{
+     const card = document.createElement('div'); card.className='card';
+     card.innerHTML=<b>${p.nombre}</b><br>Precio final: $${p.precio_final.toFixed(2)}<br>Markup: ${p.markup}%;
+     list.appendChild(card);
+ });
