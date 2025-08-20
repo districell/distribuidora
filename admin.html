@@ -114,9 +114,8 @@ const REPO = "distribuidora";
 const BRANCH = "main";
 const FILE_PATH = "semilla.json";
 let DATA = [];
-let CATS = {}; // {nombre: porcentaje}
+let CATS = { "Cargadores": 50 }; // Solo una categoría cargadores con 50% markup
 
-// Funciones auxiliares
 function base64EncodeUtf8(str){return btoa(unescape(encodeURIComponent(str)));}
 
 function fileToDataURL(f){return new Promise((res,rej)=>{
@@ -126,15 +125,22 @@ function fileToDataURL(f){return new Promise((res,rej)=>{
   R.readAsDataURL(f);
 });}
 
-// Cargadores iniciales con 50%
+// Lista de cargadores
 const NEW_CARGADORES = [
   {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO",categoria:"Cargadores",precio_final:2894.47,markup:50},
   {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO",categoria:"Cargadores",precio_final:2894.47,markup:50},
   {nombre:"Combo 1 CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING",categoria:"Cargadores",precio_final:23986.02,markup:50},
   {nombre:"ADAPTADOR-CARGADOR 12V MOD 38 XAEA - SPEED - PD + QC 3.0",categoria:"Cargadores",precio_final:5842.39,markup:50},
   {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores",precio_final:1289.82,markup:50},
-  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio_final:1297.62,markup:50}
-  // agregá todos los demás cargadores aquí como en tu lista
+  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio_final:1297.62,markup:50},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores",precio_final:2007.93,markup:50},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - KIT X 200",categoria:"Cargadores",precio_final:339693.88,markup:50},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio_final:2007.93,markup:50},
+  {nombre:"CARGADOR 12V GEAR MODS-504 - 1 USB 1 TC + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio_final:2009.89,markup:50},
+  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C",categoria:"Cargadores",precio_final:2258.85,markup:50},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED - TIPO C - NEGRO",categoria:"Cargadores",precio_final:2747.01,markup:50},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C - BLANCO",categoria:"Cargadores",precio_final:2747.01,markup:50}
+  // ... agregá todos los demás cargadores de tu lista aquí de la misma forma
 ];
 
 async function loadSeed(){
@@ -143,14 +149,13 @@ async function loadSeed(){
     DATA = await r.json();
   }catch(e){DATA=[];}
 
-  // Agregamos cargadores nuevos si no existen
+  // Agregamos cargadores si no existen
   NEW_CARGADORES.forEach(c=>{
     if(!DATA.some(p=>p.nombre===c.nombre)){
       DATA.push({...c,id:Date.now().toString() + Math.random()});
     }
   });
 
-  buildCatsFromData();
   drawCats();
   draw();
 }
@@ -168,37 +173,26 @@ async function saveToGitHub(content){
   if(!putRes.ok){alert("Error al guardar en GitHub");return;}
 }
 
-// Construimos categorías
-function buildCatsFromData(){
-  DATA.forEach(p=>{
-    if(p.categoria){
-      if(!CATS[p.categoria]) CATS[p.categoria] = p.markup || 0;
-    }
-  });
-}
-
-// Mostramos categorías
 function drawCats(){
   const cont = document.getElementById('cats'); cont.innerHTML='';
   Object.keys(CATS).sort().forEach(c=>{
     const box=document.createElement('div');
     box.innerHTML = `<b>${c}</b> (Markup: ${CATS[c]}%) `;
     const btn=document.createElement('button');btn.className='btn';btn.textContent='Eliminar';
-    btn.onclick=async(e)=>{
+    btn.onclick=async(e=>{
       e.stopPropagation();
       DATA=DATA.filter(p=>p.categoria!==c);
       delete CATS[c];
       draw();drawCats();
       await saveToGitHub(JSON.stringify(DATA,null,2));
-    };
-    box.onclick=()=> drawCategory(c); // click lista solo esa categoría
+    });
+    box.onclick=()=> drawCategory(c);
     box.style.cursor = "pointer";
     box.appendChild(btn);
     cont.appendChild(box);
   });
 }
 
-// Mostrar productos de solo una categoría
 function drawCategory(cat){
   const list=document.getElementById('list');list.innerHTML='';
   DATA.filter(p=>p.categoria===cat)
@@ -214,7 +208,6 @@ function drawCategory(cat){
       });
 }
 
-// Dibujar todos los productos
 function draw(q=''){
   const list=document.getElementById('list');list.innerHTML='';
   DATA.filter(p=>!q||(p.nombre||'').toLowerCase().includes(q.toLowerCase()))
@@ -230,7 +223,6 @@ function draw(q=''){
       });
 }
 
-// Modal
 function openModal(id){
   const p=DATA.find(x=>x.id==id);
   if(!p) return;
@@ -265,7 +257,6 @@ document.getElementById('save').onclick=async ()=>{
 
 document.getElementById('q').addEventListener('input',e=>draw(e.target.value));
 
-// Login
 document.getElementById('doLogin').onclick=()=>{
   if(email.value==='admin@celldistribuciones.com'&&pass.value==='QWERTY123456'){
     loginBox.style.display='none';
