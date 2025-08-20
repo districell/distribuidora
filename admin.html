@@ -22,24 +22,12 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 .preview{height:150px;background:#f1f1f1;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .preview img{max-width:100%;max-height:100%}
 .row{display:flex;gap:8px;flex-wrap:wrap}
-
-/* Modal flotante */
 .modal-bg {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0,0,0,0.6);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
+  display: none; align-items: center; justify-content: center; z-index: 999;
 }
-.modal {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 500px;
-  width: 100%;
-}
+.modal {background: #fff; padding: 20px; border-radius: 10px; max-width: 500px; width: 100%;}
 .modal h3 {margin-top:0}
 </style>
 </head>
@@ -47,13 +35,22 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 <header>
   <div class="wrap">
     <img src="logo.png" alt="Cell Distribuciones" style="height:28px;vertical-align:middle;">
+    <button id="logout" class="btn">Salir</button>
   </div>
 </header>
 
 <main class="main">
 
+  <!-- LOGIN -->
+  <div id="loginBox" class="login">
+    <h3>Ingresar</h3>
+    <input id="email" placeholder="Email">
+    <input id="pass" placeholder="Contraseña" type="password">
+    <button id="doLogin" class="btn green">Entrar</button>
+  </div>
+
   <!-- APP -->
-  <div id="app">
+  <div id="app" style="display:none">
     <div class="panel">
       <h3>Categorías</h3>
       <div class="row">
@@ -73,7 +70,6 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 
 </main>
 
-<!-- MODAL flotante -->
 <div id="modalBg" class="modal-bg">
   <div class="modal">
     <h3>Editar producto</h3>
@@ -92,163 +88,114 @@ input,select,textarea{width:100%;padding:8px;border:1px solid var(--border);bord
 </div>
 
 <script>
-let DATA = [];
-let CATS = {
-  "Cargadores": 50,
-  "Baterías": 0,
-  "Módulos": 0,
-  "Placas de Carga": 0,
-  "Tapas Traseras": 0
-};
-
-// Lista completa de cargadores que me pasaste
+const DATA = []; // Aquí vamos a cargar todos los productos
+const CATS = { "Todas":0, "Baterías":0, "Cargadores":50, "Módulos":0, "Placas de Carga":0, "Tapas Traseras":0 };
+// Lista completa de cargadores
 const CARGADORES = [
-  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO",categoria:"Cargadores",precio_final:2894.47},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO",categoria:"Cargadores",precio_final:2894.47},
-  {nombre:"Combo 1 CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING",categoria:"Cargadores",precio_final:23986.02},
-  {nombre:"ADAPTADOR-CARGADOR 12V MOD 38 XAEA - SPEED - PD + QC 3.0",categoria:"Cargadores",precio_final:5842.39},
-  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores",precio_final:1289.82},
-  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio_final:1297.62},
-  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores",precio_final:2007.93},
-  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - KIT X 200",categoria:"Cargadores",precio_final:339693.88},
-  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio_final:2007.93}
-  // ... agregar el resto de tu lista completa aquí
+  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO", categoria:"Cargadores", precio_final:2894.47},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO", categoria:"Cargadores", precio_final:2894.47},
+  {nombre:"Combo 1 CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING", categoria:"Cargadores", precio_final:23986.02},
+  {nombre:"ADAPTADOR-CARGADOR 12V MOD 38 XAEA - SPEED - PD + QC 3.0", categoria:"Cargadores", precio_final:5842.39},
+  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_final:1289.82},
+  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_final:1297.62},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_final:2007.93},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - KIT X 200", categoria:"Cargadores", precio_final:339693.88},
+  {nombre:"CARGADOR 12V DRIFT MODS-501 - 2 USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_final:2007.93},
+  {nombre:"CARGADOR 12V GEAR MODS-504 - 1 USB 1 TC + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_final:2009.89},
+  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C", categoria:"Cargadores", precio_final:2258.85},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED - TIPO C - NEGRO", categoria:"Cargadores", precio_final:2747.01},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C - BLANCO", categoria:"Cargadores", precio_final:2747.01},
+  {nombre:"COMBO 2 - CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C", categoria:"Cargadores", precio_final:21842.04},
+  {nombre:"COMBO 4 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C", categoria:"Cargadores", precio_final:21172.08},
+  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8", categoria:"Cargadores", precio_final:2133.44},
+  {nombre:"CARGADOR 12V MOD 40 - ONLY - BOOST- V8 - BLANCO", categoria:"Cargadores", precio_final:1297.70},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - NEGRO", categoria:"Cargadores", precio_final:2590.17},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - BLANCO", categoria:"Cargadores", precio_final:2590.17},
+  {nombre:"COMBO 3 - CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8", categoria:"Cargadores", precio_final:21975.97},
+  {nombre:"COMBO 5 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8", categoria:"Cargadores", precio_final:21306.01},
+  {nombre:"CARGADOR 220V MODO-006 - 2 USB + CABLE LIGHTNING - ONLY - BLANCO", categoria:"Cargadores", precio_final:3559.77},
+  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE LIGHTNING - XAEA - BLANCO", categoria:"Cargadores", precio_final:3473.33},
+  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE LIGHTNING - XAEA - BLANCO", categoria:"Cargadores", precio_final:3429.76},
+  {nombre:"CARGADOR 220V ONLY MOD 02 - 2 USB + CABLE LIGHTINING - BLANCO", categoria:"Cargadores", precio_final:6362.78},
+  {nombre:"CARGADOR 220V ONLY MOD 06 - 2 USB + CABLE LIGHTNING - BLANCO", categoria:"Cargadores", precio_final:3501.43},
+  {nombre:"CARGADOR 220V LETS MOD08 - 4,4 A - 3 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_final:2679.29},
+  {nombre:"CARGADOR 220V LETS MOD08 - 4,4A - 2 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_final:2881.07},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_final:2808.01},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY PREMIUM - BLANCO", categoria:"Cargadores", precio_final:2722.91},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C BLANCO - ONLY - KIT X 200", categoria:"Cargadores", precio_final:573065.18},
+  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C NEGRO - ONLY - KIT X 200", categoria:"Cargadores", precio_final:573065.18},
+  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC BLANCO - ONLY - KIT X 200", categoria:"Cargadores", precio_final:595305.04},
+  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC NEGRO - ONLY - KIT X 200", categoria:"Cargadores", precio_final:578148.50},
+  {nombre:"CARGADOR 220V MODO-008 - 4,4A - 3USB + CABLE TIPO TC - ONLY", categoria:"Cargadores", precio_final:3302.31},
+  {nombre:"CARGADOR 220V MODO-008 BOOST - 4,4A - 3USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_final:3053.25},
+  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_final:1941.50},
+  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - NEGRO", categoria:"Cargadores", precio_final:1710.37},
+  {nombre:"CARGADOR 220V MODO-040 IMPULSE - 2.1A + CABLE TIPO C - ONLY - BLANCO", categoria:"Cargadores", precio_final:1813.06},
+  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO", categoria:"Cargadores", precio_final:3098.88},
+  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO - KIT X 200", categoria:"Cargadores", precio_final:566501.69},
+  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA", categoria:"Cargadores", precio_final:3039.05},
+  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA - KIT X 200", categoria:"Cargadores", precio_final:571578.12},
+  {nombre:"CARGADOR 220V ONLY MOD 03 - 2,1 A - 1 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_final:2356.15},
+  {nombre:"CARGADOR 220V ONLY MOD02 - 1 USB C/ CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_final:3107.03},
+  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - BLANCO", categoria:"Cargadores", precio_final:2841.71},
+  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - NEGRO", categoria:"Cargadores", precio_final:2852.15},
+  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO", categoria:"Cargadores", precio_final:4701.41},
+  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO - KIT X 100", categoria:"Cargadores", precio_final:405974.26}
 ];
 
-function drawCats() {
-  const cont = document.getElementById('cats'); cont.innerHTML='';
-  Object.keys(CATS).forEach(c=>{
-    const box = document.createElement('div');
-    box.innerHTML = `<b>${c}</b> (Markup: ${CATS[c]}%)`;
-    const btn = document.createElement('button'); btn.className='btn'; btn.textContent='Eliminar';
-    btn.onclick = ()=>{
-      DATA = DATA.filter(p=>p.categoria!==c);
-      delete CATS[c];
-      draw(); drawCats();
-    };
-    box.onclick=()=>drawCategory(c);
-    box.style.cursor='pointer';
-    box.appendChild(btn);
-    cont.appendChild(box);
+// Inicializamos DATA con los cargadores
+CARGADORES.forEach(c=>DATA.push({...c,id:Date.now().toString() + Math.random()}));
+
+// Funciones de dibujo
+function draw(q=''){
+  const list=document.getElementById('list'); list.innerHTML='';
+  DATA.filter(p=>!q||(p.nombre||'').toLowerCase().includes(q.toLowerCase()))
+      .forEach(p=>{
+        const card=document.createElement('div'); card.className='card';
+        const markup = CATS[p.categoria]||0;
+        const finalPrice = Number(p.precio_final||0) * (1+markup/100);
+        card.innerHTML='<div class="preview">'+(p.imagen?('<img src="'+p.imagen+'">'):'Sin imagen')+'</div>'+
+          '<b>'+(p.nombre||'')+'</b><div class="small">'+(p.categoria||'')+'</div><div>$'+finalPrice.toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
+        const btn=document.createElement('button');btn.className='btn';btn.style.marginTop='6px';btn.textContent='Editar';
+        btn.onclick=()=> openModal(p.id);
+        card.appendChild(btn); list.appendChild(card);
+      });
+}
+
+// Filtrar por categoría
+function drawCategory(cat){
+  const list=document.getElementById('list'); list.innerHTML='';
+  DATA.filter(p=>p.categoria===cat).forEach(p=>{
+    const card=document.createElement('div'); card.className='card';
+    const markup = CATS[p.categoria]||0;
+    const finalPrice = Number(p.precio_final||0) * (1+markup/100);
+    card.innerHTML='<div class="preview">'+(p.imagen?('<img src="'+p.imagen+'">'):'Sin imagen')+'</div>'+
+      '<b>'+(p.nombre||'')+'</b><div class="small">'+(p.categoria||'')+'</div><div>$'+finalPrice.toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
+    const btn=document.createElement('button');btn.className='btn';btn.style.marginTop='6px';btn.textContent='Editar';
+    btn.onclick=()=> openModal(p.id);
+    card.appendChild(btn); list.appendChild(card);
   });
 }
 
-function drawCategory(cat){
-  const list=document.getElementById('list');list.innerHTML='';
-  DATA.filter(p=>p.categoria===cat)
-      .forEach(p=>{
-        const card=document.createElement('div');card.className='card';
-        const markup = CATS[p.categoria]||0;
-        const finalPrice = Number(p.precio_final||0)*(1+markup/100);
-        card.innerHTML='<div class="preview">'+(p.imagen?('<img src="'+p.imagen+'">'):'Sin imagen')+'</div>'+
-        '<b>'+(p.nombre||'')+'</b><div class="small">'+(p.categoria||'')+'</div><div>$'+finalPrice.toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
-        const btn=document.createElement('button');btn.className='btn';btn.style.marginTop='6px';btn.textContent='Editar';
-        btn.onclick=()=>openModal(p.id);
-        card.appendChild(btn);list.appendChild(card);
-      });
-}
-
-// Dibujar todos los productos
-function draw(q=''){
-  const list=document.getElementById('list');list.innerHTML='';
-  DATA.filter(p=>!q||(p.nombre||'').toLowerCase().includes(q.toLowerCase()))
-      .forEach(p=>{
-        const card=document.createElement('div');card.className='card';
-        const markup = CATS[p.categoria]||0;
-        const finalPrice = Number(p.precio_final||0)*(1+markup/100);
-        card.innerHTML='<div class="preview">'+(p.imagen?('<img src="'+p.imagen+'">'):'Sin imagen')+'</div>'+
-        '<b>'+(p.nombre||'')+'</b><div class="small">'+(p.categoria||'')+'</div><div>$'+finalPrice.toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
-        const btn=document.createElement('button');btn.className='btn';btn.style.marginTop='6px';btn.textContent='Editar';
-        btn.onclick=()=>openModal(p.id);
-        card.appendChild(btn);list.appendChild(card);
-      });
-}
-
-// Modal
+// Modal y eventos
 function openModal(id){
-  const p=DATA.find(x=>x.id==id);
-  if(!p) return;
+  const p=DATA.find(x=>x.id==id); if(!p)return;
   pId.value=p.id; pNombre.value=p.nombre||''; pCat.value=p.categoria||''; pPrecio.value=p.precio_final||0; pSpecs.value=p.caracteristicas||'';
-  if(p.imagen){pPreview.innerHTML='<img src="'+p.imagen+'">';} else {pPreview.textContent='Sin imagen';}
+  if(p.imagen){pPreview.innerHTML='<img src="'+p.imagen+'">';}else{pPreview.textContent='Sin imagen';}
   document.getElementById('modalBg').style.display='flex';
 }
+document.getElementById('closeModal').onclick=()=>{document.getElementById('modalBg').style.display='none';};
+document.getElementById('q').addEventListener('input', e=>draw(e.target.value));
 
-document.getElementById('closeModal').onclick=()=>{document.getElementById('modalBg').style.display='none';}
-
-document.getElementById('save').onclick=()=>{
-  let id=pId.value.trim();const nombre=pNombre.value.trim();const categoria=pCat.value.trim();
-  const precio=Number(pPrecio.value||0);const caracteristicas=pSpecs.value.trim();
-  let imagen='';if(pPreview.querySelector('img')) imagen=pPreview.querySelector('img').src;
-  if(id){
-    const i=DATA.findIndex(x=>x.id==id);
-    if(i>=0) DATA[i]={...DATA[i],nombre,categoria,precio_final:precio,caracteristicas,imagen};
-    else DATA.push({id,nombre,categoria,precio_final:precio,caracteristicas,imagen});
-  }
-  if(categoria && !CATS[categoria]) CATS[categoria]=0;
-  draw(); drawCats();
-  document.getElementById('modalBg').style.display='none';
+document.getElementById('doLogin').onclick=()=>{
+  if(email.value==='admin@celldistribuciones.com'&&pass.value==='QWERTY123456'){
+    loginBox.style.display='none';
+    app.style.display='block';
+    draw();
+  }else alert('Credenciales incorrectas');
 };
+document.getElementById('logout').onclick=()=>{location.reload();};
 
-// Inicializar DATA con cargadores
-CARGADORES.forEach(c=>{
-  if(!DATA.some(p=>p.nombre===c.nombre)) DATA.push({...c,id:Date.now().toString()+Math.random()});
-});
-
-drawCats();
-draw();
 </script>
 </body>
 </html>
-// Resto de los cargadores de la lista completa
-const CARGADORES_EXTRA = [
-  {nombre:"CARGADOR 12V GEAR MODS-504 - 1 USB 1 TC + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio_final:2009.89},
-  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C",categoria:"Cargadores",precio_final:2258.85},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED - TIPO C - NEGRO",categoria:"Cargadores",precio_final:2747.01},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C - BLANCO",categoria:"Cargadores",precio_final:2747.01},
-  {nombre:"COMBO 2 - CARGADOR 12V POTENCIADO MOD 37 - ONLY - POWERED -TIPO C",categoria:"Cargadores",precio_final:21842.04},
-  {nombre:"COMBO 4 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - TIPO C",categoria:"Cargadores",precio_final:21172.08},
-  {nombre:"CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8",categoria:"Cargadores",precio_final:2133.44},
-  {nombre:"CARGADOR 12V MOD 40 - ONLY - BOOST- V8 - BLANCO",categoria:"Cargadores",precio_final:1297.70},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - NEGRO",categoria:"Cargadores",precio_final:2590.17},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8 - BLANCO",categoria:"Cargadores",precio_final:2590.17},
-  {nombre:"COMBO 3 - CARGADOR 12V POTENCIADO MOD 35 - ONLY - POWERED - V8",categoria:"Cargadores",precio_final:21975.97},
-  {nombre:"COMBO 5 - CARGADOR 12V MOD 33 ECO 3.1 AMP - RIDE - ONLY - V8",categoria:"Cargadores",precio_final:21306.01},
-  {nombre:"CARGADOR 220V MODO-006 - 2 USB + CABLE LIGHTNING - ONLY - BLANCO",categoria:"Cargadores",precio_final:3559.77},
-  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE LIGHTNING - XAEA - BLANCO",categoria:"Cargadores",precio_final:3473.33},
-  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE LIGHTNING - XAEA - BLANCO",categoria:"Cargadores",precio_final:3429.76},
-  {nombre:"CARGADOR 220V ONLY MOD 02 - 2 USB + CABLE LIGHTINING - BLANCO",categoria:"Cargadores",precio_final:6362.78},
-  {nombre:"CARGADOR 220V ONLY MOD 06 - 2 USB + CABLE LIGHTNING - BLANCO",categoria:"Cargadores",precio_final:3501.43},
-  {nombre:"CARGADOR 220V LETS MOD08 - 4,4 A - 3 USB + CABLE TIPO C - BLANCO",categoria:"Cargadores",precio_final:2679.29},
-  {nombre:"CARGADOR 220V LETS MOD08 - 4,4A - 2 USB + CABLE TIPO C - BLANCO",categoria:"Cargadores",precio_final:2881.07},
-  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio_final:2808.01},
-  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C - ONLY PREMIUM - BLANCO",categoria:"Cargadores",precio_final:2722.91},
-  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C BLANCO - ONLY - KIT X 200",categoria:"Cargadores",precio_final:573065.18},
-  {nombre:"CARGADOR 220V MODO-006 - 1USB + TIPO C NEGRO - ONLY - KIT X 200",categoria:"Cargadores",precio_final:573065.18},
-  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC BLANCO - ONLY - KIT X 200",categoria:"Cargadores",precio_final:595305.04},
-  {nombre:"CARGADOR 220V MODO-006 - 2USB + CABLE TC NEGRO - ONLY - KIT X 200",categoria:"Cargadores",precio_final:578148.50},
-  {nombre:"CARGADOR 220V MODO-008 - 4,4A - 3USB + CABLE TIPO TC - ONLY",categoria:"Cargadores",precio_final:3302.31},
-  {nombre:"CARGADOR 220V MODO-008 BOOST - 4,4A - 3USB + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores",precio_final:3053.25},
-  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores",precio_final:1941.50},
-  {nombre:"CARGADOR 220V MODO-018 4.8A - RUSH - 1USB + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores",precio_final:1710.37},
-  {nombre:"CARGADOR 220V MODO-040 IMPULSE - 2.1A + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores",precio_final:1813.06},
-  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO",categoria:"Cargadores",precio_final:3098.88},
-  {nombre:"CARGADOR 220V MODO-A015 INTENSIFY - 2USB + CABLE TIPO C - XAEA - BLANCO - KIT X 200",categoria:"Cargadores",precio_final:566501.69},
-  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA",categoria:"Cargadores",precio_final:3039.05},
-  {nombre:"CARGADOR 220V MODO-B015 INTENSIFY - 3USB + CABLE TIPO C - XAEA - KIT X 200",categoria:"Cargadores",precio_final:571578.12},
-  {nombre:"CARGADOR 220V ONLY MOD 03 - 2,1 A - 1 USB + CABLE TIPO C - BLANCO",categoria:"Cargadores",precio_final:2356.15},
-  {nombre:"CARGADOR 220V ONLY MOD02 - 1 USB C/ CABLE TIPO C - BLANCO",categoria:"Cargadores",precio_final:3107.03},
-  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - BLANCO",categoria:"Cargadores",precio_final:2841.71},
-  {nombre:"CARGADOR 220V ONLY MOD06 - 2 USB + CABLE TC - NEGRO",categoria:"Cargadores",precio_final:2852.15},
-  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO",categoria:"Cargadores",precio_final:4701.41},
-  {nombre:"CARGADOR 220V XAEA MOD 10 - 9V - 27W - 1 USB + CABLE TIPO C - BLANCO - KIT X 100",categoria:"Cargadores",precio_final:405974.26}
-];
-
-// Agregamos los cargadores extra al DATA
-CARGADORES_EXTRA.forEach(c=>{
-  if(!DATA.some(p=>p.nombre===c.nombre)) DATA.push({...c,id:Date.now().toString()+Math.random()});
-});
-
-// Redibujar después de agregar todos
-drawCats();
-draw();
-
