@@ -113,101 +113,128 @@ const USER = "districell";
 const REPO = "distribuidora";
 const BRANCH = "main";
 const FILE_PATH = "semilla.json";
-
 let DATA = [];
 let CATS = {}; // {nombre: porcentaje}
 
-// Lista inicial de cargadores con 50% de markup
-const INITIAL_LOAD = [
-  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO",categoria:"Cargadores_12V LIGHTNING",precio_base:2894.47,precio_final:2894.47,caracteristicas:"",imagen:"",markup:50},
-  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO",categoria:"Cargadores_12V LIGHTNING",precio_base:2894.47,precio_final:2894.47,caracteristicas:"",imagen:"",markup:50},
-  {nombre:"Combo 1 CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING",categoria:"Cargadores_12V LIGHTNING",precio_base:23986.02,precio_final:23986.02,caracteristicas:"",imagen:"",markup:50},
-  {nombre:"ADAPTADOR-CARGADOR 12V MOD 38 XAEA - SPEED - PD + QC 3.0",categoria:"Cargadores_12V TIPO C",precio_base:5842.39,precio_final:5842.39,caracteristicas:"",imagen:"",markup:50},
-  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores_12V TIPO C",precio_base:1289.82,precio_final:1289.82,caracteristicas:"",imagen:"",markup:50},
-  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores_12V TIPO C",precio_base:1297.62,precio_final:1297.62,caracteristicas:"",imagen:"",markup:50},
-  // ... (aquí seguís agregando todos los cargadores que me pasaste de forma similar)
+// Funciones auxiliares
+function base64EncodeUtf8(str){return btoa(unescape(encodeURIComponent(str)));}
+
+function fileToDataURL(f){return new Promise((res,rej)=>{
+  const R=new FileReader();
+  R.onload=()=>res(R.result);
+  R.onerror=rej;
+  R.readAsDataURL(f);
+});}
+
+// Cargadores iniciales con 50% solo para los nuevos productos
+const NEW_CARGADORES = [
+  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - BLANCO",categoria:"Cargadores_12V LIGHTNING",precio_final:2894.47,markup:50},
+  {nombre:"CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING - NEGRO",categoria:"Cargadores_12V LIGHTNING",precio_final:2894.47,markup:50},
+  {nombre:"Combo 1 CARGADOR 12V POTENCIADO MOD 36 - ONLY - POWERED - LIGHTNING",categoria:"Cargadores_12V LIGHTNING",precio_final:23986.02,markup:50},
+  {nombre:"ADAPTADOR-CARGADOR 12V MOD 38 XAEA - SPEED - PD + QC 3.0",categoria:"Cargadores_12V TIPO C",precio_final:5842.39,markup:50},
+  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - BLANCO",categoria:"Cargadores_12V TIPO C",precio_final:1289.82,markup:50},
+  {nombre:"CARGADOR 12V BOOSTER MODS-500 - 2 USB + CABLE TIPO C - ONLY - NEGRO",categoria:"Cargadores_12V TIPO C",precio_final:1297.62,markup:50}
+  // ... agregá el resto de los cargadores que quieras mantener
 ];
 
-// Funciones utilitarias
-function base64EncodeUtf8(str){return btoa(unescape(encodeURIComponent(str)));}
-function fileToDataURL(f){return new Promise((res,rej)=>{const R=new FileReader();R.onload=()=>res(R.result);R.onerror=rej;R.readAsDataURL(f);});}
+async function loadSeed(){
+  try{
+    const r = await fetch(FILE_PATH+'?v='+Date.now());
+    DATA = await r.json();
+  }catch(e){DATA=[];}
 
-// Cargar productos iniciales
-function loadSeed(){
-  // Si DATA está vacío, cargamos los iniciales
-  if(DATA.length===0){ 
-    DATA = [...INITIAL_LOAD];
-  }
+  // Agregamos cargadores nuevos si no existen
+  NEW_CARGADORES.forEach(c=>{
+    if(!DATA.some(p=>p.nombre===c.nombre)){
+      DATA.push({...c,id:Date.now().toString() + Math.random()});
+    }
+  });
+
   buildCatsFromData();
   drawCats();
   draw();
 }
 
+async function saveToGitHub(content){
+  const token = localStorage.getItem("gh_token");
+  if(!token){ alert("Token no configurado."); return; }
+  const api = `https://api.github.com/repos/${USER}/${REPO}/contents/${FILE_PATH}`;
+  let sha = null;
+  const getRes = await fetch(api,{headers:{Authorization:`Bearer ${token}`}});
+  if(getRes.status===200){sha=(await getRes.json()).sha;}
+  const body={message:"Actualizar semilla.json",content:base64EncodeUtf8(content),branch:BRANCH};
+  if(sha) body.sha = sha;
+  const putRes = await fetch(api,{method:"PUT",headers:{Authorization:`Bearer ${token}`},body:JSON.stringify(body)});
+  if(!putRes.ok){alert("Error al guardar en GitHub");return;}
+}
+
+// Construimos categorías sin borrar las anteriores
 function buildCatsFromData(){
-  CATS = {};
   DATA.forEach(p=>{
     if(p.categoria){
-      if(!CATS[p.categoria]) CATS[p.categoria]=p.markup||0;
+      if(!CATS[p.categoria]) CATS[p.categoria] = p.markup || 0;
     }
   });
 }
 
+// Mostramos las categorías
 function drawCats(){
   const cont = document.getElementById('cats'); cont.innerHTML='';
   Object.keys(CATS).sort().forEach(c=>{
     const box=document.createElement('div');
-    box.style.cursor="pointer";
     box.innerHTML = `<b>${c}</b> (Markup: ${CATS[c]}%) `;
     const btn=document.createElement('button');btn.className='btn';btn.textContent='Eliminar';
-    btn.onclick=async(e)=>{
-      e.stopPropagation();
+    btn.onclick=async()=>{
       DATA=DATA.filter(p=>p.categoria!==c);
       delete CATS[c];
       draw();drawCats();
       await saveToGitHub(JSON.stringify(DATA,null,2));
     };
+    box.onclick=()=> drawCategory(c); // al hacer click listamos solo esa categoría
+    box.style.cursor = "pointer";
     box.appendChild(btn);
-    // Al hacer clic en la categoría, mostrar solo productos de esa categoría
-    box.onclick=()=> draw('',c);
     cont.appendChild(box);
   });
 }
 
-document.getElementById('addCat').onclick=async ()=>{
-  const v=document.getElementById('newCat').value.trim();
-  const m=parseInt(document.getElementById('newMarkup').value.trim()||'0');
-  if(!v) return;
-  CATS[v]=m;
-  // agregamos producto placeholder
-  DATA.push({id: Date.now().toString(),nombre:'Nuevo producto',categoria:v,precio_final:0,caracteristicas:'',imagen:''});
-  draw();drawCats();
-  await saveToGitHub(JSON.stringify(DATA,null,2));
-  document.getElementById('newCat').value='';
-  document.getElementById('newMarkup').value='';
-};
-
-function draw(q='',filterCat=''){
+// Mostrar productos de solo una categoría
+function drawCategory(cat){
   const list=document.getElementById('list');list.innerHTML='';
-  DATA.filter(p=>{
-    if(filterCat) return p.categoria===filterCat;
-    return !q||(p.nombre||'').toLowerCase().includes(q.toLowerCase());
-  }).forEach(p=>{
-    const card=document.createElement('div');card.className='card';
-    const markup = CATS[p.categoria]||0;
-    const finalPrice = Number(p.precio_final||0) * (1+markup/100);
-    card.innerHTML='<div class="preview">'+(p.imagen?('<img src="'+p.imagen+'">'):'Sin imagen')+'</div>'+
-    '<b>'+(p.nombre||'')+'</b><div class="small">'+(p.categoria||'')+'</div><div>$'+finalPrice.toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
-    const btn=document.createElement('button');btn.className='btn';btn.style.marginTop='6px';btn.textContent='Editar';
-    btn.onclick=()=> openModal(p.id);
-    card.appendChild(btn);list.appendChild(card);
-  });
+  DATA.filter(p=>p.categoria===cat)
+      .forEach(p=>{
+        const card=document.createElement('div');card.className='card';
+        const markup = CATS[p.categoria]||0;
+        const finalPrice = Number(p.precio_final||0) * (1+markup/100);
+        card.innerHTML='<div class="preview">'+(p.imagen?('<img src="'+p.imagen+'">'):'Sin imagen')+'</div>'+
+        '<b>'+(p.nombre||'')+'</b><div class="small">'+(p.categoria||'')+'</div><div>$'+finalPrice.toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
+        const btn=document.createElement('button');btn.className='btn';btn.style.marginTop='6px';btn.textContent='Editar';
+        btn.onclick=()=> openModal(p.id);
+        card.appendChild(btn);list.appendChild(card);
+      });
 }
 
+// Dibujar todos los productos
+function draw(q=''){
+  const list=document.getElementById('list');list.innerHTML='';
+  DATA.filter(p=>!q||(p.nombre||'').toLowerCase().includes(q.toLowerCase()))
+      .forEach(p=>{
+        const card=document.createElement('div');card.className='card';
+        const markup = CATS[p.categoria]||0;
+        const finalPrice = Number(p.precio_final||0) * (1+markup/100);
+        card.innerHTML='<div class="preview">'+(p.imagen?('<img src="'+p.imagen+'">'):'Sin imagen')+'</div>'+
+        '<b>'+(p.nombre||'')+'</b><div class="small">'+(p.categoria||'')+'</div><div>$'+finalPrice.toLocaleString('es-AR',{minimumFractionDigits:2})+'</div>';
+        const btn=document.createElement('button');btn.className='btn';btn.style.marginTop='6px';btn.textContent='Editar';
+        btn.onclick=()=> openModal(p.id);
+        card.appendChild(btn);list.appendChild(card);
+      });
+}
+
+// Modal
 function openModal(id){
   const p=DATA.find(x=>x.id==id);
   if(!p) return;
   pId.value=p.id; pNombre.value=p.nombre||''; pCat.value=p.categoria||''; pPrecio.value=p.precio_final||0; pSpecs.value=p.caracteristicas||'';
-  if(p.imagen){pPreview.innerHTML='<img src="'+p.imagen+'">'} else {pPreview.textContent='Sin imagen'}
+  if(p.imagen){pPreview.innerHTML='<img src="'+p.imagen+'">';} else {pPreview.textContent='Sin imagen';}
   document.getElementById('modalBg').style.display='flex';
 }
 
@@ -237,6 +264,7 @@ document.getElementById('save').onclick=async ()=>{
 
 document.getElementById('q').addEventListener('input',e=>draw(e.target.value));
 
+// Login
 document.getElementById('doLogin').onclick=()=>{
   if(email.value==='admin@celldistribuciones.com'&&pass.value==='QWERTY123456'){
     loginBox.style.display='none';
@@ -254,7 +282,7 @@ document.getElementById('saveToken').onclick=()=>{
   loadSeed();
 };
 
-document.getElementById('logout').onclick=()=>{localStorage.removeItem("gh_token"); location.reload();}
+document.getElementById('logout').onclick=()=>{localStorage.removeItem("gh_token");location.reload();};
 
 </script>
 </body>
